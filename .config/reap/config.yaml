@@ -1,0 +1,38 @@
+---
+
+#template:
+#  service: SowGen
+
+syntax:
+  service: Syntax
+
+stats:
+  service: BasicStats
+
+notes:
+  service: Notes
+
+#testunit:
+#  service: TestUnit
+
+rdoc:
+  service  : RDoc
+  title    : XDG
+  template : html
+  inline   : true
+
+ridoc:
+  service  : RiDoc
+
+#vclog:
+#  service  : VCLog
+
+gem:
+  service  : Gem
+  include  : [ doc, lib, meta, test, '[A-Z]*' ]
+  exclude  : [ doc/rdoc, doc/ri ]
+
+rubyforge:
+  service  : Rubyforge
+  unixname : xdg
+  groupid  : 7077

@@ -1,0 +1,36 @@
+= XDG
+
+XDG provides an easy to use interface for utilizing
+the XDG Base Base Directory Standards.
+
+== Usage
+
+XDG is a module with a small set of easy to understand
+module methods, so it very easy to use.
+
+See RDOC's for more information.
+
+== Installation
+
+=== RubyGems
+
+  $ gem install xdg
+
+=== Tarball
+
+Installing the tarball requires Ruby Setup
+(see http://setup.rubyforge.org).
+
+  $ tar -xvzf xdg-0.1.0
+  $ cd xdg-0.1.0
+  $ setup.rb all
+
+== Development
+
+Visit http://rubyforge.org/projects/xdg
+
+== Copyright
+
+Copyright (c) 2008 Tiger Ops / 7rans
+Distributed under the terms of the MIT license.
+
