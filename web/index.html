@@ -1,0 +1,124 @@
+<html>
+<head>
+  <title>Ruby XDG</title>
+  <style>
+    body { background: #bbb; font-size: 10pt; }
+    #container { background: #fff; width: 900px; margin: 0 auto; padding: 0px 0px; border: 1px solid black; }
+    #aside { float: right; width: 280px; padding-right: 10px; }
+    #aside iframe { height: 1400px; border: none; }
+    h1 { font-size: 56pt; margin: 0px; padding: 10px 0px; }
+    h2 { padding-top: 10px; }
+    #main { padding: 25px; }
+    #menu { font-family: monospace; margin-bottom: 30px; }
+    #footer { background: #cccccc; font-family: monospace; padding: 10px 10px; border-top: 1px solid black;}
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <div id="aside">
+    <iframe src="http://tigerops.org/ads/side-wide-wht.html"></iframe>
+  </div>
+
+  <div id="main">
+
+    <h1>XDG</h1>
+
+    <div id="menu">
+      <a href="rdoc/index.html">RDoc</a>
+      <a href="http://rubyforge.org/projects/xdg">Rubyforge</a>
+      <a href="http://tigerops.org">TigerOps</a>
+    </div>
+
+    <p>The XDG specification defines where supporting files should be looked for by defining one
+       or more base directories relative to which files should be located. The advantages of
+       this standard is that files are found in central locations easily descernable by man and
+       machine and (if widely adopted) will clear up our HOME directories of those 10,000 pesky
+       hidden files!</p>
+
+    <p>See <a href="http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html">
+       XDG Base Directory Standard Specification</a>.</p>
+
+
+    <h2>Usage</h2>
+
+    <p>XDG is...</p>
+
+    <pre class="sh_ruby">
+      XDG.xdg_config_home
+
+      XDG.xdg_config_dirs
+
+      XDG.xdg_data_home
+
+      XDG.xdg_data_dirs
+
+      XDG.xdg_cache_home
+
+      XDG.xdg_data_file(file)
+
+      XDG.xdg_config_file(file)
+
+      XDG.xdg_cache_file(file)
+
+      XDG.xdg_config_work
+
+      XDG.xdg_data_work
+
+      XDG.xdg_cache_work
+    </pre>
+
+    <p>If you're not using the XDG standard... well... crap on you!</p>
+
+     <p>No, seriously, unless you have some genius alternate solution,
+        you should be using this standard.</p>
+
+
+    <h2>Installation</h2>
+
+    <h3>RubyGems</h3>
+
+    <pre>
+      $ gem install xdg
+    </pre>
+
+    <h3>Tarball</h3>
+
+    <p>Installing the tarball requires Ruby Setup
+    (see <a href="http://setup.rubyforge.org">http://setup.rubyforge.org</a>).</p>
+
+    <pre>
+      $ tar -xvzf xdg-0.1.0
+      $ cd xdg-0.1.0
+      $ setup.rb all
+    </pre>
+
+
+    <h2>Development</h2>
+
+    <p>XDG has a git repository on Rubyforge:</p>
+
+    <p>You can use gitweb to <a href="http://xdg.rubyforge.org/git?p=xdg.git;a=tree">browse the 'xdg' repository</a>.</p>
+
+    <p>To pull the 'xdg' repository anonymously, use:</p>
+
+    <pre>
+      git clone git://rubyforge.org/xdg.git
+    </pre>
+
+    <p>Developers: You can push to the 'xdg' repository using:</p>
+
+    <pre>
+      gitosis@rubyforge.org:xdg.git
+    </pre>
+  </div>
+
+  <div id="footer">
+    Copyright &copy; 2008 Tiger Ops<br/>
+    XDG is distributed under the terms of the LGPL version 3 license.
+  </div>
+
+</div>
+
+</body>
+</html>
