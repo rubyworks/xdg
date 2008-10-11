@@ -39,7 +39,7 @@ module XDG
   # Location of user's personal config directory.
   def self.config_home
     File.expand_path(
-      ENV['XDG_CONFIG_HOME'] || File.join(xdg_home, '.config')
+      ENV['XDG_CONFIG_HOME'] || File.join(home, '.config')
     )
   end
 
@@ -55,7 +55,7 @@ module XDG
   # Location of user's personal data directory.
   def self.data_home
     File.expand_path(
-      ENV['XDG_DATA_HOME'] || File.join(xdg_home, '.local', 'share')
+      ENV['XDG_DATA_HOME'] || File.join(home, '.local', 'share')
     )
   end
 
@@ -71,14 +71,14 @@ module XDG
   # Location of user's personal cache directory.
   def self.cache_home
     File.expand_path(
-      ENV['XDG_CACHE_HOME'] || File.join(xdg_home, '.cache')
+      ENV['XDG_CACHE_HOME'] || File.join(home, '.cache')
     )
   end
 
   # Find a file or directory in data dirs.
   def self.data_file(file)
     find = nil
-    [xdg_data_home, *xdg_data_dirs].each do |dir|
+    [data_home, *data_dirs].each do |dir|
       path = File.join(dir,file)
       break find = path if File.exist?(path)
     end
@@ -88,7 +88,7 @@ module XDG
   # Find a file or directory in config dirs.
   def self.config_file(file)
     find = nil
-    [xdg_config_home, *xdg_config_dirs].each do |dir|
+    [config_home, *config_dirs].each do |dir|
       path = File.join(dir,file)
       break find = path if File.exist?(path)
     end
@@ -97,7 +97,7 @@ module XDG
 
   # Find a file or directory in the user cache.
   def self.cache_file(file)
-    path = File.join(xdg_cache_home,file)
+    path = File.join(cache_home,file)
     File.exist?(path) ? path : nil
   end
 
