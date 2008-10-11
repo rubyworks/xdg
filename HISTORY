@@ -1,0 +1,5 @@
+### 0.3.0 / 2008-09-11
+
+* Renamed module level methods without 'xdg_' prefix.
+* The xdg_ versions still exist for backward compatibility.
+
