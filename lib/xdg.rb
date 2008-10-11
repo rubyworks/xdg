@@ -32,81 +32,82 @@
 
 module XDG
 
-  ###############
-  module_function
-  ###############
-
-  def xdg_home
+  def self.home
     ENV['HOME'] || File.expand_path('~')
   end
 
   # Location of user's personal config directory.
-  def xdg_config_home
+  def self.config_home
     File.expand_path(
       ENV['XDG_CONFIG_HOME'] || File.join(xdg_home, '.config')
     )
   end
 
   # List of user's shared config directories.
-  def xdg_config_dirs
-    dirs = ENV['XDG_CONFIG_DIRS'].split(/[:;]/)
+  def self.config_dirs
+    dirs = ENV['XDG_CONFIG_DIRS'].to_s.split(/[:;]/)
     if dirs.empty?
       dirs = %w{/etc/xdg}
     end
-    dir.collect{ |d| File.expand_path(d) }
+    dirs.collect{ |d| File.expand_path(d) }
   end
 
   # Location of user's personal data directory.
-  def xdg_data_home
+  def self.data_home
     File.expand_path(
       ENV['XDG_DATA_HOME'] || File.join(xdg_home, '.local', 'share')
     )
   end
 
   # List of user's shared data directores.
-  def xdg_data_dirs
+  def self.data_dirs
     dirs = ENV['XDG_DATA_DIRS'].split(/[:;]/)
     if dirs.empty?
       dirs = %w{/usr/local/share/ /usr/share/}
     end
-    dir.collect{ |d| File.expand_path(d) }
+    dirs.collect{ |d| File.expand_path(d) }
   end
 
   # Location of user's personal cache directory.
-  def xdg_cache_home
+  def self.cache_home
     File.expand_path(
       ENV['XDG_CACHE_HOME'] || File.join(xdg_home, '.cache')
     )
   end
 
   # Find a file or directory in data dirs.
-  def xdg_data_file(file)
-    [data_home, *data_dirs].each do |dir|
+  def self.data_file(file)
+    find = nil
+    [xdg_data_home, *xdg_data_dirs].each do |dir|
       path = File.join(dir,file)
-      break path if File.exist?(path)
+      break find = path if File.exist?(path)
     end
+    find
   end
 
   # Find a file or directory in config dirs.
-  def xdg_config_file(file)
-    [config_home, *config_dirs].each do |dir|
+  def self.config_file(file)
+    find = nil
+    [xdg_config_home, *xdg_config_dirs].each do |dir|
       path = File.join(dir,file)
-      break path if File.exist?(path)
+      break find = path if File.exist?(path)
     end
+    find
   end
 
   # Find a file or directory in the user cache.
-  def xdg_cache_file(file)
-    File.join(cache_home,file)
+  def self.cache_file(file)
+    path = File.join(xdg_cache_home,file)
+    File.exist?(path) ? path : nil
   end
 
-  ############################################
-  # The following are not strictly XDG spec, #
-  # but are useful in the same respect.      #
-  ############################################
+  #--
+  # The following are not strictly XDG spec,
+  # but are useful in the same respect.
+  #++
 
   # Location of working config directory.
-  def xdg_config_work
+  def self.config_work
     File.expand_path(
       #ENV['XDG_CONFIG_WORK'] || File.join(Dir.pwd, '.config')
       File.join(Dir.pwd, '.config')
@@ -114,7 +115,7 @@ module XDG
   end
 
   # Location of working data directory.
-  def xdg_data_work
+  def self.data_work
     File.expand_path(
       #ENV['XDG_DATA_WORK'] || File.join(Dir.pwd, '.share')
       File.join(Dir.pwd, '.share')
@@ -122,12 +123,31 @@ module XDG
   end
 
   # Location of working cache directory.
-  def xdg_cache_work
+  def self.cache_work
     File.expand_path(
       #ENV['XDG_CACHE_WORK'] || File.join(Dir.pwd, '.cache')
       File.join(Dir.pwd, '.cache')
     )
   end
+
+  ###############
+  module_function
+  ###############
+
+  def xdg_home        ; XDG.home        ; end
+  def xdg_config_home ; XDG.config_home ; end
+  def xdg_config_dirs ; XDG.config_dirs ; end
+  def xdg_data_home   ; XDG.data_home   ; end
+  def xdg_data_dirs   ; XDG.data_dirs   ; end
+  def xdg_cache_home  ; XDG.cache_home  ; end
+
+  def xdg_data_file(file)   ; XDG.data_file(file)   ; end
+  def xdg_config_file(file) ; XDG.config_file(file) ; end
+  def xdg_cache_file(file)  ; XDG.cache_file(file)  ; end
+
+  def xdg_config_work ; XDG.config_work ; end
+  def xdg_data_work   ; XDG.data_work   ; end
+  def xdg_cache_work  ; XDG.cache_work  ; end
 
 end # module XDG
 
