@@ -1,0 +1,6 @@
+---
+service: RDoc
+title    : XDG
+template : html
+inline   : true
+
