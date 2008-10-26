@@ -2,125 +2,200 @@
 <head>
   <title>Ruby XDG</title>
   <style>
-    body { background: #bbb; font-size: 10pt; }
-    #container { background: #fff; width: 900px; margin: 0 auto; padding: 0px 0px; border: 1px solid black; }
-    #aside { float: right; width: 280px; padding-right: 10px; }
+    body { background: #fff; font-size: 10pt; font-family: sans-serif; }
+    #container { padding: 0px 0px; }
+    #aside { float: right; width: 280px; margin-right: 30px; }
     #aside iframe { height: 1400px; border: none; }
     h1 { font-size: 56pt; margin: 0px; padding: 10px 0px; }
     h2 { padding-top: 10px; }
-    #main { padding: 25px; }
-    #menu { font-family: monospace; margin-bottom: 30px; }
-    #footer { background: #cccccc; font-family: monospace; padding: 10px 10px; border-top: 1px solid black;}
+    #main { width: 800px; margin: 0 auto; padding: 5px;
+            border-right: 300px solid white; background: #eee; }
+    #header { background: url(images/ephemeral_header01.jpg); padding: 10px; border: 1px solid black; }
+    #menu { font-family: monospace; margin-bottom: 10px; float: right; }
+    #menu a { background: white; padding: 5px 10px; border: 1px solid black; text-decoration: none; }
+    #menu a:hover { background: #D0FFD0; }
+    #text { padding: 0px 20px; }
+    #footer { background: url(images/ephemeral_header01.jpg); font-family: monospace; padding: 10px 10px; border: 1px solid black;}
   </style>
 </head>
 <body>
 
 <div id="container">
+
   <div id="aside">
     <iframe src="http://tigerops.org/ads/side-wide-wht.html"></iframe>
   </div>
 
   <div id="main">
 
-    <h1>XDG</h1>
-
-    <div id="menu">
-      <a href="rdoc/index.html">RDoc</a>
-      <a href="http://rubyforge.org/projects/xdg">Rubyforge</a>
-      <a href="http://tigerops.org">TigerOps</a>
+    <div id="header">
+      <h1>XDG</h1>
+      <div id="menu">
+        <a href="rdoc/index.html">RDocs</a>
+        <a href="http://rubyforge.org/projects/xdg">Rubyforge</a>
+        <a href="http://tigerops.org">TigerOps</a>
+      </div>
     </div>
 
-    <p>The XDG specification defines where supporting files should be looked for by defining one
-       or more base directories relative to which files should be located. The advantages of
-       this standard is that files are found in central locations easily descernable by man and
-       machine and (if widely adopted) will clear up our HOME directories of those 10,000 pesky
-       hidden files!</p>
+    <div id="text">
 
-    <p>See <a href="http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html">
-       XDG Base Directory Standard Specification</a>.</p>
+      <h2>What can XDG do?</h2>
+
+      <p>How about turning this:</p>
+
+      <pre style="font-size: 8pt;">
+      $ ls -a ~/
+
+      .ICEauthority     .gconf                .qt                    
+      .Xauthority       .gconfd               .rdoc                  Documents
+      .Xsession         .gem                  .recently-used         Download
+      .adobe            .gftp                 .recently-used.xbel    EMail
+      .aptitude         .gimp-2.4             .ri                    Friends
+      .aspell.en.prepl  .gitconfig            .ruby_inline           Jobs
+      .aspell.en.pws    .gksu.lock            .rubyrc                Mail
+      .bash_history     .gnome                .sane                  Manifest.txt
+      .bash_logout      .gnome2               .shoes                 Media
+      .bashrc           .gnome2_private       .ssh                   Memento
+      .bogofilter       .gnupg                .subversion            Music
+      .cache            .gstreamer-0.10       .themes                Notebook
+      .camel_certs      .gtk-bookmarks        .thumbnails            Personal
+      .compiz           .gtk-recordmydesktop  .tremulous             Photos
+      .config           .gtkrc-1.2-gnome2     .update-manager-core   Pics
+      .dbus             .gvfs                 .update-notifier       Pictures
+      .dbus-keyrings    .icons                .vim                   PonyArchive
+      .dia              .irb_history          .viminfo               Public
+      .diakonos         .irbrc                .vimrc                 Sort
+      .dmrc             .local                .vlc                   Templates
+      .dvdcss           .macromedia           .w3m                   Videos
+      .dvdrip           .metacity             .wapi                  current
+      .dvdrip-master    .mozilla              .xine                  dvdrip-data
+      .dvdriprc         .mplayer              .xinitrc               links.xml
+      .eee              .mysql_history        .xsession-errors       programs
+      .esd_auth         .nautilus             Archive                projects
+      .etc              .openoffice.org2      Art                    ruby
+      .evolution        .pgadmin3             Bookmarks              sandbox
+      .fastri-index     .pgpass               Books                  tags
+      .fehbg            .profile              Company                tigerops
+      .fehrc            .pulse                Contacts
+      .fontconfig       .pulse-cookie         Desktop
+      .fr-KVIe0s        .purple               Diff.txt
+      </pre>
+
+      <p>Into this:</p>
+
+      <pre style="font-size: 8pt;">
+      $ ls -a ~/
+
+      .config           Diff.txt              Music                  Videos
+      .cache            Documents             Notebook               current
+      .local            Download              Personal               dvdrip-data
+      Archive           EMail                 Photos                 links.xml
+      Art               Friends               Pics                   programs
+      Bookmarks         Jobs                  Pictures               projects
+      Books             Mail                  PonyArchive            ruby
+      Company           Manifest.txt          Public                 sandbox
+      Contacts          Media                 Sort                   tags
+      Desktop           Memento               Templates              tigerops
+      </pre>
+
+      <p>The XDG Base Directory Standard provides a common means for specifying one or more
+         base directories relative to which support files can be located. Using the XDG
+         standard, applications can find and store application specific support files
+         (eg. config files, data caches, etc.) in a universal, clean and robust fashion.
+         The advantages of this standard is that all such files will be found in central 
+         locations easily descernable by man and machine. And, if widely adopted, XDG can
+         clear up our HOME directories of all those pesky hidden files!</p>
+
+      <p>See <a href="http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html">
+         XDG Base Directory Standard Specification</a>.</p>
 
 
-    <h2>Usage</h2>
+      <h2>Usage</h2>
 
-    <p>XDG is...</p>
+      <p>XDG is...</p>
 
-    <pre class="sh_ruby">
-      XDG.config_home
-      XDG.config_dirs
-      XDG.data_home
-      XDG.data_dirs
-      XDG.cache_home
+      <pre class="sh_ruby">
+        XDG.config_home
+        XDG.config_dirs
+        XDG.data_home
+        XDG.data_dirs
+        XDG.cache_home
 
-      XDG.data_file(file)
-      XDG.config_file(file)
-      XDG.cache_file(file)
+        XDG.data_file(file)
+        XDG.config_file(file)
+        XDG.cache_file(file)
 
-      XDG.config_work
-      XDG.data_work
-      XDG.cache_work
-    </pre>
+        XDG.config_work
+        XDG.data_work
+        XDG.cache_work
+      </pre>
 
-    <p>If you include XDG into a class you will get all these methods but prefixed
-       with <code>xdg_</code>.
-    </p>
+      <p>If you include XDG into a class you will get all these methods but prefixed
+         with <code>xdg_</code>.
+      </p>
 
-    <pre>
-      class X; include XDG; end
-      x = X.new
-      x.xdg_config_home
-    </pre>
+      <pre>
+        class X; include XDG; end
+        x = X.new
+        x.xdg_config_home
+      </pre>
 
-    <p>If you're not using the XDG standard... well... you suck!</p>
+      <p>If you're not using the XDG standard... well... you suck!</p>
 
-    <p>No, seriously, unless you have a seriously better solution,
-       you should be using this standard.</p>
-
-
-    <h2>Installation</h2>
-
-    <h3>RubyGems</h3>
-
-    <pre>
-      $ gem install xdg
-    </pre>
-
-    <h3>Tarball</h3>
-
-    <p>Installing the tarball requires Ruby Setup
-    (see <a href="http://setup.rubyforge.org">http://setup.rubyforge.org</a>).</p>
-
-    <pre>
-      $ tar -xvzf xdg-0.1.0
-      $ cd xdg-0.1.0
-      $ setup.rb all
-    </pre>
+      <p>No, seriously, unless you have a seriously better solution,
+         you should be using this standard.</p>
 
 
-    <h2>Development</h2>
+      <h2>Installation</h2>
 
-    <p>XDG has a git repository on Rubyforge:</p>
+      <h3>RubyGems</h3>
 
-    <p>You can use gitweb to <a href="http://xdg.rubyforge.org/git?p=xdg.git;a=tree">browse the 'xdg' repository</a>.</p>
+      <pre>
+        $ gem install xdg
+      </pre>
 
-    <p>To pull the 'xdg' repository anonymously, use:</p>
+      <h3>Tarball</h3>
 
-    <pre>
-      git clone git://rubyforge.org/xdg.git
-    </pre>
+      <p>Installing the tarball requires Ruby Setup
+      (see <a href="http://setup.rubyforge.org">http://setup.rubyforge.org</a>).</p>
 
-    <p>Developers: You can push to the 'xdg' repository using:</p>
+      <pre>
+        $ tar -xvzf xdg-0.1.0
+        $ cd xdg-0.1.0
+        $ sudo setup.rb all
+      </pre>
 
-    <pre>
-      gitosis@rubyforge.org:xdg.git
-    </pre>
+
+      <h2>Development</h2>
+
+      <p>XDG has a git repository on Rubyforge:</p>
+
+      <p>You can use gitweb to <a href="http://xdg.rubyforge.org/git?p=xdg.git;a=tree">browse the 'xdg' repository</a>.</p>
+
+      <p>To pull the 'xdg' repository anonymously, use:</p>
+
+      <pre>
+        git clone git://rubyforge.org/xdg.git
+      </pre>
+
+      <p>Developers: You can push to the 'xdg' repository using:</p>
+
+      <pre>
+        gitosis@rubyforge.org:xdg.git
+      </pre>
+
+    </div>
+
+    <div id="footer">
+      Copyright &copy; 2008 Tiger Ops<br/>
+      XDG is distributed under the terms of the LGPL version 3 license.
+    </div>
+
   </div>
 
-  <div id="footer">
-    Copyright &copy; 2008 Tiger Ops<br/>
-    XDG is distributed under the terms of the LGPL version 3 license.
-  </div>
 
 </div>
 
 </body>
 </html>
+

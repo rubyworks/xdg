@@ -1,29 +1,51 @@
-= XDG
+= XDG Base Directory Standards for Ruby
+
+  http://xdg.rubyforge.org
+
+== Introduction
 
 XDG provides an easy to use interface for utilizing
-the XDG Base Base Directory Standards.
+the XDG Base Directory Standards.
+
+See: http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html
+
+== Release Notes
+
+Please see the RELEASE file.
 
 == Usage
 
-XDG is a module with a small set of easy to understand
-module methods, so it very easy to use.
+XDG is a module with a small set of easy to use methods:
 
-See RDOC's for more information.
+  XDG.config_home
+  XDG.config_dirs
+  XDG.data_home
+  XDG.data_dirs
+  XDG.cache_home
+
+  XDG.data_file(file)
+  XDG.config_file(file)
+  XDG.cache_file(file)
+
+  XDG.config_work
+  XDG.data_work
+  XDG.cache_work
+
+If you know XDG these are pretty much self-explanitory.
+But see the RDocs for specifics.
 
 == Installation
 
-=== RubyGems
+Using RubyGems:
 
   $ gem install xdg
-
-=== Tarball
 
 Installing the tarball requires Ruby Setup
 (see http://setup.rubyforge.org).
 
-  $ tar -xvzf xdg-0.1.0
-  $ cd xdg-0.1.0
-  $ setup.rb all
+  $ tar -xvzf xdg-0.4.1
+  $ cd xdg-0.4.1
+  $ sudo setup.rb all
 
 == Development
 

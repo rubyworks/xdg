@@ -1,5 +1,11 @@
-This is the initial release of XDG.
+This release removes the xdg_ prefix from the instance-level
+method names. Now module and instance levels are the same.
 
-XDG provides a straight-forward interface for supporting
-the XDG Base Directory Standard.
+Also, config_file and cach_file have been replaced with
+config_find, config_glob and cache_find, cache_glob respectively.
+
+### 0.4.0 / 2008-10-26
+
+* Renamed instance level methods without 'xdg_' prefix.
+* Replace _file methods with _find and _glob methods.
 
