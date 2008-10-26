@@ -1,4 +1,5 @@
 .cache
+MANIFEST
 doc/rdoc
 doc/ri
-log
+doc/log
