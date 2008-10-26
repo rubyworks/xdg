@@ -3,7 +3,6 @@
 # :Copyright: (c)2008 Tiger Ops
 # :License: GPLv3
 
-
 # = XDG Base Directory Standard
 #
 # This provides a conveient library for conforming to the
@@ -89,27 +88,39 @@ module XDG
 
   # Return the fist matching file or directory
   # from the config locations.
-  # This starts with the user's home directory
-  # and then searches system directories.
-  def config_find(pattern, *flags)
-    config_glob(pattern, *flags).first
+  #
+  # See +config_glog+.
+  def config_find(*glob_and_flags)
+    config_glob(*glob_and_flags).first
   end
 
   # Return array of matching files or directories
   # in any of the config locations.
+  #
   # This starts with the user's home directory
   # and then searches system directories.
-  def config_glob(pattern, *flags)
-    find = []
+  #
+  # String parameters are joined into a pathname
+  # while Integers and Symbols treated as flags.
+  #
+  # For example, the following are equivalent:
+  #
+  #   XDG.config_glob('sow/plugins', File::FNM_CASEFOLD)
+  #
+  #   XDG.config_glob('sow', 'plugins', :casefold)
+  #
+  def config_glob(*glob_and_flags)
+    glob, flags = *glob_and_flags.partition{ |e| String===e }
     flag = flags.inject(0) do |m, f|
       if Symbol === f
-        m + File::const_get("FNM_#{f.upcase}")
+        m + File::const_get("FNM_#{f.to_s.upcase}")
       else
         m + f.to_i
       end
     end
+    find = []
     [config_home, *config_dirs].each do |dir|
-      path = File.join(dir, pattern)
+      path = File.join(dir, *glob)
       find.concat(Dir.glob(path, flag))
     end
     find
@@ -117,22 +128,35 @@ module XDG
 
   # Return the fist matching file or directory
   # in the cache directory.
-  def cache_find(pattern, *flags)
-    cache_glob(pattern, *flags).first
+  #
+  # See +cache_glog+.
+  def cache_find(*glob_and_flags)
+    cache_glob(*glob_and_flags).first
   end
 
   # Return array of matching files or directories
   # from the cache directory.
-  def cache_glob(pattern, *flags)
-    path = File.join(cache_home,file)
+  #
+  # String parameters are joined into a pathname
+  # while Integers and Symbols treated as flags.
+  #
+  # For example, the following are equivalent:
+  #
+  #   XDG.cache_glob('sow/tmp', File::FNM_CASEFOLD)
+  #
+  #   XDG.cache_glob('sow', 'tmp', :casefold)
+  #
+  def cache_glob(*glob_and_flags)
+    glob, flags = *glob_and_flags.partition{ |e| String===e }
     flag = flags.inject(0) do |m, f|
       if Symbol === f
-        m + File::const_get("FNM_#{f.upcase}")
+        m + File::const_get("FNM_#{f.to_s.upcase}")
       else
         m + f.to_i
       end
     end
-    Dir.glob(path, flag).first
+    path = File.join(cache_home,*glob)
+    Dir.glob(path, flag)
   end
 
   #--
@@ -143,7 +167,6 @@ module XDG
   # Location of working config directory.
   def config_work
     File.expand_path(
-      #ENV['XDG_CONFIG_WORK'] || File.join(Dir.pwd, '.config')
       File.join(Dir.pwd, '.config')
     )
   end
@@ -151,7 +174,6 @@ module XDG
   # Location of working data directory.
   def data_work
     File.expand_path(
-      #ENV['XDG_DATA_WORK'] || File.join(Dir.pwd, '.share')
       File.join(Dir.pwd, '.share')
     )
   end
@@ -159,7 +181,6 @@ module XDG
   # Location of working cache directory.
   def cache_work
     File.expand_path(
-      #ENV['XDG_CACHE_WORK'] || File.join(Dir.pwd, '.cache')
       File.join(Dir.pwd, '.cache')
     )
   end
