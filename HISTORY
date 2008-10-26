@@ -1,4 +1,11 @@
-### 0.3.0 / 2008-09-11
+= CHANGE HISTORY
+
+=== 0.4.0 / 2008-10-26
+
+* Renamed instance level methods without 'xdg_' prefix.
+* Replace _file methods with _find and _glob methods.
+
+=== 0.3.0 / 2008-09-11
 
 * Renamed module level methods without 'xdg_' prefix.
 * The xdg_ versions still exist for backward compatibility.

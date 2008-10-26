@@ -117,33 +117,43 @@
       <pre class="sh_ruby">
         XDG.config_home
         XDG.config_dirs
+
         XDG.data_home
         XDG.data_dirs
+
         XDG.cache_home
 
-        XDG.data_file(file)
-        XDG.config_file(file)
-        XDG.cache_file(file)
+        XDG.data_find(path)
+        XDG.config_find(path)
+        XDG.cache_find(path)
+
+        XDG.data_glob(path)
+        XDG.config_glob(path)
+        XDG.cache_glob(path)
 
         XDG.config_work
         XDG.data_work
         XDG.cache_work
       </pre>
 
-      <p>If you include XDG into a class you will get all these methods but prefixed
-         with <code>xdg_</code>.
-      </p>
+      <p>You can also include XDG into a class and you will get all these methods as well.</p>
 
       <pre>
-        class X; include XDG; end
+        class X
+          include XDG
+        end
         x = X.new
-        x.xdg_config_home
+        x.config_home
       </pre>
 
       <p>If you're not using the XDG standard... well... you suck!</p>
 
-      <p>No, seriously, unless you have a seriously better solution,
-         you should be using this standard.</p>
+      <p>No, seriously, if your depends on user-releative or sytem-wide support
+         files, your system will be much improved by using the XDG standard. Not
+         only does it provide a clean yet flexible standard, it also make your
+         life easier. The lookup methods make it a snap to find the most relevant
+         support files.
+      </p>
 
 
       <h2>Installation</h2>
@@ -160,8 +170,8 @@
       (see <a href="http://setup.rubyforge.org">http://setup.rubyforge.org</a>).</p>
 
       <pre>
-        $ tar -xvzf xdg-0.1.0
-        $ cd xdg-0.1.0
+        $ tar -xvzf xdg-0.4.0
+        $ cd xdg-0.4.0
         $ sudo setup.rb all
       </pre>
 
