@@ -32,19 +32,21 @@
 
 module XDG
 
-  def self.home
+  extend self    #module_function
+
+  def home
     ENV['HOME'] || File.expand_path('~')
   end
 
   # Location of user's personal config directory.
-  def self.config_home
+  def config_home
     File.expand_path(
       ENV['XDG_CONFIG_HOME'] || File.join(home, '.config')
     )
   end
 
   # List of user's shared config directories.
-  def self.config_dirs
+  def config_dirs
     dirs = ENV['XDG_CONFIG_DIRS'].to_s.split(/[:;]/)
     if dirs.empty?
       dirs = %w{/etc/xdg}
@@ -53,14 +55,14 @@ module XDG
   end
 
   # Location of user's personal data directory.
-  def self.data_home
+  def data_home
     File.expand_path(
       ENV['XDG_DATA_HOME'] || File.join(home, '.local', 'share')
     )
   end
 
   # List of user's shared data directores.
-  def self.data_dirs
+  def data_dirs
     dirs = ENV['XDG_DATA_DIRS'].split(/[:;]/)
     if dirs.empty?
       dirs = %w{/usr/local/share/ /usr/share/}
@@ -69,14 +71,14 @@ module XDG
   end
 
   # Location of user's personal cache directory.
-  def self.cache_home
+  def cache_home
     File.expand_path(
       ENV['XDG_CACHE_HOME'] || File.join(home, '.cache')
     )
   end
 
   # Find a file or directory in data dirs.
-  def self.data_file(file)
+  def data_file(file)
     find = nil
     [data_home, *data_dirs].each do |dir|
       path = File.join(dir,file)
@@ -85,29 +87,61 @@ module XDG
     find
   end
 
-  # Find a file or directory in config dirs.
-  def self.config_file(file)
-    find = nil
+  # Return the fist matching file or directory
+  # from the config locations.
+  # This starts with the user's home directory
+  # and then searches system directories.
+  def config_find(pattern, *flags)
+    config_glob(pattern, *flags).first
+  end
+
+  # Return array of matching files or directories
+  # in any of the config locations.
+  # This starts with the user's home directory
+  # and then searches system directories.
+  def config_glob(pattern, *flags)
+    find = []
+    flag = flags.inject(0) do |m, f|
+      if Symbol === f
+        m + File::const_get("FNM_#{f.upcase}")
+      else
+        m + f.to_i
+      end
+    end
     [config_home, *config_dirs].each do |dir|
-      path = File.join(dir,file)
-      break find = path if File.exist?(path)
+      path = File.join(dir, pattern)
+      find.concat(Dir.glob(path, flag))
     end
     find
   end
 
-  # Find a file or directory in the user cache.
-  def self.cache_file(file)
+  # Return the fist matching file or directory
+  # in the cache directory.
+  def cache_find(pattern, *flags)
+    cache_glob(pattern, *flags).first
+  end
+
+  # Return array of matching files or directories
+  # from the cache directory.
+  def cache_glob(pattern, *flags)
     path = File.join(cache_home,file)
-    File.exist?(path) ? path : nil
+    flag = flags.inject(0) do |m, f|
+      if Symbol === f
+        m + File::const_get("FNM_#{f.upcase}")
+      else
+        m + f.to_i
+      end
+    end
+    Dir.glob(path, flag).first
   end
 
   #--
   # The following are not strictly XDG spec,
-  # but are useful in the same respect.
+  # but are useful in a similar respect.
   #++
 
   # Location of working config directory.
-  def self.config_work
+  def config_work
     File.expand_path(
       #ENV['XDG_CONFIG_WORK'] || File.join(Dir.pwd, '.config')
       File.join(Dir.pwd, '.config')
@@ -115,7 +149,7 @@ module XDG
   end
 
   # Location of working data directory.
-  def self.data_work
+  def data_work
     File.expand_path(
       #ENV['XDG_DATA_WORK'] || File.join(Dir.pwd, '.share')
       File.join(Dir.pwd, '.share')
@@ -123,31 +157,12 @@ module XDG
   end
 
   # Location of working cache directory.
-  def self.cache_work
+  def cache_work
     File.expand_path(
       #ENV['XDG_CACHE_WORK'] || File.join(Dir.pwd, '.cache')
       File.join(Dir.pwd, '.cache')
     )
   end
-
-  ###############
-  module_function
-  ###############
-
-  def xdg_home        ; XDG.home        ; end
-  def xdg_config_home ; XDG.config_home ; end
-  def xdg_config_dirs ; XDG.config_dirs ; end
-  def xdg_data_home   ; XDG.data_home   ; end
-  def xdg_data_dirs   ; XDG.data_dirs   ; end
-  def xdg_cache_home  ; XDG.cache_home  ; end
-
-  def xdg_data_file(file)   ; XDG.data_file(file)   ; end
-  def xdg_config_file(file) ; XDG.config_file(file) ; end
-  def xdg_cache_file(file)  ; XDG.cache_file(file)  ; end
-
-  def xdg_config_work ; XDG.config_work ; end
-  def xdg_data_work   ; XDG.data_work   ; end
-  def xdg_cache_work  ; XDG.cache_work  ; end
 
 end # module XDG
 
