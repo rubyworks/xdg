@@ -77,11 +77,23 @@ module XDG
   end
 
   # Find a file or directory in data dirs.
-  def data_file(file)
-    find = nil
+  def data_find(*glob_and_flags)
+    data_glob(*glob_and_flags).first
+  end
+
+  def data_glob(*glob_and_flags)
+    glob, flags = *glob_and_flags.partition{ |e| String===e }
+    flag = flags.inject(0) do |m, f|
+      if Symbol === f
+        m + File::const_get("FNM_#{f.to_s.upcase}")
+      else
+        m + f.to_i
+      end
+    end
+    find = []
     [data_home, *data_dirs].each do |dir|
-      path = File.join(dir,file)
-      break find = path if File.exist?(path)
+      path = File.join(dir, *glob)
+      find.concat(Dir.glob(path, flag))
     end
     find
   end
