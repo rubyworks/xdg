@@ -1,8 +1,17 @@
+XDG 0.4 hits the streets!
+
+  http://xdg.rubyforge.org
+
 This release removes the xdg_ prefix from the instance-level
 method names. Now module and instance levels are the same.
 
-Also, config_file and cach_file have been replaced with
-config_find, config_glob and cache_find, cache_glob respectively.
+Also, data_file, config_file and cache_file have been replaced with
+data_find, config_find, config_glob and data_find, cache_find,
+cache_glob respectively.
+
+What' next? Well, I can't say I'm fond of the term 'glob', so I
+may rename that to 'map' or 'collect' (or 'select'?)  and then 
+add the ability to use blocks for matching too.
 
 ### 0.4.0 / 2008-10-26
 
