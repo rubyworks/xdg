@@ -19,13 +19,17 @@ XDG is a module with a small set of easy to use methods:
 
   XDG.config_home
   XDG.config_dirs
+  XDG.config_find(pattern){ |path| ... }
+  XDG.config_select(pattern){ |path| ... }
+
   XDG.data_home
   XDG.data_dirs
-  XDG.cache_home
+  XDG.data_find(pattern){ |path| ... }
+  XDG.data_select(pattern){ |path| ... }
 
-  XDG.data_file(file)
-  XDG.config_file(file)
-  XDG.cache_file(file)
+  XDG.cache_home
+  XDG.cache_find(pattern){ |path| ... }
+  XDG.cache_select(pattern){ |path| ... }
 
   XDG.config_work
   XDG.data_work
@@ -43,8 +47,8 @@ Using RubyGems:
 Installing the tarball requires Ruby Setup
 (see http://setup.rubyforge.org).
 
-  $ tar -xvzf xdg-0.4.1
-  $ cd xdg-0.4.1
+  $ tar -xvzf xdg-0.5.0
+  $ cd xdg-0.5.0
   $ sudo setup.rb all
 
 == Development

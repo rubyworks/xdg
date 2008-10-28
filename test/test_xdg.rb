@@ -60,23 +60,23 @@ class TestXDG < Test::Unit::TestCase
 
   # Test the glob methods.
 
-  def test_data_glob
+  def test_data_select
     file = 'foo.dat'
-    assert_equal(File.join(Dir.pwd,'home/.local/share', file), XDG.data_find(file))
+    assert_equal([File.join(Dir.pwd,'home/.local/share', file)], XDG.data_select(file))
     file = 'bar.dat'
-    assert_equal([File.join(Dir.pwd,'usr/share', file)], XDG.data_glob(file))
+    assert_equal([File.join(Dir.pwd,'usr/share', file)], XDG.data_select(file))
   end
 
-  def test_config_glob
+  def test_config_select
     file = 'foo.config'
-    assert_equal([File.join(Dir.pwd,'home/.config', file)], XDG.config_glob(file))
+    assert_equal([File.join(Dir.pwd,'home/.config', file)], XDG.config_select(file))
     file = 'bar.config'
-    assert_equal([File.join(Dir.pwd,'etc/xdg', file)], XDG.config_glob(file))
+    assert_equal([File.join(Dir.pwd,'etc/xdg', file)], XDG.config_select(file))
   end
 
-  def test_cache_glob
+  def test_cache_select
     file = 'foo.cache'
-    assert_equal([File.join(Dir.pwd,'home/.cache', file)], XDG.cache_glob(file))
+    assert_equal([File.join(Dir.pwd,'home/.cache', file)], XDG.cache_select(file))
   end
 
   # Test the working directory variations.

@@ -1,8 +1,3 @@
-# :Title: XDG
-# :Author: &trans;
-# :Copyright: (c)2008 Tiger Ops
-# :License: GPLv3
-
 # = XDG Base Directory Standard
 #
 # This provides a conveient library for conforming to the
@@ -28,13 +23,14 @@
 # files. Like var/ in FHS.
 #
 # This module returns paths as strings.
-
+#
 module XDG
 
   extend self    #module_function
 
+  # Returns user's home directory.
   def home
-    ENV['HOME'] || File.expand_path('~')
+    File.expand_path('~') # ENV['HOME']
   end
 
   # Location of user's personal config directory.
@@ -77,12 +73,31 @@ module XDG
   end
 
   # Find a file or directory in data dirs.
-  def data_find(*glob_and_flags)
-    data_glob(*glob_and_flags).first
+  #
+  # See: +data_select+.
+  #
+  def data_find(*glob_and_flags, &block)
+    data_select(*glob_and_flags, &block).first
   end
 
-  def data_glob(*glob_and_flags)
+  # Return array of matching files or directories
+  # in any of the data locations.
+  #
+  # This starts with the user's home directory
+  # and then searches system directories.
+  #
+  # String parameters are joined into a pathname
+  # while Integers and Symbols treated as flags.
+  #
+  # For example, the following are equivalent:
+  #
+  #   XDG.data_select('stick/units', File::FNM_CASEFOLD)
+  #
+  #   XDG.data_select('stick', 'uits', :casefold)
+  #
+  def data_select(*glob_and_flags, &block)
     glob, flags = *glob_and_flags.partition{ |e| String===e }
+    glob = ['**/*'] if glob.empty?
     flag = flags.inject(0) do |m, f|
       if Symbol === f
         m + File::const_get("FNM_#{f.to_s.upcase}")
@@ -93,7 +108,11 @@ module XDG
     find = []
     [data_home, *data_dirs].each do |dir|
       path = File.join(dir, *glob)
-      find.concat(Dir.glob(path, flag))
+      if block_given?
+        find.concat(Dir.glob(path, flag).select(&block))
+      else
+        find.concat(Dir.glob(path, flag))
+      end
     end
     find
   end
@@ -101,9 +120,10 @@ module XDG
   # Return the fist matching file or directory
   # from the config locations.
   #
-  # See +config_glog+.
-  def config_find(*glob_and_flags)
-    config_glob(*glob_and_flags).first
+  # See: +config_select+.
+  #
+  def config_find(*glob_and_flags, &block)
+    config_select(*glob_and_flags, &block).first
   end
 
   # Return array of matching files or directories
@@ -117,12 +137,13 @@ module XDG
   #
   # For example, the following are equivalent:
   #
-  #   XDG.config_glob('sow/plugins', File::FNM_CASEFOLD)
+  #   XDG.config_select('sow/plugins', File::FNM_CASEFOLD)
   #
-  #   XDG.config_glob('sow', 'plugins', :casefold)
+  #   XDG.config_select('sow', 'plugins', :casefold)
   #
-  def config_glob(*glob_and_flags)
+  def config_select(*glob_and_flags)
     glob, flags = *glob_and_flags.partition{ |e| String===e }
+    glob = ['**/*'] if glob.empty?
     flag = flags.inject(0) do |m, f|
       if Symbol === f
         m + File::const_get("FNM_#{f.to_s.upcase}")
@@ -133,7 +154,11 @@ module XDG
     find = []
     [config_home, *config_dirs].each do |dir|
       path = File.join(dir, *glob)
-      find.concat(Dir.glob(path, flag))
+      if block_given?
+        find.concat(Dir.glob(path, flag).select(&block))
+      else
+        find.concat(Dir.glob(path, flag))
+      end
     end
     find
   end
@@ -141,9 +166,10 @@ module XDG
   # Return the fist matching file or directory
   # in the cache directory.
   #
-  # See +cache_glog+.
-  def cache_find(*glob_and_flags)
-    cache_glob(*glob_and_flags).first
+  # See: +cache_select+.
+  #
+  def cache_find(*glob_and_flags, &block)
+    cache_select(*glob_and_flags, &block).first
   end
 
   # Return array of matching files or directories
@@ -154,12 +180,13 @@ module XDG
   #
   # For example, the following are equivalent:
   #
-  #   XDG.cache_glob('sow/tmp', File::FNM_CASEFOLD)
+  #   XDG.cache_select('sow/tmp', File::FNM_CASEFOLD)
   #
-  #   XDG.cache_glob('sow', 'tmp', :casefold)
+  #   XDG.cache_select('sow', 'tmp', :casefold)
   #
-  def cache_glob(*glob_and_flags)
+  def cache_select(*glob_and_flags)
     glob, flags = *glob_and_flags.partition{ |e| String===e }
+    glob = ['**/*'] if glob.empty?
     flag = flags.inject(0) do |m, f|
       if Symbol === f
         m + File::const_get("FNM_#{f.to_s.upcase}")
@@ -168,7 +195,11 @@ module XDG
       end
     end
     path = File.join(cache_home,*glob)
-    Dir.glob(path, flag)
+    if block_given?
+      Dir.glob(path, flag).select(&block)
+    else
+      Dir.glob(path, flag)
+    end
   end
 
   #--
@@ -198,4 +229,9 @@ module XDG
   end
 
 end # module XDG
+
+# :Title: XDG
+# :Author: &trans;
+# :Copyright: (c)2008 Tiger Ops
+# :License: GPLv3
 

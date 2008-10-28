@@ -1,26 +1,29 @@
-= XDG 0.4 hits the streets!
+= XDG 0.5
 
   http://xdg.rubyforge.org
 
 XDG provides a module for supporting the XDG Base Directory
 Standard[1].
 
-This release removes the xdg_ prefix from the instance-level
-method names. Now module and instance levels are the same.
+If your program utilizes user or system-wide support files
+(eg. configuration files), you owe it to yourself to checkout
+the XDG standard.
 
-Also, data_file, config_file and cache_file have been replaced with
-data_find, config_find, cache_find, data_glob, config_glob and
-cache_glob.
+In this release, _glob methods were renamed to _select and now
+can take a selection block in addition to, or as opposed to,
+the glob pattern argument.
 
-What's next? Well, I can't say I'm fond of the term 'glob', so I
-may rename that to 'map' or 'collect' (or 'select'?)  and then 
-add the ability to use blocks for matching too.
+What's next? The API should be stable now. I do not forsee
+and reasons for it to change. In the future, I may add some
+additonal ruby-esque features, but that should be purely
+in addition to what is already there. If all this holds true
+for a hwile a 1.0 release will be forth-coming.
 
 [1]http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html 
 
+---
 
-### 0.4.0 / 2008-10-26
+### 0.5.0 / 2008-10-28
 
-* Renamed instance level methods without 'xdg_' prefix.
-* Replace _file methods with _find and _glob methods.
+* Renamed *_glob methods to *_select, and added block option.
 

@@ -8,14 +8,16 @@
     #aside iframe { height: 1400px; border: none; }
     h1 { font-size: 56pt; margin: 0px; padding: 10px 0px; }
     h2 { padding-top: 10px; }
-    #main { width: 800px; margin: 0 auto; padding: 5px;
+    #main { width: 800px; margin: 0 auto; padding: 10px;
             border-right: 300px solid white; background: #eee; }
-    #header { background: url(images/ephemeral_header01.jpg); padding: 10px; border: 1px solid black; }
+    #header { background: url(images/ephemeral_header01.jpg) -20px; padding: 5 15; border: 1px solid black; }
     #menu { font-family: monospace; margin-bottom: 10px; float: right; }
     #menu a { background: white; padding: 5px 10px; border: 1px solid black; text-decoration: none; }
     #menu a:hover { background: #D0FFD0; }
     #text { padding: 0px 20px; }
-    #footer { background: url(images/ephemeral_header01.jpg); font-family: monospace; padding: 10px 10px; border: 1px solid black;}
+    #text img { height: 120px; border: none; margin-left: 30; }
+    #footer { background: url(images/ephemeral_header01.jpg); font-family: monospace;
+              padding: 10px 10px; border: 1px solid black;}
   </style>
 </head>
 <body>
@@ -31,15 +33,23 @@
     <div id="header">
       <h1>XDG</h1>
       <div id="menu">
-        <a href="rdoc/index.html">RDocs</a>
+        <a href="rdoc/index.html">Documentation</a>
         <a href="http://rubyforge.org/projects/xdg">Rubyforge</a>
         <a href="http://tigerops.org">TigerOps</a>
+        <a href="http://tigerops.org">Mailinglist</a>
       </div>
     </div>
 
     <div id="text">
 
-      <h2>What can XDG do?</h2>
+      <h2>Who's using the XDG Standard?</h2>
+
+        <a href="http://www.ubuntu.com/"><img src="images/ubuntu.jpg" title="Ubuntu"/></a>
+        <a href="http://www.gnome.org/"><img src="images/gnome.png" title="Gnome"/></a>
+        <a href="http://www.gtk.org/"><img src="images/gtk.png" title="GTK+"/></a>
+        <a href="http://www.compiz-fusion.org/"><img src="images/compiz_fusion.png" title="Compiz"/></a>
+
+      <h2>What can XDG ultimately do?</h2>
 
       <p>How about turning this:</p>
 
@@ -98,6 +108,8 @@
       Desktop           Memento               Templates              tigerops
       </pre>
 
+      <h2>Okay, What's this all about?</h2>
+
       <p>The XDG Base Directory Standard provides a common means for specifying one or more
          base directories relative to which support files can be located. Using the XDG
          standard, applications can find and store application specific support files
@@ -110,26 +122,24 @@
          XDG Base Directory Standard Specification</a>.</p>
 
 
-      <h2>Usage</h2>
+      <h2>How to Use the Ruby Library</h2>
 
-      <p>XDG is...</p>
+      <p>It's really quite easy, since these are all the methods:</p>
 
       <pre class="sh_ruby">
         XDG.config_home
         XDG.config_dirs
+        XDG.config_find(pattern){ |path| ... }
+        XDG.config_select(pattern){ |path| ... }
 
         XDG.data_home
         XDG.data_dirs
+        XDG.data_find(pattern){ |path| ... }
+        XDG.data_select(pattern){ |path| ... }
 
         XDG.cache_home
-
-        XDG.data_find(path)
-        XDG.config_find(path)
-        XDG.cache_find(path)
-
-        XDG.data_glob(path)
-        XDG.config_glob(path)
-        XDG.cache_glob(path)
+        XDG.cache_find(pattern){ |path| ... }
+        XDG.cache_select(pattern){ |path| ... }
 
         XDG.config_work
         XDG.data_work
@@ -146,25 +156,33 @@
         x.config_home
       </pre>
 
-      <p>If you're not using the XDG standard... well... you suck!</p>
+      <h2>Why should I be using the XDG standard?</h2>
 
-      <p>No, seriously, if your depends on user-releative or sytem-wide support
-         files, your system will be much improved by using the XDG standard. Not
+      <p>Well, if you're not... then you suck! ;-)</p>
+
+      <p>No, seriously, if your program depends on user-relative or sytem-wide support
+         files, it will be much improved by using the XDG standard. Not
          only does it provide a clean yet flexible standard, it also make your
-         life easier. The lookup methods make it a snap to find the most relevant
+         life easier. The find and select methods make it a snap to locate
          support files.
       </p>
 
 
       <h2>Installation</h2>
 
-      <h3>RubyGems</h3>
+      <h3>Using RubyGems</h3>
 
       <pre>
-        $ gem install xdg
+        $ sudo gem install xdg
       </pre>
 
-      <h3>Tarball</h3>
+      <h3>Using Roll</h3>
+
+      <pre>
+        $ sudo roll install xdg
+      </pre>
+
+      <h3>Using the Tarball</h3>
 
       <p>Installing the tarball requires Ruby Setup
       (see <a href="http://setup.rubyforge.org">http://setup.rubyforge.org</a>).</p>
@@ -175,6 +193,7 @@
         $ sudo setup.rb all
       </pre>
 
+      <p>Windows users will have to use '<code>ruby</code>' in place of '<code>sudo</code>'.</p>
 
       <h2>Development</h2>
 
