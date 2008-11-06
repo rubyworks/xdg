@@ -1,5 +1,5 @@
 ---
-service : MailingList
+service : Email
 mailto  : ruby-talk@ruby-lang.org
 from    : admin@tigerops.org
 server  : mail.tigerops.org
