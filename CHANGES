@@ -1,0 +1,55 @@
+== 0.5.1 / 2008-11-17
+
+* 4 Other Enhancements
+
+    * data work directory is '.local', not '.share' (#bc7e35a5686ff70da0f2127daf23d4e7e36438f0)
+    * data_work is deprecated (#356bd562de2d093f99f60f0c9a2a2f87917ea4d3)
+    * updated website (#ed7d71269186a566440bcb4f688ac8335b557f02)
+
+
+== 0.5.0 / 2008-10-28
+
+* 1 Other Enhancements
+
+    * changed _glob to _select (#8d1d430a8c404b3d87da675da08257290560333c)
+
+
+== 0.4.0 / 2008-10-26
+
+* 9 Other Enhancements
+
+    * removed xdg_ prefixes and replaced _file methods with _find and _glob methods (#d414dfa6fef6ec382c76689116b4483cbbcafd72)
+    * prepare for v0.4 release (#c634ffd603b0859027dd4bfd9c1c57b87d634d9c)
+    * remove some old commented-out code (#f62bac03f2ffe31e8a95d841be234311f7cfbff0)
+    * fixed data_find and data_glob (#8107b5b5b8893d040c6bd60ae9a0d65d6885ae84)
+    * Update RELEASE file. (#722f7600f403c39792c3df91ad789c5d3ae13473)
+    * updated documentation for 0.4 release (#c535b36186a6a3d2b1ea5766a07e541ec90a75d1)
+    * added MANIFEST to .gitignore (#723be0082d9a1e9a0f579aa094267027e1708730)
+    * correction or RELEASE (#0f3bd5f80c241704b338037b1bb66b0fbd8e597b)
+    * Fixed plural in RELEASE file. (#ccdf281610d5339aa1bff32be34c8369f204e463)
+
+
+== 0.3.0 / 2008-10-11
+
+* 5 Other Enhancements
+
+    * removed xdg_ prefix from module methods (#240e88d385ee1b7e063e8cd87e22ce8fb085afd8)
+    * moved web/index.html to doc directory (#e61b13e66eefb16566ea5f1ce3723dbfda8369dc)
+    * updated reap serives (#5cfaf1f6ad47ecc518047053902ef4e092c69891)
+    * prepare for next release (#7566509dd82d9cfe3bf28e32bdb68304429ebe93)
+    * fixed issue of xdg_ prefix still being used internally (#ad95493af4413e864cfa2ef2f982c7f48f371473)
+
+
+== 0.1.0 / 2008-09-27
+
+* 1 Major Enhancements
+
+    * Started project.  (#10ca99f20bd90399220a68939f4a04677ff22402)
+
+* 4 Other Enhancements
+
+    * added gitignore (#8d1385c2bcc0acbdb5ed5e014c977213caf7d4a6)
+    * Folio namespace is not used. (#577aca3700f5cc179a343068863a0a964133159e)
+    * added website (#067510f4af2c7deb3c3ac27832e0980b17af1695)
+    * VERSION file has been added. (#c76940fd4e79270d247a881a2a0e58a2f2fa9bdf)
+
