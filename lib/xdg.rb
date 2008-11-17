@@ -204,7 +204,7 @@ module XDG
 
   #--
   # The following are not strictly XDG spec,
-  # but are useful in a similar respect.
+  # but are useful in an analogous respect.
   #++
 
   # Location of working config directory.
@@ -214,12 +214,13 @@ module XDG
     )
   end
 
+  # DEPRECATED -- Does not make sense to have this.
   # Location of working data directory.
-  def data_work
-    File.expand_path(
-      File.join(Dir.pwd, '.local')
-    )
-  end
+  #def data_work
+  #  File.expand_path(
+  #    File.join(Dir.pwd, '.local')
+  #  )
+  #end
 
   # Location of working cache directory.
   def cache_work
