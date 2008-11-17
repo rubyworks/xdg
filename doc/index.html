@@ -1,6 +1,7 @@
 <html>
 <head>
   <title>Ruby XDG</title>
+  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-png"> 
   <style>
     body { background: #fff; font-size: 10pt; font-family: sans-serif; }
     #container { padding: 0px 0px; }
@@ -10,13 +11,13 @@
     h2 { padding-top: 10px; }
     #main { width: 800px; margin: 0 auto; padding: 10px;
             border-right: 300px solid white; background: #eee; }
-    #header { background: url(images/ephemeral_header01.jpg) -20px; padding: 5 15; border: 1px solid black; }
+    #header { background: url(assets/images/ephemeral_header01.jpg) -20px; padding: 5 15; border: 1px solid black; }
     #menu { font-family: monospace; margin-bottom: 10px; float: right; }
     #menu a { background: white; padding: 5px 10px; border: 1px solid black; text-decoration: none; }
     #menu a:hover { background: #D0FFD0; }
     #text { padding: 0px 20px; }
     #text img { height: 120px; border: none; margin-left: 30; }
-    #footer { background: url(images/ephemeral_header01.jpg); font-family: monospace;
+    #footer { background: url(assets/images/ephemeral_header01.jpg); font-family: monospace;
               padding: 10px 10px; border: 1px solid black;}
   </style>
 </head>
@@ -44,10 +45,11 @@
 
       <h2>Who's using the XDG Standard?</h2>
 
-        <a href="http://www.ubuntu.com/"><img src="images/ubuntu.jpg" title="Ubuntu"/></a>
-        <a href="http://www.gnome.org/"><img src="images/gnome.png" title="Gnome"/></a>
-        <a href="http://www.gtk.org/"><img src="images/gtk.png" title="GTK+"/></a>
-        <a href="http://www.compiz-fusion.org/"><img src="images/compiz_fusion.png" title="Compiz"/></a>
+        <a href="http://www.xfce.com/"><img src="assets/images/xfce.jpg" title="XFCE"/></a>
+        <a href="http://www.gnome.org/"><img src="assets/images/gnome.png" title="Gnome"/></a>
+        <a href="http://www.gtk.org/"><img src="assets/images/gtk.png" title="GTK+"/></a>
+        <a href="http://www.compiz-fusion.org/"><img src="assets/images/compiz_fusion.png" title="Compiz"/></a>
+        <a href="http://www.ubuntu.com/"><img src="assets/images/ubuntu.jpg" title="Ubuntu"/></a>
 
       <h2>What can XDG ultimately do?</h2>
 
@@ -96,8 +98,8 @@
       <pre style="font-size: 8pt;">
       $ ls -a ~/
 
-      .config           Diff.txt              Music                  Videos
-      .cache            Documents             Notebook               current
+      .cache            Diff.txt              Music                  Videos
+      .config           Documents             Notebook               current
       .local            Download              Personal               dvdrip-data
       Archive           EMail                 Photos                 links.xml
       Art               Friends               Pics                   programs
@@ -142,7 +144,6 @@
         XDG.cache_select(pattern){ |path| ... }
 
         XDG.config_work
-        XDG.data_work
         XDG.cache_work
       </pre>
 
