@@ -1,0 +1,6 @@
+---
+vclog:
+  service: VClog
+  layout: rel
+  active: false
+
