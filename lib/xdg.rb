@@ -1,3 +1,5 @@
+require 'rbconfig'
+
 # = XDG Base Directory Standard
 #
 # This provides a conveient library for conforming to the
@@ -44,7 +46,7 @@ module XDG
   def config_dirs
     dirs = ENV['XDG_CONFIG_DIRS'].to_s.split(/[:;]/)
     if dirs.empty?
-      dirs = %w{/etc/xdg}
+      dirs = File.join(Config::CONFIG['sysconfdir'], 'xdg') #%w{/etc/xdg}
     end
     dirs.collect{ |d| File.expand_path(d) }
   end
@@ -60,7 +62,7 @@ module XDG
   def data_dirs
     dirs = ENV['XDG_DATA_DIRS'].split(/[:;]/)
     if dirs.empty?
-      dirs = %w{/usr/local/share/ /usr/share/}
+      dirs = [ Config::CONFIG['localdatadir'], Config::CONFIG['datadir'] ] #%w{/usr/local/share/ /usr/share/}
     end
     dirs.collect{ |d| File.expand_path(d) }
   end
@@ -231,8 +233,5 @@ module XDG
 
 end # module XDG
 
-# :Title: XDG
-# :Author: &trans;
-# :Copyright: (c)2008 Tiger Ops
-# :License: GPLv3
-
+# Copyright (c)2008 Tiger Ops / Trans
+# Distributed under the terms of the GPL v3.
