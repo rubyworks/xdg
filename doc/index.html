@@ -5,14 +5,14 @@
   <style>
     body { background: #fff; font-size: 10pt; font-family: sans-serif; }
     h1 { font-size: 56pt; margin: 0px; padding: 10px 0px; }
-    h2 { padding-top: 20px; }
+    h2 { font-size: 36pt; padding-top: 20px; }
     img { border: none; }
     p { text-align: justify; }
 
-    #doc { width: 740px; margin: 0 auto; padding: 10px; background: #ffffff; }
+    #doc { width: 732px; margin: 0 auto; padding: 10px; background: #ffffff; }
     #header { background: url(assets/images/ephemeral_header01.jpg) -20px; padding: 5px 20px; border: 1px solid black; color: #555; }
     #header h1 { margin: 0; padding: 0; color: black; }
-    #header h2 { margin: 0; padding: 0; margin-bottom: 10px; color: black; }
+    #header h2 { margin: 0; padding: 0; margin-bottom: 10px; color: black; font-size: 16pt; }
     #menu { font: bold 10pt Verdana, Sans-Serif; margin: 5px; float: right; }
     #menu a { background: white; padding: 5px 7px; text-decoration: none; }
     #menu a:hover { background: #D0FFD0; }
@@ -42,8 +42,7 @@
   </div>
 
   <div id="text">
-
-    <h2>What's this all about?</h2>
+    <h2 style="padding-top: 0;">What is this all about?</h2>
 
     <p>The XDG Base Directory Standard provides a common means for specifying one or more
        base directories relative to which support files can be located. Using the XDG
@@ -66,7 +65,19 @@
       <a href="http://www.ubuntu.com/"><img src="assets/images/ubuntu.jpg" title="Ubuntu"/></a>
 
 
-    <h2>What can XDG ultimately do?</h2>
+    <h2>Why should I use the XDG standard?</h2>
+
+      <p>Because if you don't then... you suck! ;-)</p>
+
+      <p>No, seriously, if your program depends on user-relative or sytem-wide support
+         files, it will be much improved by using the XDG Base Directory Standard. Not
+         only does it provide a clean yet flexible standard, it also make your
+         life easier. The <code>find</code> and <code>select</code> methods make it a
+         snap to locate support files.
+      </p>
+
+
+    <h2>What can XDG standard ultimately do?</h2>
 
     <p>How about turning this:</p>
 
@@ -126,11 +137,39 @@
     </pre>
 
 
-    <h2>How to Use the Ruby Library</h2>
+    <h2>How to Install the XDG Ruby Library</h2>
 
-    <p>It's really quite easy, since these are all the methods:</p>
+      <h3>Using RubyGems</h3>
 
-    <pre class="sh_ruby">
+      <pre>
+      $ sudo gem install xdg
+      </pre>
+
+      <h3>Using RubyRolls</h3>
+
+      <pre>
+      $ sudo roll install xdg
+      </pre>
+
+      <h3>Site Installation (Using the tarball)</h3>
+
+      <p>Installing the tarball requires Ruby Setup
+      (see <a href="http://setup.rubyforge.org">http://setup.rubyforge.org</a>).</p>
+
+      <pre>
+      $ tar -xvzf xdg-0.4.0
+      $ cd xdg-0.4.0
+      $ sudo setup.rb all
+      </pre>
+
+      <p>Windows users will have to use '<code>ruby</code>' in place of '<code>sudo</code>'.</p>
+
+
+    <h2>How to Use the XDG Ruby Library</h2>
+
+      <p>It's really quite easy, since these are all the methods:</p>
+
+      <pre class="sh_ruby">
       XDG.config_home
       XDG.config_dirs
       XDG.config_find(pattern){ |path| ... }
@@ -147,56 +186,19 @@
 
       XDG.config_work
       XDG.cache_work
-    </pre>
+      </pre>
 
-    <p>You can also include XDG into a class and you will get all these methods as well.</p>
+      <p>You can also include XDG into a class and you will get all these methods as well.</p>
 
-    <pre>
+      <pre>
       class X
         include XDG
       end
       x = X.new
       x.config_home
-    </pre>
+      </pre>
 
-    <h2>Why should I be using the XDG standard?</h2>
-
-    <p>Well, if you're not... then you suck! ;-)</p>
-
-    <p>No, seriously, if your program depends on user-relative or sytem-wide support
-       files, it will be much improved by using the XDG standard. Not
-       only does it provide a clean yet flexible standard, it also make your
-       life easier. The find and select methods make it a snap to locate
-       support files.
-    </p>
-
-
-    <h2>Installation</h2>
-
-    <h3>Using RubyGems</h3>
-
-    <pre>
-      $ sudo gem install xdg
-    </pre>
-
-    <h3>Using RubyRolls</h3>
-
-    <pre>
-      $ sudo roll install xdg
-    </pre>
-
-    <h3>Site Installation (Using the tarball)</h3>
-
-    <p>Installing the tarball requires Ruby Setup
-    (see <a href="http://setup.rubyforge.org">http://setup.rubyforge.org</a>).</p>
-
-    <pre>
-      $ tar -xvzf xdg-0.4.0
-      $ cd xdg-0.4.0
-      $ sudo setup.rb all
-    </pre>
-
-    <p>Windows users will have to use '<code>ruby</code>' in place of '<code>sudo</code>'.</p>
+      <p>See the <a href="rdoc/index.html"/>API documentation</a> for more details.</p>
 
   </div>
 
