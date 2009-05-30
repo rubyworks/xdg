@@ -5,7 +5,7 @@
   <style>
     body { background: #fff; font-size: 10pt; font-family: sans-serif; }
     h1 { font-size: 56pt; margin: 0px; padding: 10px 0px; }
-    h2 { font-size: 36pt; padding-top: 20px; }
+    h2 { font-size: 36pt; margin: 0; padding: 40px 0 0 0; }
     img { border: none; }
     p { text-align: justify; }
 
@@ -16,10 +16,12 @@
     #menu { font: bold 10pt Verdana, Sans-Serif; margin: 5px; float: right; }
     #menu a { background: white; padding: 5px 7px; text-decoration: none; }
     #menu a:hover { background: #D0FFD0; }
-    #text { padding: 10px 20px; }
+    #text { padding: 10px 0; }
     #text img { height: 110px; border: none; margin-left: 30; }
     #footer { background: url(assets/images/ephemeral_header01.jpg); font-family: Verdana, Sans-Serif;
               padding: 10px 10px; border: 1px solid black; font-weight: bold; }
+
+    .blurb { font-family: Verdana, Sans-Serif; font-weight: bold; font-size: 20pt; text-align: justify; padding: 20px 1px 1px 1px; }
   </style>
 </head>
 <body>
@@ -29,12 +31,12 @@
   <div id="menu">
     <a href="rdoc/index.html">API</a>
     <a href="http://xdg.rubyforge.org/git?p=xdg.git;a=tree">Source</a>
-    <a href="http://groups.google.com/group/tigerops-community?hl=en">Mailinglist</a>
-    <a href="http://rubyforge.org/projects/xdg">Rubyforge</a>
+    <a href="http://groups.google.com/group/tigerops-community?hl=en">Discuss</a>
+    <a href="http://rubyforge.org/projects/xdg">Develop</a>
   </div>
 
   <div id="header" style="clear: both;">
-    <div style="float: right; font-weight: bold; margin-top: 75px;">
+    <div style="float: right; font-weight: bold; margin-top: 85px;">
       A <a href="http://tigerops.org"><img src="http://tigerops.org/assets/images/tiger-logo-180.png" align="absmiddle"/></a> PROJECT
     </div>
     <h1>XDG</h1>
@@ -42,7 +44,10 @@
   </div>
 
   <div id="text">
-    <h2 style="padding-top: 0;">What is this all about?</h2>
+    <div class="blurb">Yes, you too can store and retrieve user specific and system wide application
+    configuration and other support files in a clean, robust and standardized way.</div>
+
+    <h2>What is this all about?</h2>
 
     <p>The XDG Base Directory Standard provides a common means for specifying one or more
        base directories relative to which support files can be located. Using the XDG
