@@ -1,12 +1,11 @@
 = Release Notes
 
-This release makes one small change, deprecating 
-the #data_work method.
+This release requires rbconfig.rb and uses system entries in place of
+hardcoded FHS locations.
 
-
-### 0.5.1 / 2008-10-28
+### 0.5.2 / 2009-05-30
 
 * 1 Major Enhancement
 
-    * data_work is deprecated
+    * replaced hardcoded system directories with rbconfig entries.
 
