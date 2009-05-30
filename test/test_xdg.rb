@@ -85,9 +85,9 @@ class TestXDG < Test::Unit::TestCase
     assert_equal(File.join(Dir.pwd,'.config'), XDG.config_work)
   end
 
-  def test_data_work
-    assert_equal(File.join(Dir.pwd,'.share'), XDG.data_work)
-  end
+  #def test_data_work
+  #  assert_equal(File.join(Dir.pwd,'.share'), XDG.data_work)
+  #end
 
   def test_cache_work
     assert_equal(File.join(Dir.pwd,'.cache'), XDG.cache_work)
