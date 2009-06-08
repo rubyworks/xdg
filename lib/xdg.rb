@@ -11,20 +11,20 @@ require 'rbconfig'
 # above specification. 
 #
 # The data directories are for "read-only" files. In other words once
-# something is put there, it should only be read, never written to
-# by a program. (Generally speaking only users or pacakge mangers should
-# be adding, changing or removing files from the data locations.
+# something is put there, it should only be read, and never written to
+# by a program. (Generally speaking only users or package mangers should
+# be adding, changing or removing files from the data locations.)
 #
-# The config locations are where you should store files that may change,
-# and effect operations depending one there content. This is like etc/
-# in the FHS, but alterable by end users and and end user programs,
+# The config locations are where you store files that may change,
+# and effect your applications depending on their content. This is like
+# etc/ in the FHS, but alterable by end users and end user programs,
 # not just root and sudo admin scripts.
 #
-# The cache location stores files that could judt as well be deleted
-# and everyihtng still works find. This is for variable and temporary
-# files. Like var/ in FHS.
+# The cache locations stores files that could just as well be deleted
+# and everyihtng would still work fine. This is for variable and
+# temporary files. much like var/ in FHS.
 #
-# This module returns paths as strings.
+# The module returns all paths as String.
 #
 module XDG
 
