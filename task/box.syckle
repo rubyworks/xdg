@@ -1,6 +1,7 @@
 ---
-rubygem:
-  service  : Gem
+box:
+  service  : Box
+  types    : [ gz, gem ]
   include  : [ lib, meta, spec, test, '[A-Z]*' ]
   exclude  : [ doc/rdoc, doc/ri ]
 
