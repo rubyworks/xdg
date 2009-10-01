@@ -34,11 +34,23 @@ Changes:
 
 == 0.4.0 / 2008-10-26
 
+This release removes the xdg_ prefix from the instance-level
+method names. Now module and instance levels are the same.
+
+Also, data_file, config_file and cache_file have been replaced with
+data_find, config_find, cache_find, data_glob, config_glob and
+cache_glob.
+
+What's next? Well, I can't say I'm fond of the term 'glob', so I
+may rename that to 'map' or 'collect' (or 'select'?)  and then 
+add the ability to use blocks for matching too.
+
 Changes:
 
-* 9 Enhancements
+* 10 Enhancements
 
-    * removed xdg_ prefixes and replaced _file methods with _find and _glob methods
+    * renamed instance level methods without 'xdg_' prefix.
+    * replace _file methods with _find and _glob methods.
     * prepare for v0.4 release
     * remove some old commented-out code
     * fixed data_find and data_glob
@@ -47,7 +59,6 @@ Changes:
     * added MANIFEST to .gitignore
     * correction or RELEASE
     * Fixed plural in RELEASE file
-
 
 == 0.3.0 / 2008-10-11
 
