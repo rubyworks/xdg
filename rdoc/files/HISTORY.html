@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>File: HISTORY [XDG]</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <link href='../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='file' id='wrapper'>
+      <div class='header'>
+        <div class='name'>HISTORY</div>
+        <div class='paths'>
+          HISTORY
+        </div>
+        <div class='last-update'>
+          Last Update:
+          <span class='datetime'>Wed Sep 30 20:49:51 -0400 2009</span>
+        </div>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <h1>RELEASE <a href="HISTORY.html">HISTORY</a></h1>
+            <h2>0.5.2 / 2009-05-30</h2>
+            <p>
+            This release requires rbconfig.rb and uses system entries in place of
+            hardcoded FHS locations.
+            </p>
+            <p>
+            Changes:
+            </p>
+            <ul>
+            <li>1 Enhancement
+            
+            <pre>* replaced hardcoded system directories with rbconfig entries.</pre>
+            </li>
+            </ul>
+            <h2>0.5.1 / 2008-11-17</h2>
+            <p>
+            Changes:
+            </p>
+            <ul>
+            <li>4 Enhancements
+            
+            <pre>* data work directory is '.local', not '.share'&#x000A;* data_work is deprecated&#x000A;* updated website</pre>
+            </li>
+            </ul>
+            <h2>0.5.0 / 2008-10-28</h2>
+            <p>
+            Changes:
+            </p>
+            <ul>
+            <li>1 Enhancement
+            
+            <pre>* changed _glob to _select</pre>
+            </li>
+            </ul>
+            <h2>0.4.0 / 2008-10-26</h2>
+            <p>
+            This release removes the xdg_ prefix from the instance-level method names.
+            Now module and instance levels are the same.
+            </p>
+            <p>
+            Also, data_file, config_file and cache_file have been replaced with
+            data_find, config_find, cache_find, data_glob, config_glob and cache_glob.
+            </p>
+            <p>
+            What&#8217;s next? Well, I can&#8217;t say I&#8217;m fond of the term
+            &#8216;glob&#8217;, so I may rename that to &#8216;map&#8217; or
+            &#8216;collect&#8217; (or &#8216;select&#8217;?) and then add the ability
+            to use blocks for matching too.
+            </p>
+            <p>
+            Changes:
+            </p>
+            <ul>
+            <li>10 Enhancements
+            
+            <pre>* renamed instance level methods without 'xdg_' prefix.&#x000A;* replace _file methods with _find and _glob methods.&#x000A;* prepare for v0.4 release&#x000A;* remove some old commented-out code&#x000A;* fixed data_find and data_glob&#x000A;* Update RELEASE file&#x000A;* updated documentation for 0.4 release&#x000A;* added MANIFEST to .gitignore&#x000A;* correction or RELEASE&#x000A;* Fixed plural in RELEASE file</pre>
+            </li>
+            </ul>
+            <h2>0.3.0 / 2008-10-11</h2>
+            <p>
+            Changes:
+            </p>
+            <ul>
+            <li>5 Enhancements
+            
+            <pre>* removed xdg_ prefix from module methods&#x000A;* moved web/index.html to doc directory&#x000A;* updated reap serives&#x000A;* prepare for next release&#x000A;* fixed issue of xdg_ prefix still being used internally</pre>
+            </li>
+            </ul>
+            <h2>0.1.0 / 2008-09-27</h2>
+            <p>
+            Changes:
+            </p>
+            <ul>
+            <li>Started project
+            
+            </li>
+            </ul>
+          </div>
+          <div id='section'>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>
