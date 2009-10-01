@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Find a file or directory in data dirs.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "See: <tt>data_select</tt>."
+full_name: XDG#data_find
+is_singleton: false
+name: data_find
+params: (*glob_and_flags, &block)
+visibility: public

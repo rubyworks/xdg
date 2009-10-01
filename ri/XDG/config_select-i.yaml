@@ -1,0 +1,20 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Return array of matching files or directories in any of the config locations.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: This starts with the user's home directory and then searches system directories.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: String parameters are joined into a pathname while Integers and Symbols treated as flags.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "For example, the following are equivalent:"
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  body: "  XDG.config_select('sow/plugins', File::FNM_CASEFOLD)\n\n  XDG.config_select('sow', 'plugins', :casefold)\n"
+full_name: XDG#config_select
+is_singleton: false
+name: config_select
+params: (*glob_and_flags)
+visibility: public

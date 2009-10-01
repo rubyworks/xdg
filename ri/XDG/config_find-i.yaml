@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Return the fist matching file or directory from the config locations.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "See: <tt>config_select</tt>."
+full_name: XDG#config_find
+is_singleton: false
+name: config_find
+params: (*glob_and_flags, &block)
+visibility: public

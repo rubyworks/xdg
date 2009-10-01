@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Location of user's personal cache directory.
+full_name: XDG#cache_home
+is_singleton: false
+name: cache_home
+params: ()
+visibility: public

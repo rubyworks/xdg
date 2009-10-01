@@ -1,0 +1,20 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Return array of matching files or directories in any of the data locations.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: This starts with the user's home directory and then searches system directories.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: String parameters are joined into a pathname while Integers and Symbols treated as flags.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "For example, the following are equivalent:"
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  body: "  XDG.data_select('stick/units', File::FNM_CASEFOLD)\n\n  XDG.data_select('stick', 'uits', :casefold)\n"
+full_name: XDG#data_select
+is_singleton: false
+name: data_select
+params: (*glob_and_flags, &block)
+visibility: public

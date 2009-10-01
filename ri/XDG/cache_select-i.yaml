@@ -1,0 +1,18 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Return array of matching files or directories from the cache directory.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: String parameters are joined into a pathname while Integers and Symbols treated as flags.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "For example, the following are equivalent:"
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  body: "  XDG.cache_select('sow/tmp', File::FNM_CASEFOLD)\n\n  XDG.cache_select('sow', 'tmp', :casefold)\n"
+full_name: XDG#cache_select
+is_singleton: false
+name: cache_select
+params: (*glob_and_flags)
+visibility: public

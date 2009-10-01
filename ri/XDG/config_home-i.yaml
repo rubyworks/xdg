@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Location of user's personal config directory.
+full_name: XDG#config_home
+is_singleton: false
+name: config_home
+params: ()
+visibility: public

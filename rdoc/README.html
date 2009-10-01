@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>File: README [XDG]</title>
+
+	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+</head>
+
+<body class="file">
+	<div id="metadata">
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./COPYING.html">COPYING</a></li>
+				
+					<li class="file"><a href="./HISTORY.html">HISTORY</a></li>
+				
+					<li class="file"><a href="./README.html">README</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./XDG.html">XDG</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1><a href="XDG.html">XDG</a> Base Directory Standard for Ruby</h1>
+<ul>
+<li><a href="http://rubyworks.github.com/xdg">rubyworks.github.com/xdg</a>
+
+</li>
+<li><a href="http://github.com/rubyworks/xdg">github.com/rubyworks/xdg</a>
+
+</li>
+</ul>
+<h2>Introduction</h2>
+<p>
+<a href="XDG.html">XDG</a> provides an easy to use module for utilizing the
+<a href="XDG.html">XDG</a> Base Directory Standard[1].
+</p>
+<p>
+If your program utilizes user or system-wide support files (eg.
+configuration files), you owe it to yourself to checkout the <a
+href="XDG.html">XDG</a> standard.
+</p>
+<p>
+What&#8217;s next? The API should be stable now. I do not forsee and
+reasons for it to change. In the future, I may add some additional
+ruby-esque features, perhaps for other parts of the <a
+href="XDG.html">XDG</a> utilities, but that should be purely in addition to
+what is already here. If all this holds true for a while a 1.0 release will
+be forth-coming.
+</p>
+<p>
+[1]<a
+href="http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html">standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html</a>
+</p>
+<h2>Release Notes</h2>
+<p>
+Please see the RELEASE file.
+</p>
+<h2>Usage</h2>
+<p>
+<a href="XDG.html">XDG</a> is a module with a small set of easy to use
+methods:
+</p>
+<pre>
+  XDG.config_home
+  XDG.config_dirs
+  XDG.config_find(pattern){ |path| ... }
+  XDG.config_select(pattern){ |path| ... }
+
+  XDG.data_home
+  XDG.data_dirs
+  XDG.data_find(pattern){ |path| ... }
+  XDG.data_select(pattern){ |path| ... }
+
+  XDG.cache_home
+  XDG.cache_find(pattern){ |path| ... }
+  XDG.cache_select(pattern){ |path| ... }
+
+  XDG.config_work
+  XDG.cache_work
+</pre>
+<p>
+If you know <a href="XDG.html">XDG</a> these are pretty much
+self-explanitory. But see the RDocs for specifics.
+</p>
+<h2>Installation</h2>
+<p>
+Using RubyGems:
+</p>
+<pre>
+  $ sudo gem install xdg
+</pre>
+<p>
+Installing the tarball requires Ruby Setup (see <a
+href="http://setup.rubyforge.org">setup.rubyforge.org</a>).
+</p>
+<pre>
+  $ tar -xvzf xdg-0.5.2
+  $ cd xdg-0.5.2
+  $ sudo setup.rb all
+</pre>
+<h2>Development</h2>
+<p>
+Visit <a
+href="http://rubyforge.org/projects/xdg">rubyforge.org/projects/xdg</a>
+</p>
+<h2>Copyright</h2>
+<p>
+Copyright &#169; 2008 Tiger Ops / 7rans Distributed under the terms of the
+LGPL v3 license.
+</p>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
+
