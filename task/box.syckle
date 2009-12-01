@@ -2,6 +2,6 @@
 box:
   service  : Box
   types    : [ gz, gem ]
-  include  : [ lib, meta, spec, test, '[A-Z]*' ]
+  include  : [ bin, lib, meta, script, test, '[A-Z]*' ]
   exclude  : [ doc/rdoc, doc/ri ]
 
