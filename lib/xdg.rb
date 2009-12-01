@@ -27,286 +27,234 @@ require 'rbconfig'
 #
 module XDG
 
-  extend self    #module_function
+  #module_function
+  extend self
 
   # Returns user's home directory.
+  #
   def home
     File.expand_path('~') # ENV['HOME']
   end
 
-  # U S E R  L O C A T I O N S
-
-  # Location of local directory.
-  def resource_home
-    File.expand_path(
-      ENV['XDG_RESOURCE_HOME'] || File.join(home, '.local')
-    )
-  end
-
-  # List of local directores.
-  def resource_dirs
-    dirs = ENV['XDG_RESOURCE_DIRS'].split(/[:;]/)
-    if dirs.empty?
-      dirs = ['/usr/local', '/usr'].select{ |f| File.directory?(f) }
-    end
-    dirs = dirs.map{ |d| File.expand_path(d) }.uniq
-    #dirs = dirs.select{ |d| File.directory?(d) }
-    dirs
-  end
-
-  # Find a file or directory in data dirs.
+  # Access to data resource locations.
   #
-  # See: +local_select+.
+  #   XDG.data.each{ |dir| ... }
   #
-  def resource_find(*glob_and_flags, &block)
-    data_select(*glob_and_flags, &block).first
-  end
-
-  # Return array of matching files or directories
-  # in any of the resource locations.
-  #
-  # This starts with the user's home directory
-  # and then searches system directories.
-  #
-  # String parameters are joined into a pathname
-  # while Integers and Symbols treated as flags.
-  #
-  # For example, the following are equivalent:
-  #
-  #   XDG.local_select('stick/units', File::FNM_CASEFOLD)
-  #
-  #   XDG.local_select('stick', 'uits', :casefold)
-  #
-  def resource_select(*glob_and_flags, &block)
-    glob, flags = *glob_and_flags.partition{ |e| String===e }
-    glob = ['**/*'] if glob.empty?
-    flag = flags.inject(0) do |m, f|
-      if Symbol === f
-        m + File::const_get("FNM_#{f.to_s.upcase}")
-      else
-        m + f.to_i
-      end
-    end
-    find = []
-    [local_home, *local_dirs].each do |dir|
-      path = File.join(dir, *glob)
-      if block_given?
-        find.concat(Dir.glob(path, flag).select(&block))
-      else
-        find.concat(Dir.glob(path, flag))
-      end
-    end
-    find
-  end
-
-  # C O N F I G  L O C A T I O N S
-
-  # Location of personal config directory.
-  def config_home
-    File.expand_path(
-      ENV['XDG_CONFIG_HOME'] || File.join(home, '.config')
-    )
-  end
-
-  # List of shared config directories.
-  def config_dirs
-    dirs = ENV['XDG_CONFIG_DIRS'].to_s.split(/[:;]/)
-    if dirs.empty?
-      #dirs = ['etc/xdg', 'etc']
-      sysconfdir = File.join(Config::CONFIG['sysconfdir']
-      dirs = [File.join(sysconfdir, 'xdg'), sysconfdir]
-    end
-    dirs = dirs.map{ |d| File.expand_path(d) }.uniq
-    #dirs = dirs.select{ |d| File.directory?(d) }
-    dirs
-  end
-
-  # Return the fist matching file or directory
-  # from the config locations.
-  #
-  # See: +config_select+.
-  #
-  def config_find(*glob_and_flags, &block)
-    config_select(*glob_and_flags, &block).first
-  end
-
-  # Return array of matching files or directories
-  # in any of the config locations.
-  #
-  # This starts with the user's home directory
-  # and then searches system directories.
-  #
-  # String parameters are joined into a pathname
-  # while Integers and Symbols treated as flags.
-  #
-  # For example, the following are equivalent:
-  #
-  #   XDG.config_select('sow/plugins', File::FNM_CASEFOLD)
-  #
-  #   XDG.config_select('sow', 'plugins', :casefold)
-  #
-  def config_select(*glob_and_flags)
-    glob, flags = *glob_and_flags.partition{ |e| String===e }
-    glob = ['**/*'] if glob.empty?
-    flag = flags.inject(0) do |m, f|
-      if Symbol === f
-        m + File::const_get("FNM_#{f.to_s.upcase}")
-      else
-        m + f.to_i
-      end
-    end
-    find = []
-    [config_home, *config_dirs].each do |dir|
-      path = File.join(dir, *glob)
-      if block_given?
-        find.concat(Dir.glob(path, flag).select(&block))
-      else
-        find.concat(Dir.glob(path, flag))
-      end
-    end
-    find
-  end
-
-  # D A T A  L O C A T I O N S
-
-  # Location of personal data directory.
-  def data_home
-    File.expand_path(
-      ENV['XDG_DATA_HOME'] || File.join(home, '.local', 'share')
-    )
-  end
-
-  # List of shared data directores.
-  def data_dirs
-    dirs = ENV['XDG_DATA_DIRS'].split(/[:;]/)
-    if dirs.empty?
-      #dirs = [ Config::CONFIG['localdatadir'], Config::CONFIG['datadir'] ]
-      dirs = local_dirs.map{ |d| File.join(d, 'share')
-    end
-    dirs = dirs.map{ |d| File.expand_path(d) }.uniq
-    #dirs = dirs.select{ |d| File.directory?(d) }
-    dirs
-  end
-
-  # Find a file or directory in data dirs.
-  #
-  # See: +data_select+.
-  #
-  def data_find(*glob_and_flags, &block)
-    data_select(*glob_and_flags, &block).first
-  end
-
-  # Return array of matching files or directories
-  # in any of the data locations.
-  #
-  # This starts with the user's home directory
-  # and then searches system directories.
-  #
-  # String parameters are joined into a pathname
-  # while Integers and Symbols treated as flags.
-  #
-  # For example, the following are equivalent:
-  #
-  #   XDG.data_select('stick/units', File::FNM_CASEFOLD)
-  #
-  #   XDG.data_select('stick', 'uits', :casefold)
-  #
-  def data_select(*glob_and_flags, &block)
-    glob, flags = *glob_and_flags.partition{ |e| String===e }
-    glob = ['**/*'] if glob.empty?
-    flag = flags.inject(0) do |m, f|
-      if Symbol === f
-        m + File::const_get("FNM_#{f.to_s.upcase}")
-      else
-        m + f.to_i
-      end
-    end
-    find = []
-    [data_home, *data_dirs].each do |dir|
-      path = File.join(dir, *glob)
-      if block_given?
-        find.concat(Dir.glob(path, flag).select(&block))
-      else
-        find.concat(Dir.glob(path, flag))
-      end
-    end
-    find
-  end
-
-  # C A C H E  L O C A T I O N S
-
-  # Location of user's personal cache directory.
-  def cache_home
-    File.expand_path(
-      ENV['XDG_CACHE_HOME'] || File.join(home, '.cache')
-    )
-  end
-
-  # Return the fist matching file or directory
-  # in the cache directory.
-  #
-  # See: +cache_select+.
-  #
-  def cache_find(*glob_and_flags, &block)
-    cache_select(*glob_and_flags, &block).first
-  end
-
-  # Return array of matching files or directories
-  # from the cache directory.
-  #
-  # String parameters are joined into a pathname
-  # while Integers and Symbols treated as flags.
-  #
-  # For example, the following are equivalent:
-  #
-  #   XDG.cache_select('sow/tmp', File::FNM_CASEFOLD)
-  #
-  #   XDG.cache_select('sow', 'tmp', :casefold)
-  #
-  def cache_select(*glob_and_flags)
-    glob, flags = *glob_and_flags.partition{ |e| String===e }
-    glob = ['**/*'] if glob.empty?
-    flag = flags.inject(0) do |m, f|
-      if Symbol === f
-        m + File::const_get("FNM_#{f.to_s.upcase}")
-      else
-        m + f.to_i
-      end
-    end
-    path = File.join(cache_home,*glob)
-    if block_given?
-      Dir.glob(path, flag).select(&block)
+  def data(*glob_and_flags, &block)
+    if !glob_and_flags.empty? or block_given?
+      Data.select(*glob_and_flags, &block)
     else
-      Dir.glob(path, flag)
+      Data
     end
   end
 
-  # W O R K
+  # Access to configuration locations.
   #
-  # The following are not strictly XDG spec, but they
-  # can be useful in an analogous respect.
-
-  # Location of working config directory.
-  def config_work
-    File.expand_path(
-      File.join(Dir.pwd, '.config')
-    )
+  #   XDG.config.each{ |dir| ... }
+  #
+  def config(*glob_and_flags, &block)
+    if !glob_and_flags.empty? or block_given?
+      Config.select(*glob_and_flags, &block)
+    else
+      Config
+    end
   end
 
-  # Location of working cache directory.
-  def cache_work
-    File.expand_path(
-      File.join(Dir.pwd, '.cache')
-    )
+  # Access to cache locations.
+  #
+  #   XDG.cache.each{ |dir| ... }
+  #
+  def cache(*glob_and_flags, &block)
+    if !glob_and_flags.empty? or block_given?
+      Cache.select(*glob_and_flags, &block)
+    else
+      Cache
+    end
   end
 
-  # DEPRECATED -- Does not make sense to have this.
-  # Location of working data directory.
-  #def data_work
-  #  File.expand_path(
-  #    File.join(Dir.pwd, '.local')
-  #  )
-  #end
+  # Each directory set shares these common methods.
+  #
+  module Enumerable
+
+    include ::Enumerable
+
+    #
+    def each(&block)
+      [home, *dirs].each(&block)
+    end
+
+    #
+    def size
+      [home, *dirs].size
+    end
+
+    # Return array of matching files or directories
+    # in any of the resource locations.
+    #
+    # This starts with the home directory and then searches
+    # outward into system directories.
+    #
+    # String parameters are joined into a pathname
+    # while Integers and Symbols treated as flags.
+    #
+    # For example, the following are equivalent:
+    #
+    #   XDG.resource.search('stick/units', File::FNM_CASEFOLD)
+    #
+    #   XDG.resource.search('stick', 'units', :casefold)
+    #
+    def search(*glob_and_flags, &block)
+      glob, flag = *parse_glob_arguments(*glob_and_flags)
+      find = []
+      each do |dir|
+        path = File.join(dir, *glob)
+        if block_given?
+          find.concat(Dir.glob(path, flag).select(&block))
+        else
+          find.concat(Dir.glob(path, flag))
+        end
+      end
+      find.uniq
+    end
+
+    #
+    alias_method :glob, :search
+
+    # Find a file or directory.
+    #
+    def find(*glob_and_flags, &block)
+      select(*glob_and_flags, &block).first
+    end
+
+  private
+
+    def parse_glob_arguments(*glob_and_flags)
+      glob, flags = *glob_and_flags.partition{ |e| String===e }
+      glob = ['**/*'] if glob.empty?
+      flag = flags.inject(0) do |m, f|
+        if Symbol === f
+          m + File::const_get("FNM_#{f.to_s.upcase}")
+        else
+          m + f.to_i
+        end
+      end
+      return glob, flag
+    end
+
+  end
+
+  # = DATA LOCATIONS
+  #
+  module Data
+    include Enumerable
+    extend self
+
+    # Location of personal data directory.
+    def home
+      @home ||= (
+        File.expand_path(
+          ENV['XDG_DATA_HOME'] || File.join(XDG.home, '.local', 'share')
+        )
+      )
+    end
+
+    # List of shared data directores.
+    def dirs
+      @dirs ||= (
+        dirs = ENV['XDG_DATA_DIRS'].split(/[:;]/)
+        if dirs.empty?
+          #dirs = [ Config::CONFIG['localdatadir'], Config::CONFIG['datadir'] ]
+          dirs = Resource.dirs.map{ |d| File.join(d, 'share') }
+        end
+        dirs = dirs.map{ |d| File.expand_path(d) }.uniq
+        dirs = dirs.select{ |d| File.directory?(d) }
+        dirs
+      )
+    end
+
+    # Location of working config directory.
+    #
+    # This is not not strictly XDG spec, but it
+    # can be useful in an analogous respect.
+    #
+    def work
+      @work ||= (
+        File.expand_path(
+          File.join(Dir.pwd, '.config')
+        )
+      )
+    end
+
+  end
+
+  # = CONFIGUTATION LOCATIONS
+  #
+  module Config
+    include Enumerable
+    extend self
+
+    # Location of personal config directory.
+    def home
+      @home ||= (
+        File.expand_path(
+          ENV['XDG_CONFIG_HOME'] || File.join(XDG.home, '.config')
+        )
+      )
+    end
+
+    # List of shared config directories.
+    def dirs
+      @dirs ||= (
+        dirs = ENV['XDG_CONFIG_DIRS'].to_s.split(/[:;]/)
+        if dirs.empty?
+          #dirs = ['etc/xdg', 'etc']
+          sysconfdir = ::Config::CONFIG['sysconfdir']
+          dirs = [ File.join(sysconfdir, 'xdg'), sysconfdir ]
+        end
+        dirs = dirs.map{ |d| File.expand_path(d) }.uniq
+        dirs = dirs.select{ |d| File.directory?(d) }
+        dirs
+      )
+    end
+
+  end
+
+  # = CACHE LOCATIONS
+  #
+  module Cache
+    include Enumerable
+    extend self
+
+    # Location of user's personal cache directory.
+    def home
+      @home ||= (
+        File.expand_path(
+          ENV['XDG_CACHE_HOME'] || File.join(XDG.home, '.cache')
+        )
+      )
+    end
+
+    # Serves as a no-op, since there are no common cache directories
+    # defined by the XDG standard. (Though one might argue that 
+    # <tt>tmp/</tt> is one.)
+    def dirs
+      @dirs ||= []
+    end
+
+    # Location of working cache directory.
+    #
+    # This is not strictly XDG spec, but it
+    # can be useful in an analogous respect.
+    #
+    def work
+      @work ||= (
+        File.expand_path(
+          File.join(Dir.pwd, '.cache')
+        )
+      )
+    end
+
+  end
 
 end # module XDG
 
