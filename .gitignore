@@ -2,5 +2,5 @@
 doc/rdoc
 doc/ri
 log
-package
+pkg
 MANIFEST
