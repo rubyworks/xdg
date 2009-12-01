@@ -1,0 +1,2 @@
+#!/usr/bin/env ruby
+system('testrb test/test_xdg.rb')
