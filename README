@@ -12,62 +12,86 @@ If your program utilizes user or system-wide support files
 (eg. configuration files), you owe it to yourself to checkout
 the XDG standard.
 
-What's next? The API should be stable now. I do not forsee
-and reasons for it to change. In the future, I may add some
-additional ruby-esque features, perhaps for other parts of
-the XDG utilities, but that should be purely in addition to
-what is already here. If all this holds true for a while a
-1.0 release will be forth-coming.
-
 [1]http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html 
 
-== Release Notes
 
-Please see the RELEASE file.
+== HOW TO USE
 
-== Usage
+XDG consists of a small set of modules, one for each XDG directory. Each of
+these has a small base set of easy to use methods.
 
-XDG is a module with a small set of easy to use methods:
+    XDG::Config.home
+    XDG::Config.dirs
+    XDG::Config.find(pattern){ |path| ... }
+    XDG::Config.search(pattern){ |path| ... }
 
-  XDG.config_home
-  XDG.config_dirs
-  XDG.config_find(pattern){ |path| ... }
-  XDG.config_select(pattern){ |path| ... }
+    XDG::Data.home
+    XDG::Data.dirs
+    XDG::Data.find(pattern){ |path| ... }
+    XDG::Data.search(pattern){ |path| ... }
 
-  XDG.data_home
-  XDG.data_dirs
-  XDG.data_find(pattern){ |path| ... }
-  XDG.data_select(pattern){ |path| ... }
+    XDG::Cache.home
+    XDG::Cache.find(pattern){ |path| ... }
+    XDG::Cache.search(pattern){ |path| ... }
 
-  XDG.cache_home
-  XDG.cache_find(pattern){ |path| ... }
-  XDG.cache_select(pattern){ |path| ... }
+XDG can also access these modules via methods.
 
-  XDG.config_work
-  XDG.cache_work
+    XDG.config.home
+    XDG.config.dirs
+    XDG.config.find(pattern){ |path| ... }
+    XDG.config.search(pattern){ |path| ... }
+
+    XDG.data.home
+    XDG.data.dirs
+    XDG.data.find(pattern){ |path| ... }
+    XDG.data.search(pattern){ |path| ... }
+
+    XDG.cache.home
+    XDG.cache.find(pattern){ |path| ... }
+    XDG.cache.search(pattern){ |path| ... }
 
 If you know XDG these are pretty much self-explanitory.
 But see the RDocs for specifics.
 
-== Installation
+=== Extended Functionality
+
+The Ruby XDG module also provides extended functionality
+not part of the standard specification. These extensions are
+simply add-on funcitonality deemed useful, or implementations
+of  proposals being discussed for a possible future version of
+the standard.
+
+    require 'xdg/extended'
+
+    XDG.config.work
+    XDG.cache.work
+
+See the API for the extended.rb, to learn more. Note that
+the extended modules are subject to great change of change
+as they are still being designed.
+
+
+== HOW TO INSTALL
 
 Using RubyGems:
 
   $ sudo gem install xdg
 
-Installing the tarball requires Ruby Setup
-(see http://setup.rubyforge.org).
+Installing the tarball requires Ruby Setup (see http://proutils.github.com/setup).
 
   $ tar -xvzf xdg-0.5.2
   $ cd xdg-0.5.2
   $ sudo setup.rb all
 
-== Development
 
-Visit http://rubyforge.org/projects/xdg
+== DEVELOPMENT
 
-== Copyright
+Visit http://github.com/proutils/xdg
 
-Copyright (c) 2008 Tiger Ops / 7rans
+
+== COPYRIGHT
+
+Copyright (c) 2008, 2009 Thomas Sawyer
 Distributed under the terms of the LGPL v3 license.
+See COPYING file for details.
 
