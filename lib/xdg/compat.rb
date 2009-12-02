@@ -27,15 +27,15 @@ module XDG
 
 
   def data_select(*args, &block)
-    data.search(*args, &block)
+    data.select(*args, &block)
   end
 
   def config_select(*args, &block)
-    config.search(*args, &block)
+    config.select(*args, &block)
   end
 
   def cache_select(*args, &block)
-    cache.search(*args, &block)
+    cache.select(*args, &block)
   end
 
 
@@ -44,7 +44,7 @@ module XDG
   end
 
   def config_find(*args, &block)
-    config.select(*args, &block)
+    config.find(*args, &block)
   end
 
   def cache_find(*args, &block)
