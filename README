@@ -13,8 +13,7 @@ If your program utilizes user or system-wide support files
 the XDG standard.
 
 You can learn more about the standard at:
-
-  http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html 
+http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html 
 
 
 == HOW TO USE
