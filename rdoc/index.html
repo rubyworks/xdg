@@ -157,7 +157,7 @@
             
             <li class="method" style="clear: both;">
               <span class="method-parent-aside">XDG</span>
-              <a href="classes/XDG.html#M000016">#config_work</a>
+              <a href="classes/XDG.html#M000015">#config_work</a>
             </li>
           
             
@@ -283,7 +283,7 @@
             
             <li class="method" style="clear: both;">
               <span class="method-parent-aside">XDG::Cache</span>
-              <a href="classes/XDG/Cache.html#M000015">#work</a>
+              <a href="classes/XDG/Cache.html#M000016">#work</a>
             </li>
           
             
@@ -362,7 +362,7 @@
     
       <li><a href="classes/XDG.html#M000009">#config_select &mdash; XDG</a></li>
     
-      <li><a href="classes/XDG.html#M000016">#config_work &mdash; XDG</a></li>
+      <li><a href="classes/XDG.html#M000015">#config_work &mdash; XDG</a></li>
     
       <li><a href="classes/XDG.html#M000019">#data &mdash; XDG</a></li>
     
@@ -404,7 +404,7 @@
     
       <li><a href="classes/XDG/Common.html#M000024">#select &mdash; XDG::Common</a></li>
     
-      <li><a href="classes/XDG/Cache.html#M000015">#work &mdash; XDG::Cache</a></li>
+      <li><a href="classes/XDG/Cache.html#M000016">#work &mdash; XDG::Cache</a></li>
     
       <li><a href="classes/XDG/Config.html#M000012">#work &mdash; XDG::Config</a></li>
     
@@ -426,7 +426,7 @@
 <p>
 <a href="../classes/XDG.html">XDG</a> provides an easy to use module for
 utilizing the <a href="../classes/XDG.html">XDG</a> Base Directory
-Standard[1].
+Standard.
 </p>
 <p>
 If your program utilizes user or system-wide support files (eg.
@@ -434,9 +434,11 @@ configuration files), you owe it to yourself to checkout the <a
 href="../classes/XDG.html">XDG</a> standard.
 </p>
 <p>
-[1]<a
-href="http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html">standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html</a>
+You can learn more about the standard at:
 </p>
+<pre>
+  http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html
+</pre>
 <h2>HOW TO USE</h2>
 <p>
 <a href="../classes/XDG.html">XDG</a> consists of a small set of modules,
@@ -447,16 +449,16 @@ has a small base set of easy to use methods.
     XDG::Config.home
     XDG::Config.dirs
     XDG::Config.find(pattern){ |path| ... }
-    XDG::Config.search(pattern){ |path| ... }
+    XDG::Config.select(pattern){ |path| ... }
 
     XDG::Data.home
     XDG::Data.dirs
     XDG::Data.find(pattern){ |path| ... }
-    XDG::Data.search(pattern){ |path| ... }
+    XDG::Data.select(pattern){ |path| ... }
 
     XDG::Cache.home
     XDG::Cache.find(pattern){ |path| ... }
-    XDG::Cache.search(pattern){ |path| ... }
+    XDG::Cache.select(pattern){ |path| ... }
 </pre>
 <p>
 <a href="../classes/XDG.html">XDG</a> can also access these modules via
@@ -466,16 +468,16 @@ methods.
     XDG.config.home
     XDG.config.dirs
     XDG.config.find(pattern){ |path| ... }
-    XDG.config.search(pattern){ |path| ... }
+    XDG.config.select(pattern){ |path| ... }
 
     XDG.data.home
     XDG.data.dirs
     XDG.data.find(pattern){ |path| ... }
-    XDG.data.search(pattern){ |path| ... }
+    XDG.data.select(pattern){ |path| ... }
 
     XDG.cache.home
     XDG.cache.find(pattern){ |path| ... }
-    XDG.cache.search(pattern){ |path| ... }
+    XDG.cache.select(pattern){ |path| ... }
 </pre>
 <p>
 If you know <a href="../classes/XDG.html">XDG</a> these are pretty much
