@@ -6,13 +6,15 @@
 == Introduction
 
 XDG provides an easy to use module for utilizing the XDG Base
-Directory Standard[1].
+Directory Standard.
 
 If your program utilizes user or system-wide support files
 (eg. configuration files), you owe it to yourself to checkout
 the XDG standard.
 
-[1]http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html 
+You can learn more about the standard at:
+
+  http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html 
 
 
 == HOW TO USE
@@ -23,32 +25,32 @@ these has a small base set of easy to use methods.
     XDG::Config.home
     XDG::Config.dirs
     XDG::Config.find(pattern){ |path| ... }
-    XDG::Config.search(pattern){ |path| ... }
+    XDG::Config.select(pattern){ |path| ... }
 
     XDG::Data.home
     XDG::Data.dirs
     XDG::Data.find(pattern){ |path| ... }
-    XDG::Data.search(pattern){ |path| ... }
+    XDG::Data.select(pattern){ |path| ... }
 
     XDG::Cache.home
     XDG::Cache.find(pattern){ |path| ... }
-    XDG::Cache.search(pattern){ |path| ... }
+    XDG::Cache.select(pattern){ |path| ... }
 
 XDG can also access these modules via methods.
 
     XDG.config.home
     XDG.config.dirs
     XDG.config.find(pattern){ |path| ... }
-    XDG.config.search(pattern){ |path| ... }
+    XDG.config.select(pattern){ |path| ... }
 
     XDG.data.home
     XDG.data.dirs
     XDG.data.find(pattern){ |path| ... }
-    XDG.data.search(pattern){ |path| ... }
+    XDG.data.select(pattern){ |path| ... }
 
     XDG.cache.home
     XDG.cache.find(pattern){ |path| ... }
-    XDG.cache.search(pattern){ |path| ... }
+    XDG.cache.select(pattern){ |path| ... }
 
 If you know XDG these are pretty much self-explanitory.
 But see the RDocs for specifics.
