@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Returns a complete list of directories, starting with the home location and moving outward.
+full_name: XDG::Common#list
+is_singleton: false
+name: list
+params: ()
+visibility: public

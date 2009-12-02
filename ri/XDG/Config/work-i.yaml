@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Location of working config directory.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: This is not not strictly XDG spec, but it can be useful in an analogous respect.
+full_name: XDG::Config#work
+is_singleton: false
+name: work
+params: ()
+visibility: public

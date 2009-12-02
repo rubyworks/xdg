@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Access to cache locations.
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  body: "  XDG.cache.each{ |dir| ... }\n"
+full_name: XDG#cache
+is_singleton: false
+name: cache
+params: (*glob_and_flags, &block)
+visibility: public

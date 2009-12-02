@@ -1,0 +1,10 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: XDG::Common#parse_arguments
+is_singleton: false
+name: parse_arguments
+params: (*glob_and_flags)
+visibility: private

@@ -1,0 +1,16 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Return array of matching files or directories in any of the resource locations, starting with the home directory and searching outward into system directories.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "Unlike #select, this doesn't take a block and each additional glob argument is treated as a logical-or."
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  body: "  XDG::Data.glob(&quot;stick/*.rb&quot;, &quot;stick/*.yaml&quot;)\n"
+full_name: XDG::Common#glob
+is_singleton: false
+name: glob
+params: (*glob_and_flags)
+visibility: public

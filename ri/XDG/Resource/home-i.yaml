@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Location of personal resource directory.
+full_name: XDG::Resource#home
+is_singleton: false
+name: home
+params: ()
+visibility: public

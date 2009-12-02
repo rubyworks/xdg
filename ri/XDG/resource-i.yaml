@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Access to resource locations.
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  body: "  XDG.resource.each{ |dir| ... }\n"
+full_name: XDG#resource
+is_singleton: false
+name: resource
+params: (*glob_and_flags, &block)
+visibility: public

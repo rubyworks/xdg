@@ -14,11 +14,11 @@ comment:
 - !ruby/struct:RDoc::Markup::Flow::P 
   body: Some important clarifications, not made clear by the above specification.
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: The data directories are for &quot;read-only&quot; files. In other words once something is put there, it should only be read, and never written to by a program. (Generally speaking only users or package mangers should be adding, changing or removing files from the data locations.)
+  body: The data directories are for &quot;read-only&quot; files. In other words once something is put there, it should only be read, and never written to by a program. (Generally speaking only users or package managers should be adding, changing or removing files from the data locations.)
 - !ruby/struct:RDoc::Markup::Flow::P 
   body: The config locations are where you store files that may change, and effect your applications depending on their content. This is like etc/ in the FHS, but alterable by end users and end user programs, not just root and sudo admin scripts.
 - !ruby/struct:RDoc::Markup::Flow::P 
-  body: The cache locations stores files that could just as well be deleted and everyihtng would still work fine. This is for variable and temporary files. much like var/ in FHS.
+  body: The cache locations stores files that could just as well be deleted and everything would still work fine. This is for variable and temporary files. Much like var/ and tmp/ in FHS.
 - !ruby/struct:RDoc::Markup::Flow::P 
   body: The module returns all paths as String.
 constants: []
@@ -28,6 +28,8 @@ includes: []
 
 instance_methods: 
 - !ruby/object:RDoc::RI::MethodSummary 
+  name: cache
+- !ruby/object:RDoc::RI::MethodSummary 
   name: cache_find
 - !ruby/object:RDoc::RI::MethodSummary 
   name: cache_home
@@ -35,6 +37,8 @@ instance_methods:
   name: cache_select
 - !ruby/object:RDoc::RI::MethodSummary 
   name: cache_work
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: config
 - !ruby/object:RDoc::RI::MethodSummary 
   name: config_dirs
 - !ruby/object:RDoc::RI::MethodSummary 
@@ -46,6 +50,8 @@ instance_methods:
 - !ruby/object:RDoc::RI::MethodSummary 
   name: config_work
 - !ruby/object:RDoc::RI::MethodSummary 
+  name: data
+- !ruby/object:RDoc::RI::MethodSummary 
   name: data_dirs
 - !ruby/object:RDoc::RI::MethodSummary 
   name: data_find
@@ -55,4 +61,6 @@ instance_methods:
   name: data_select
 - !ruby/object:RDoc::RI::MethodSummary 
   name: home
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: resource
 name: XDG

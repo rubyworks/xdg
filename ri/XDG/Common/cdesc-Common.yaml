@@ -1,0 +1,29 @@
+--- !ruby/object:RDoc::RI::ModuleDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Each directory set shares these common methods.
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  width: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Each directory set shares these common methods.
+constants: []
+
+full_name: XDG::Common
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: find
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: glob
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: list
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: parse_arguments
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: select
+name: Common

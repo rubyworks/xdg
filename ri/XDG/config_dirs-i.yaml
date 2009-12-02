@@ -3,8 +3,6 @@ aliases: []
 
 block_params: 
 comment: 
-- !ruby/struct:RDoc::Markup::Flow::P 
-  body: List of user's shared config directories.
 full_name: XDG#config_dirs
 is_singleton: false
 name: config_dirs

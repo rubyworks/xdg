@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Location of working cache directory.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: This is not strictly XDG spec, but it can be useful in an analogous respect.
+full_name: XDG::Cache#work
+is_singleton: false
+name: work
+params: ()
+visibility: public

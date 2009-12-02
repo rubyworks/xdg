@@ -3,8 +3,6 @@ aliases: []
 
 block_params: 
 comment: 
-- !ruby/struct:RDoc::Markup::Flow::P 
-  body: Location of user's personal data directory.
 full_name: XDG#data_home
 is_singleton: false
 name: data_home

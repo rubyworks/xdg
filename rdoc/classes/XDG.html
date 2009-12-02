@@ -1,398 +1,951 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang='en'>
-  <head>
-    <title>: XDG [XDG]</title>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
-    <link href='../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
-    <script type='text/javascript'>
-      //<![CDATA[
-        function popupCode(url) {
-          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
-        }
-        
-        function toggleCode(id) {
-          var code = document.getElementById(id)
-        
-          code.style.display = code.style.display != 'block' ? 'block' : 'none'
-          return true
-        }
-        
-        // Make codeblocks hidden by default
-        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
-      //]]>
-    </script>
-  </head>
-  <body class='page'>
-    <div class='class' id='wrapper'>
-      <div class='header'>
-        <div class='name'>
-          <span class='type'>Module</span>
-          XDG
-        </div>
-        <ol class='paths'>
-          <li>
-            <a href="../files/lib/xdg_rb.html">lib/xdg.rb</a>
-          </li>
-        </ol>
-      </div>
-      <div id='content'>
-        <div id='text'>
-          <div id='description'>
-            <h1><a href="XDG.html">XDG</a> Base Directory Standard</h1>
-            <p>
-            This provides a conveient library for conforming to the <a
-            href="XDG.html">XDG</a> Base Directory Standard.
-            </p>
-            <pre>http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html</pre>
-            <p>
-            Some important clarifications, not made clear by the above specification.
-            </p>
-            <p>
-            The data directories are for &#8220;read-only&#8221; files. In other words
-            once something is put there, it should only be read, and never written to
-            by a program. (Generally speaking only users or package mangers should be
-            adding, changing or removing files from the data locations.)
-            </p>
-            <p>
-            The config locations are where you store files that may change, and effect
-            your applications depending on their content. This is like etc/ in the FHS,
-            but alterable by end users and end user programs, not just root and sudo
-            admin scripts.
-            </p>
-            <p>
-            The cache locations stores files that could just as well be deleted and
-            everyihtng would still work fine. This is for variable and temporary files.
-            much like var/ in FHS.
-            </p>
-            <p>
-            The module returns all paths as String.
-            </p>
-          </div>
-          <div id='method-list'>
-            <h2>Methods</h2>
-            <h3>public instance</h3>
-            <ol>
-              <li><a href="#M000011">cache_find</a></li>
-              <li><a href="#M000006">cache_home</a></li>
-              <li><a href="#M000012">cache_select</a></li>
-              <li><a href="#M000014">cache_work</a></li>
-              <li><a href="#M000003">config_dirs</a></li>
-              <li><a href="#M000009">config_find</a></li>
-              <li><a href="#M000002">config_home</a></li>
-              <li><a href="#M000010">config_select</a></li>
-              <li><a href="#M000013">config_work</a></li>
-              <li><a href="#M000005">data_dirs</a></li>
-              <li><a href="#M000007">data_find</a></li>
-              <li><a href="#M000004">data_home</a></li>
-              <li><a href="#M000008">data_select</a></li>
-              <li><a href="#M000001">home</a></li>
-            </ol>
-          </div>
-          <div id='section'>
-            <div id='methods'>
-              <h2>Public instance methods</h2>
-              <div class='public-instance method' id='method-M000011'>
-                <a name='M000011'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>cache_find</span>
-                  <span class='arguments'>(*glob_and_flags, &amp;block)</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Return the fist matching file or directory in the cache directory.
-                  </p>
-                  <p>
-                  See: <tt><a href="XDG.html#M000012">cache_select</a></tt>.
-                  </p>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000011-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000011-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 173</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_find</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-identifier">cache_select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>).<span class="ruby-identifier">first</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000006'>
-                <a name='M000006'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>cache_home</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Location of user&#8217;s personal cache directory.
-                  </p>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000006-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000006-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 71</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_home</span>&#x000A;    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(&#x000A;      <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'XDG_CACHE_HOME'</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">home</span>, <span class="ruby-value str">'.cache'</span>)&#x000A;    )&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000012'>
-                <a name='M000012'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>cache_select</span>
-                  <span class='arguments'>(*glob_and_flags)</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Return array of matching files or directories from the cache directory.
-                  </p>
-                  <p>
-                  String parameters are joined into a pathname while Integers and Symbols
-                  treated as flags.
-                  </p>
-                  <p>
-                  For example, the following are equivalent:
-                  </p>
-                  <pre>XDG.cache_select('sow/tmp', File::FNM_CASEFOLD)&#x000A;&#x000A;XDG.cache_select('sow', 'tmp', :casefold)</pre>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000012-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000012-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 189</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>)&#x000A;    <span class="ruby-identifier">glob</span>, <span class="ruby-identifier">flags</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>.<span class="ruby-identifier">partition</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-constant">String</span><span class="ruby-operator">===</span><span class="ruby-identifier">e</span> }&#x000A;    <span class="ruby-identifier">glob</span> = [<span class="ruby-value str">'**/*'</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">glob</span>.<span class="ruby-identifier">empty?</span>&#x000A;    <span class="ruby-identifier">flag</span> = <span class="ruby-identifier">flags</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>, <span class="ruby-identifier">f</span><span class="ruby-operator">|</span>&#x000A;      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Symbol</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">f</span>&#x000A;        <span class="ruby-identifier">m</span> <span class="ruby-operator">+</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">const_get</span>(<span class="ruby-node">&quot;FNM_#{f.to_s.upcase}&quot;</span>)&#x000A;      <span class="ruby-keyword kw">else</span>&#x000A;        <span class="ruby-identifier">m</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">to_i</span>&#x000A;      <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">cache_home</span>,<span class="ruby-operator">*</span><span class="ruby-identifier">glob</span>)&#x000A;    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>&#x000A;      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">flag</span>).<span class="ruby-identifier">select</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-keyword kw">else</span>&#x000A;      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">flag</span>)&#x000A;    <span class="ruby-keyword kw">end</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000014'>
-                <a name='M000014'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>cache_work</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Location of working cache directory.
-                  </p>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000014-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000014-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 228</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_work</span>&#x000A;    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(&#x000A;      <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>, <span class="ruby-value str">'.cache'</span>)&#x000A;    )&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000003'>
-                <a name='M000003'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>config_dirs</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  List of user&#8217;s shared config directories.
-                  </p>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000003-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000003-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 46</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_dirs</span>&#x000A;    <span class="ruby-identifier">dirs</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'XDG_CONFIG_DIRS'</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/[:;]/</span>)&#x000A;    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dirs</span>.<span class="ruby-identifier">empty?</span>&#x000A;      <span class="ruby-identifier">dirs</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Config</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-value str">'sysconfdir'</span>], <span class="ruby-value str">'xdg'</span>) <span class="ruby-comment cmt">#%w{/etc/xdg}</span>&#x000A;    <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-identifier">dirs</span>.<span class="ruby-identifier">collect</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">d</span>) }&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000009'>
-                <a name='M000009'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>config_find</span>
-                  <span class='arguments'>(*glob_and_flags, &amp;block)</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Return the fist matching file or directory from the config locations.
-                  </p>
-                  <p>
-                  See: <tt><a href="XDG.html#M000010">config_select</a></tt>.
-                  </p>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000009-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000009-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 127</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_find</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-identifier">config_select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>).<span class="ruby-identifier">first</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000002'>
-                <a name='M000002'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>config_home</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Location of user&#8217;s personal config directory.
-                  </p>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000002-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000002-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 39</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_home</span>&#x000A;    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(&#x000A;      <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'XDG_CONFIG_HOME'</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">home</span>, <span class="ruby-value str">'.config'</span>)&#x000A;    )&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000010'>
-                <a name='M000010'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>config_select</span>
-                  <span class='arguments'>(*glob_and_flags)</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Return array of matching files or directories in any of the config
-                  locations.
-                  </p>
-                  <p>
-                  This starts with the user&#8217;s home directory and then searches system
-                  directories.
-                  </p>
-                  <p>
-                  String parameters are joined into a pathname while Integers and Symbols
-                  treated as flags.
-                  </p>
-                  <p>
-                  For example, the following are equivalent:
-                  </p>
-                  <pre>XDG.config_select('sow/plugins', File::FNM_CASEFOLD)&#x000A;&#x000A;XDG.config_select('sow', 'plugins', :casefold)</pre>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000010-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000010-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 146</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>)&#x000A;    <span class="ruby-identifier">glob</span>, <span class="ruby-identifier">flags</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>.<span class="ruby-identifier">partition</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-constant">String</span><span class="ruby-operator">===</span><span class="ruby-identifier">e</span> }&#x000A;    <span class="ruby-identifier">glob</span> = [<span class="ruby-value str">'**/*'</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">glob</span>.<span class="ruby-identifier">empty?</span>&#x000A;    <span class="ruby-identifier">flag</span> = <span class="ruby-identifier">flags</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>, <span class="ruby-identifier">f</span><span class="ruby-operator">|</span>&#x000A;      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Symbol</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">f</span>&#x000A;        <span class="ruby-identifier">m</span> <span class="ruby-operator">+</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">const_get</span>(<span class="ruby-node">&quot;FNM_#{f.to_s.upcase}&quot;</span>)&#x000A;      <span class="ruby-keyword kw">else</span>&#x000A;        <span class="ruby-identifier">m</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">to_i</span>&#x000A;      <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-identifier">find</span> = []&#x000A;    [<span class="ruby-identifier">config_home</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">config_dirs</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>&#x000A;      <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">glob</span>)&#x000A;      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>&#x000A;        <span class="ruby-identifier">find</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">flag</span>).<span class="ruby-identifier">select</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>))&#x000A;      <span class="ruby-keyword kw">else</span>&#x000A;        <span class="ruby-identifier">find</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">flag</span>))&#x000A;      <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-identifier">find</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000013'>
-                <a name='M000013'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>config_work</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Location of working config directory.
-                  </p>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000013-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000013-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 213</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_work</span>&#x000A;    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(&#x000A;      <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>, <span class="ruby-value str">'.config'</span>)&#x000A;    )&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000005'>
-                <a name='M000005'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>data_dirs</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  List of user&#8217;s shared data directores.
-                  </p>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000005-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000005-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 62</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">data_dirs</span>&#x000A;    <span class="ruby-identifier">dirs</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'XDG_DATA_DIRS'</span>].<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/[:;]/</span>)&#x000A;    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dirs</span>.<span class="ruby-identifier">empty?</span>&#x000A;      <span class="ruby-identifier">dirs</span> = [ <span class="ruby-constant">Config</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-value str">'localdatadir'</span>], <span class="ruby-constant">Config</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-value str">'datadir'</span>] ] <span class="ruby-comment cmt">#%w{/usr/local/share/ /usr/share/}</span>&#x000A;    <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-identifier">dirs</span>.<span class="ruby-identifier">collect</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">d</span>) }&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000007'>
-                <a name='M000007'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>data_find</span>
-                  <span class='arguments'>(*glob_and_flags, &amp;block)</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Find a file or directory in data dirs.
-                  </p>
-                  <p>
-                  See: <tt><a href="XDG.html#M000008">data_select</a></tt>.
-                  </p>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000007-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000007-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 81</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">data_find</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-identifier">data_select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>).<span class="ruby-identifier">first</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000004'>
-                <a name='M000004'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>data_home</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Location of user&#8217;s personal data directory.
-                  </p>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000004-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000004-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 55</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">data_home</span>&#x000A;    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(&#x000A;      <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'XDG_DATA_HOME'</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">home</span>, <span class="ruby-value str">'.local'</span>, <span class="ruby-value str">'share'</span>)&#x000A;    )&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000008'>
-                <a name='M000008'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>data_select</span>
-                  <span class='arguments'>(*glob_and_flags, &amp;block)</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Return array of matching files or directories in any of the data locations.
-                  </p>
-                  <p>
-                  This starts with the user&#8217;s home directory and then searches system
-                  directories.
-                  </p>
-                  <p>
-                  String parameters are joined into a pathname while Integers and Symbols
-                  treated as flags.
-                  </p>
-                  <p>
-                  For example, the following are equivalent:
-                  </p>
-                  <pre>XDG.data_select('stick/units', File::FNM_CASEFOLD)&#x000A;&#x000A;XDG.data_select('stick', 'uits', :casefold)</pre>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000008-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000008-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 100</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">data_select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-identifier">glob</span>, <span class="ruby-identifier">flags</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>.<span class="ruby-identifier">partition</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-constant">String</span><span class="ruby-operator">===</span><span class="ruby-identifier">e</span> }&#x000A;    <span class="ruby-identifier">glob</span> = [<span class="ruby-value str">'**/*'</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">glob</span>.<span class="ruby-identifier">empty?</span>&#x000A;    <span class="ruby-identifier">flag</span> = <span class="ruby-identifier">flags</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>, <span class="ruby-identifier">f</span><span class="ruby-operator">|</span>&#x000A;      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Symbol</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">f</span>&#x000A;        <span class="ruby-identifier">m</span> <span class="ruby-operator">+</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-identifier">const_get</span>(<span class="ruby-node">&quot;FNM_#{f.to_s.upcase}&quot;</span>)&#x000A;      <span class="ruby-keyword kw">else</span>&#x000A;        <span class="ruby-identifier">m</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">to_i</span>&#x000A;      <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-identifier">find</span> = []&#x000A;    [<span class="ruby-identifier">data_home</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">data_dirs</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>&#x000A;      <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">glob</span>)&#x000A;      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>&#x000A;        <span class="ruby-identifier">find</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">flag</span>).<span class="ruby-identifier">select</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>))&#x000A;      <span class="ruby-keyword kw">else</span>&#x000A;        <span class="ruby-identifier">find</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">flag</span>))&#x000A;      <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-keyword kw">end</span>&#x000A;    <span class="ruby-identifier">find</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-              <div class='public-instance method' id='method-M000001'>
-                <a name='M000001'>      </a>
-                <div class='synopsis'>
-                  <span class='name'>home</span>
-                  <span class='arguments'>()</span>
-                </div>
-                <div class='description'>
-                  <p>
-                  Returns user&#8217;s home directory.
-                  </p>
-                </div>
-                <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000001-source'); return false">
-                    [show source]
-                  </a>
-                  <pre id='M000001-source'><span class="ruby-comment cmt"># File lib/xdg.rb, line 34</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">home</span>&#x000A;    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-value str">'~'</span>) <span class="ruby-comment cmt"># ENV['HOME']</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
-                </div>
-              </div>
-            </div>
-          </div>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Module: XDG</title>
+
+  
+    <link rel="SHORTCUT ICON" href="../assets/icon/module.png">
+  
+
+  <link type="text/css" rel="stylesheet" href="../assets/rdoc.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="../assets/highlight/styles/github.css" title="GitHub" />
+
+  <script type="text/javascript" charset="utf-8" src="../assets/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/highlight/highlight.pack.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/quicksearch.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../assets/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function() {
+      hookHighlightSyntax();
+	    hookSourceViews();
+	    hookDebuggingToggle();
+	    hookQuickSearch();
+	    highlightLocationTarget();
+
+	    $('ul.link-list a').bind("click", highlightClickTarget);
+    });
+  </script>
+</head>
+<body class="module">
+<div id="main">
+
+  <div class="head">
+    <h1>
+      
+        <img src="../assets/icon/module.png" align="absmiddle">&nbsp;
+      
+      <a href="../index.html">XDG</a>&nbsp;
+      <a href="/">XDG</a>
+    </h1>
+  </div>
+
+  <div id="metadata">
+    <div id="project-metadata">
+
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li class="file"><a href="../files/lib/xdg/extended_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/xdg/extended.rb">lib/xdg/extended.rb</a></li>
+          
+            <li class="file"><a href="../files/lib/xdg/compat_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/xdg/compat.rb">lib/xdg/compat.rb</a></li>
+          
+            <li class="file"><a href="../files/lib/xdg_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/xdg.rb">lib/xdg.rb</a></li>
+          
+          </ul>
         </div>
       </div>
-      <div id='footer-push'></div>
+
+      <!-- What about Git info, or Hg info? This seems almost silly, albeit kind of cool. -->
+      <!-- TODO: generalize this for all SCMs -->
+
+      
     </div>
-    <div id='footer'>
-      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+
+    <div id="class-metadata">
+
+      <!-- Parent Class -->
+      
+
+      <!-- Namespace Contents -->
+      
+      <div id="namespace-list-section" class="section">
+        <h3 class="section-header">Namespace</h3>
+        <ul class="link-list">
+          
+          <li class="module"><a href="XDG/Cache.html">XDG::Cache</a></li>
+          
+          <li class="module"><a href="XDG/Common.html">XDG::Common</a></li>
+          
+          <li class="module"><a href="XDG/Config.html">XDG::Config</a></li>
+          
+          <li class="module"><a href="XDG/Data.html">XDG::Data</a></li>
+          
+          <li class="module"><a href="XDG/Resource.html">XDG::Resource</a></li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Method Quickref -->
+      
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+            
+            <li class="method">
+              <a href="#M000021">#cache</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000014">#cache_find</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000004">#cache_home</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000010">#cache_select</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000017">#cache_work</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000020">#config</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000007">#config_dirs</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000013">#config_find</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000003">#config_home</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000009">#config_select</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000016">#config_work</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000019">#data</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000005">#data_dirs</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000011">#data_find</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000002">#data_home</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000008">#data_select</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000018">#home</a>
+            </li>
+          
+            
+            <li class="method">
+              <a href="#M000000">#resource</a>
+            </li>
+          
+        </ul>
+      </div>
+      
+
+      <!-- Included Modules -->
+      
     </div>
-  </body>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Information</h3>
+        <ul>
+        
+          <li class="file"><a href="../files/HISTORY.html">HISTORY</a></li>
+        
+          <li class="file"><a href="../files/COPYING.html">COPYING</a></li>
+        
+          <li class="file"><a href="../files/README.html">README</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../assets/icon/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <!-- classpage.html : classes -->
+        <ul class="link-list">
+        
+          <li class="module"><a href="../classes/XDG.html">XDG</a></li>
+        
+          <li class="module"><a href="../classes/XDG/Cache.html">XDG::Cache</a></li>
+        
+          <li class="module"><a href="../classes/XDG/Common.html">XDG::Common</a></li>
+        
+          <li class="module"><a href="../classes/XDG/Config.html">XDG::Config</a></li>
+        
+          <li class="module"><a href="../classes/XDG/Data.html">XDG::Data</a></li>
+        
+          <li class="module"><a href="../classes/XDG/Resource.html">XDG::Resource</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+    </div>
+
+    <div id="validator-badges">
+      
+      <div style="float: right; margin-right: 5px;">
+        <a href="http://validator.w3.org/check/referer"><img src="../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
+      </div>
+      Generated with <a href="http://github.com/proutils/webri">WebRI Redfish</a> 1.1
+      <br/><br/>
+    </div>
+  </div>
+
+  <div id="documentation">
+
+    <div id="description">
+      
+
+      <h1><a href="XDG.html">XDG</a> Base Directory Standard</h1>
+<p>
+This provides a conveient library for conforming to the <a
+href="XDG.html">XDG</a> Base Directory Standard.
+</p>
+<pre>
+  http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
+</pre>
+<p>
+Some important clarifications, not made clear by the above specification.
+</p>
+<p>
+The data directories are for &#8220;read-only&#8221; files. In other words
+once something is put there, it should only be read, and never written to
+by a program. (Generally speaking only users or package managers should be
+adding, changing or removing files from the data locations.)
+</p>
+<p>
+The config locations are where you store files that may change, and effect
+your applications depending on their content. This is like etc/ in the FHS,
+but alterable by end users and end user programs, not just root and sudo
+admin scripts.
+</p>
+<p>
+The cache locations stores files that could just as well be deleted and
+everything would still work fine. This is for variable and temporary files.
+Much like var/ and tmp/ in FHS.
+</p>
+<p>
+The module returns all paths as String.
+</p>
+
+    </div>
+
+    <!-- Constants -->
+    
+
+    <!-- Attributes -->
+    
+
+    <!-- Methods -->
+    
+    <div id="public-instance-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="cache-method" class="method-detail ">
+        <a name="M000021"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">cache</span><span
+            class="method-args">(*glob_and_flags, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Access to cache locations.
+</p>
+<pre>
+  XDG.cache.each{ |dir| ... }
+</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="cache-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg.rb, line 67</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">glob_and_flags</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-constant">Cache</span>.<span class="ruby-identifier">select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-constant">Cache</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="cache-find-method" class="method-detail ">
+        <a name="M000014"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">cache_find</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="cache-find-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 50</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_find</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">find</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="cache-home-method" class="method-detail ">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">cache_home</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="cache-home-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 11</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_home</span>
+    <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">home</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="cache-select-method" class="method-detail ">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">cache_select</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="cache-select-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 37</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">search</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="cache-work-method" class="method-detail ">
+        <a name="M000017"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">cache_work</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="cache-work-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 59</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache_work</span>
+    <span class="ruby-identifier">cache</span>.<span class="ruby-identifier">work</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="config-method" class="method-detail ">
+        <a name="M000020"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">config</span><span
+            class="method-args">(*glob_and_flags, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Access to configuration locations.
+</p>
+<pre>
+  XDG.config.each{ |dir| ... }
+</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="config-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg.rb, line 55</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">glob_and_flags</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-constant">Config</span>.<span class="ruby-identifier">select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-constant">Config</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="config-dirs-method" class="method-detail ">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">config_dirs</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="config-dirs-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 20</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_dirs</span>
+    <span class="ruby-identifier">config</span>.<span class="ruby-identifier">dirs</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="config-find-method" class="method-detail ">
+        <a name="M000013"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">config_find</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="config-find-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 46</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_find</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">config</span>.<span class="ruby-identifier">select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="config-home-method" class="method-detail ">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">config_home</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="config-home-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 7</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_home</span>
+    <span class="ruby-identifier">config</span>.<span class="ruby-identifier">home</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="config-select-method" class="method-detail ">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">config_select</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="config-select-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 33</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">config</span>.<span class="ruby-identifier">search</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="config-work-method" class="method-detail ">
+        <a name="M000016"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">config_work</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="config-work-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 55</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_work</span>
+    <span class="ruby-identifier">config</span>.<span class="ruby-identifier">work</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="data-method" class="method-detail ">
+        <a name="M000019"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">data</span><span
+            class="method-args">(*glob_and_flags, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Access to data resource locations.
+</p>
+<pre>
+  XDG.data.each{ |dir| ... }
+</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="data-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg.rb, line 43</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">data</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">glob_and_flags</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-constant">Data</span>.<span class="ruby-identifier">select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-constant">Data</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="data-dirs-method" class="method-detail ">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">data_dirs</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="data-dirs-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 16</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">data_dirs</span>
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">home</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="data-find-method" class="method-detail ">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">data_find</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="data-find-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 42</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">data_find</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">find</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="data-home-method" class="method-detail ">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">data_home</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p class="missing-docs">(Not documented)</p>
+          
+
+          
+          <div class="method-source-code"
+            id="data-home-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 3</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">data_home</span>
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">home</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="data-select-method" class="method-detail ">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">data_select</span><span
+            class="method-args">(*args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+def cache_dirs
+</p>
+<pre>
+  cache.dirs
+</pre>
+<p>
+end
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="data-select-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/compat.rb, line 29</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">data_select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">search</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="home-method" class="method-detail ">
+        <a name="M000018"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">home</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Returns user&#8217;s home directory.
+</p>
+          
+
+          
+          <div class="method-source-code"
+            id="home-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg.rb, line 35</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">home</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-value str">'~'</span>) <span class="ruby-comment cmt"># ENV['HOME']</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+      <div id="resource-method" class="method-detail ">
+        <a name="M000000"></a>
+
+        <div class="method-heading">
+        
+          <span class="method-name">resource</span><span
+            class="method-args">(*glob_and_flags, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        
+        </div>
+
+        <div class="method-description">
+          
+          <p>
+Access to resource locations.
+</p>
+<pre>
+  XDG.resource.each{ |dir| ... }
+</pre>
+          
+
+          
+          <div class="method-source-code"
+            id="resource-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/xdg/extended.rb, line 9</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resource</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">glob_and_flags</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-constant">Resource</span>.<span class="ruby-identifier">select</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">glob_and_flags</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-constant">Resource</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+      </div>
+
+    
+    </div>
+  
+
+  </div>
+
+
+  <div id="rdoc-debugging-section-dump" class="debugging-section">
+  
+    <p>Disabled; run with --debug to generate this.</p>
+  
+  </div>
+
+</main>
+</body>
 </html>
+

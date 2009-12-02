@@ -3,8 +3,6 @@ aliases: []
 
 block_params: 
 comment: 
-- !ruby/struct:RDoc::Markup::Flow::P 
-  body: List of user's shared data directores.
 full_name: XDG#data_dirs
 is_singleton: false
 name: data_dirs

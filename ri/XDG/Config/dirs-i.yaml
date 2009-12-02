@@ -1,0 +1,12 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: List of shared config directories.
+full_name: XDG::Config#dirs
+is_singleton: false
+name: dirs
+params: ()
+visibility: public

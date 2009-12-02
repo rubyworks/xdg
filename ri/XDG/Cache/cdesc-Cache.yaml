@@ -1,0 +1,28 @@
+--- !ruby/object:RDoc::RI::ModuleDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 1
+  text: CACHE LOCATIONS
+- !ruby/struct:RDoc::Markup::Flow::RULE 
+  width: 
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 1
+  text: CACHE LOCATIONS
+constants: []
+
+full_name: XDG::Cache
+includes: 
+- !ruby/object:RDoc::RI::IncludedModule 
+  name: Common
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: dirs
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: home
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: work
+name: Cache
