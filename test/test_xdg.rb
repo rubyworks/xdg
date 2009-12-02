@@ -1,4 +1,4 @@
-$: << 'lib'
+$:.unshift 'lib'
 
 require 'xdg/extended'
 require 'test/unit'
