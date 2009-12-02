@@ -17,8 +17,7 @@ module XDG
   # = USER RESOURCES
   #
   module Resource
-    include Enumerable
-    extend self
+    include Common
 
     # Location of personal resource directory.
     def home
@@ -39,6 +38,41 @@ module XDG
         dirs = dirs.map{ |d| File.expand_path(d) }.uniq
         dirs = dirs.select{ |d| File.directory?(d) }
         dirs
+      )
+    end
+
+    extend self
+  end
+
+  module Config
+
+    # Location of working config directory.
+    #
+    # This is not not strictly XDG spec, but it
+    # can be useful in an analogous respect.
+    #
+    def work
+      @work ||= (
+        File.expand_path(
+          File.join(Dir.pwd, '.config')
+        )
+      )
+    end
+
+  end
+
+  module Cache
+
+    # Location of working cache directory.
+    #
+    # This is not strictly XDG spec, but it
+    # can be useful in an analogous respect.
+    #
+    def work
+      @work ||= (
+        File.expand_path(
+          File.join(Dir.pwd, '.cache')
+        )
       )
     end
 

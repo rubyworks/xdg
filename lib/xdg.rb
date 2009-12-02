@@ -74,61 +74,82 @@ module XDG
 
   # Each directory set shares these common methods.
   #
-  module Enumerable
+  module Common
 
-    include ::Enumerable
-
-    #
-    def each(&block)
-      [home, *dirs].each(&block)
-    end
-
-    #
-    def size
-      [home, *dirs].size
+    # Returns a complete list of directories, starting
+    # with the home location and moving outward.
+    def list
+      [home, *dirs]
     end
 
     # Return array of matching files or directories
-    # in any of the resource locations.
+    # in any of the resource locations, starting with
+    # the home directory and searching outward into
+    # system directories.
     #
-    # This starts with the home directory and then searches
-    # outward into system directories.
+    # Unlike #select, this doesn't take a block and each
+    # additional glob argument is treated as a logical-or.
+    #
+    #   XDG::Data.glob("stick/*.rb", "stick/*.yaml")
+    #
+    def glob(*glob_and_flags)
+      glob, flags = *parse_arguments(*glob_and_flags)
+      find = []
+      list.each do |dir|
+        glob.each do |pattern|
+          find.concat(Dir.glob(File.join(dir, pattern), flags))
+        end
+      end
+      find.uniq
+    end
+
+    # Return array of matching files or directories
+    # in any of the resource locations, starting with
+    # the home directory and searching outward into
+    # system directories.
     #
     # String parameters are joined into a pathname
     # while Integers and Symbols treated as flags.
     #
     # For example, the following are equivalent:
     #
-    #   XDG.resource.search('stick/units', File::FNM_CASEFOLD)
+    #   XDG.data.select('stick/units', File::FNM_CASEFOLD)
     #
-    #   XDG.resource.search('stick', 'units', :casefold)
+    #   XDG.data.select('stick', 'units', :casefold)
     #
-    def search(*glob_and_flags, &block)
-      glob, flag = *parse_glob_arguments(*glob_and_flags)
+    def select(*glob_and_flags, &block)
+      glob, flag = *parse_arguments(*glob_and_flags)
       find = []
-      each do |dir|
+      list.each do |dir|
         path = File.join(dir, *glob)
-        if block_given?
-          find.concat(Dir.glob(path, flag).select(&block))
-        else
-          find.concat(Dir.glob(path, flag))
-        end
+        hits = Dir.glob(path, flag)
+        hits = hits.select(&block) if block_given?
+        find.concat(hits)
       end
       find.uniq
     end
 
+    # Find a file or directory. This works just like #select
+    # except that it returns the first match found.
     #
-    alias_method :glob, :search
-
-    # Find a file or directory.
+    # TODO: It would be more efficient to traverse the dirs and use #fnmatch.
     #
     def find(*glob_and_flags, &block)
-      select(*glob_and_flags, &block).first
+      glob, flag = *parse_arguments(*glob_and_flags)
+      find = nil
+      list.each do |dir|
+        path = File.join(dir, *glob)
+        hits = Dir.glob(path, flag)
+        hits = hits.select(&block) if block_given?
+        find = hits.first
+        break if find
+      end
+      find
     end
 
   private
 
-    def parse_glob_arguments(*glob_and_flags)
+    def parse_arguments(*glob_and_flags)
       glob, flags = *glob_and_flags.partition{ |e| String===e }
       glob = ['**/*'] if glob.empty?
       flag = flags.inject(0) do |m, f|
@@ -146,8 +167,7 @@ module XDG
   # = DATA LOCATIONS
   #
   module Data
-    include Enumerable
-    extend self
+    include Common
 
     # Location of personal data directory.
     def home
@@ -172,25 +192,13 @@ module XDG
       )
     end
 
-    # Location of working config directory.
-    #
-    # This is not not strictly XDG spec, but it
-    # can be useful in an analogous respect.
-    #
-    def work
-      @work ||= (
-        File.expand_path(
-          File.join(Dir.pwd, '.config')
-        )
-      )
-    end
-
+    extend self
   end
 
   # = CONFIGUTATION LOCATIONS
   #
   module Config
-    include Enumerable
+    include Common
     extend self
 
     # Location of personal config directory.
@@ -217,13 +225,13 @@ module XDG
       )
     end
 
+    extend self
   end
 
   # = CACHE LOCATIONS
   #
   module Cache
-    include Enumerable
-    extend self
+    include Common
 
     # Location of user's personal cache directory.
     def home
@@ -241,19 +249,7 @@ module XDG
       @dirs ||= []
     end
 
-    # Location of working cache directory.
-    #
-    # This is not strictly XDG spec, but it
-    # can be useful in an analogous respect.
-    #
-    def work
-      @work ||= (
-        File.expand_path(
-          File.join(Dir.pwd, '.cache')
-        )
-      )
-    end
-
+    extend self
   end
 
 end # module XDG
