@@ -44,8 +44,9 @@
   </div>
 
   <div id="text">
-    <div class="blurb">Yes, you too can store and retrieve user specific and system wide application
-    configuration and other support files in a clean, robust and standardized way.</div>
+    <div class="blurb">The XDG Base Directory Standard provides a clean and robust specification
+    for storing and retrieving user specific and system wide application configuration and
+    other support files.</div>
 
     <h2>What is this all about?</h2>
 
@@ -55,7 +56,7 @@
        (eg. config files, data caches, etc.) in a universal, clean and robust fashion.
        The advantages of this standard is that all such files will be found in central 
        locations easily descernable by man and machine. And, if widely adopted, XDG can
-       clear up our HOME directories of all those pesky hidden files!</p>
+       clear up our HOME directories of all those pesky hidden files.</p>
 
     <p>See <a href="http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html">
        XDG Base Directory Standard Specification</a>.</p>
@@ -72,14 +73,15 @@
 
     <h2>Why should I use the XDG standard?</h2>
 
-      <p>Because if you don't... you suck!</p>
+      <p>If your program depends on user-relative or sytem-wide support
+      files, it will be much improved by using the XDG Base Directory Standard. Not
+      only does it provide a clean yet flexible standard, it also makes your
+      life easier. The <code>#find</code> and <code>#select</code> methods make it a
+      snap to locate support files.</p>
 
-      <p>No, seriously.  If your program depends on user-relative or sytem-wide support
-         files, it will be much improved by using the XDG Base Directory Standard. Not
-         only does it provide a clean yet flexible standard, it also makes your
-         life easier. The <code>#find</code> and <code>#select</code> methods make it a
-         snap to locate support files.
-      </p>
+      <p>XDG make it easy to enable your applicaiton's users to create user-centic or
+      system-centric configuration and support files, and store those files where they
+      see fit --whether in the standard locations or locations of personal preference.</p>
 
 
     <h2>What can XDG standard ultimately do?</h2>
@@ -177,22 +179,21 @@
       <p>It's really quite easy, since these are all the methods:</p>
 
       <pre class="sh_ruby">
-      XDG.config_home
-      XDG.config_dirs
-      XDG.config_find(pattern){ |path| ... }
-      XDG.config_select(pattern){ |path| ... }
+      require 'xdg'
 
-      XDG.data_home
-      XDG.data_dirs
-      XDG.data_find(pattern){ |path| ... }
-      XDG.data_select(pattern){ |path| ... }
+      XDG.config.home
+      XDG.config.dirs
+      XDG.config.find(pattern){ |path| ... }
+      XDG.config.select(pattern){ |path| ... }
 
-      XDG.cache_home
-      XDG.cache_find(pattern){ |path| ... }
-      XDG.cache_select(pattern){ |path| ... }
+      XDG.data.home
+      XDG.data.dirs
+      XDG.data.find(pattern){ |path| ... }
+      XDG.data.select(pattern){ |path| ... }
 
-      XDG.config_work
-      XDG.cache_work
+      XDG.cache.home
+      XDG.cache.find(pattern){ |path| ... }
+      XDG.cache.select(pattern){ |path| ... }
       </pre>
 
       <p>You can also include XDG into a class and you will get all these methods as well.</p>
@@ -202,7 +203,7 @@
         include XDG
       end
       x = X.new
-      x.config_home
+      x.config.home
       </pre>
 
       <p>See the <a href="rdoc/index.html"/>API documentation</a> for more details.</p>
