@@ -87,7 +87,7 @@ Installing the tarball requires Ruby Setup (see http://proutils.github.com/setup
 
 == DEVELOPMENT
 
-Visit http://github.com/proutils/xdg
+Visit http://github.com/rubyworks/xdg
 
 
 == COPYRIGHT
