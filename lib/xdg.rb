@@ -1,4 +1,5 @@
 require 'rbconfig'
+require 'xdg/version'
 
 # = XDG Base Directory Standard
 #
@@ -255,4 +256,4 @@ module XDG
 end # module XDG
 
 # Copyright (c) 2008,2009 Thomas Sawyer
-# Distributed under the terms of the LGPL v3.
+# Distributed under the terms of the Apache v2.0 license.
