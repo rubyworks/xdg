@@ -1,0 +1,19 @@
+#!mast -x Syckle -x PROFILE .ruby bin lib meta script spec test [A-Z]*
+.ruby/date
+.ruby/loadpath
+.ruby/name
+.ruby/version
+lib/xdg/compat.rb
+lib/xdg/extended.rb
+lib/xdg.rb
+script/test
+test/fakeroot/etc/xdg/bar.config
+test/fakeroot/home/.cache/foo.cache
+test/fakeroot/home/.config/foo.config
+test/fakeroot/home/.local/share/foo.dat
+test/fakeroot/usr/share/bar.dat
+test/test_xdg.rb
+README.rdoc
+HISTORY
+VERSION
+COPYING
