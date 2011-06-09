@@ -26,10 +26,14 @@
 </head>
 <body>
 
+<div style="position: absolute; top: 0; right: 0;">
+  <a href="http://github.com/rubyworks/xdg"><img src="assets/images/fork-me.png" /></a>
+</div>
+
 <div id="doc">
 
   <div id="menu">
-    <a href="rdoc/index.html">RDocs</a>
+    <a href="doc/index.html">API</a>
     <!-- <a href="http://xdg.rubyforge.org/git?p=xdg.git;a=tree">Source</a> -->
     <a href="http://github.com/rubyworks/xdg">GitHub</a>
     <a href="http://groups.google.com/group/rubyworks-mailinglist">GoogleGroup</a>
@@ -148,7 +152,7 @@
       <h3>Using RubyGems</h3>
 
       <pre>
-      $ sudo gem install xdg
+      $ gem install xdg
       </pre>
 
 <!--
@@ -175,45 +179,60 @@
 
     <h2>How to Use the XDG Ruby Library</h2>
 
-      <p>It's really quite easy, since these are all the methods:</p>
+      <p>It's really quite easy:</p>
 
       <pre class="sh_ruby">
       require 'xdg'
 
-      XDG.config.home
-      XDG.config.dirs
-      XDG.config.find(pattern){ |path| ... }
-      XDG.config.select(pattern){ |path| ... }
+      XDG['CONFIG']
+      XDG['CONFIG_HOME']
+      XDG['CONFIG_DIRS']
 
-      XDG.data.home
-      XDG.data.dirs
-      XDG.data.find(pattern){ |path| ... }
-      XDG.data.select(pattern){ |path| ... }
+      XDG['DATA']
+      XDG['DATA_HOME']
+      XDG['DATA_DIRS']
 
-      XDG.cache.home
-      XDG.cache.find(pattern){ |path| ... }
-      XDG.cache.select(pattern){ |path| ... }
+      XDG['CACHE']
+      XDG['CACHE_HOME']
+      XDG['CACHE_DIRS']
       </pre>
 
-      <p>You can also include XDG into a class and you will get all these methods as well.</p>
+      <p>All of these base directory reference provide access to a variety
+        of useful methods, e.g.</p>
+
+      <pre>
+      XDG['CONFIG'].to_s
+      XDG['CONFIG'].to_a
+      XDG['CONFIG'].glob(pattern)
+      XDG['CONFIG'].find(pattern){ |path| ... }
+      XDG['CONFIG'].select(pattern){ |path| ... }
+      </pre>
+
+      <p>You can also include XDG base directory mixin into a class and you
+         will get methods to reference the directories as well. And by
+         defining <code>#subdirectory</code> the can be tailored specifically
+         to your application.</p>
 
       <pre>
       class X
-        include XDG
+        include XDG::BaseDir::Mixin
+
+        def subdirectory
+          "foo"
+        end
       end
       x = X.new
-      x.config.home
+      x.config.home  #=> "~/.config/foo"
       </pre>
 
-      <p>See the <a href="rdoc/index.html"/>API documentation</a> for more details.</p>
-
+      <p>See the <a href="doc/index.html"/>API documentation</a> for more details.</p>
   </div>
 
   <div style="text-align: center; padding: 30px 0; border-top: 1px solid #ccc;">
     <script type="text/javascript"><!--
-    google_ad_client = "pub-1126154564663472";
-    /* TIGER 728x90 10/28/08 */
-    google_ad_slot = "2386645975";
+    google_ad_client = "ca-pub-1126154564663472";
+    /* RUBYWORKS 09-10-02 728x90 */
+    google_ad_slot = "0788888658";
     google_ad_width = 728;
     google_ad_height = 90;
     //-->
@@ -224,10 +243,16 @@
   </div>
 
   <div id="footer">
-    Copyright &copy; 2008 Tiger Ops<br/>
-    XDG is distributed under the terms of the LGPL version 3 license.
+    Copyright &copy; 2011 Thomas Sawyer<br/>
+    XDG is distributed under the terms of the Apache 2.0 license.
   </div>
 
+</div>
+
+<div id="rubyworks" style="position: fixed; bottom: 5px; right: 10px; padding: 0; opacity: 0.3;">
+  <a href="http://rubyworks.github.com">
+    <img src="http://rubyworks.github.com/assets/images/seal.png" height="150px" />
+  </a>
 </div>
 
 </body>
