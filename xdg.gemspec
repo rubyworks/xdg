@@ -2,7 +2,7 @@
 name: xdg
 version: !ruby/object:Gem::Version 
   prerelease: 
-  version: 2.0.0
+  version: 2.1.0
 platform: ruby
 authors: 
 - Thomas Sawyer
@@ -11,8 +11,18 @@ bindir: bin
 cert_chain: []
 
 date: 2011-06-09 00:00:00 Z
-dependencies: []
-
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: qed
+  prerelease: false
+  requirement: &id001 !ruby/object:Gem::Requirement 
+    none: false
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: "0"
+  type: :development
+  version_requirements: *id001
 description: XDG provides a module for supporting the XDG Base Directory Standard. See http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html
 email: transfire@gmail.com
 executables: []
@@ -31,8 +41,9 @@ files:
 - lib/xdg/version.rb
 - lib/xdg.rb
 - qed/01_base_dir.rdoc
-- qed/02_base_dir_extended.rb
-- qed/03_base_dir_mixin.rb
+- qed/02_base_dir_extended.rdoc
+- qed/03_base_dir_mixin.rdoc
+- qed/applique/ae.rb
 - qed/applique/fakeroot.rb
 - qed/fixtures/fakeroot/etc/xdg/bar.config
 - qed/fixtures/fakeroot/home/.cache/foo.cache

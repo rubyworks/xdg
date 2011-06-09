@@ -8,8 +8,9 @@ lib/xdg/base_dir.rb
 lib/xdg/version.rb
 lib/xdg.rb
 qed/01_base_dir.rdoc
-qed/02_base_dir_extended.rb
-qed/03_base_dir_mixin.rb
+qed/02_base_dir_extended.rdoc
+qed/03_base_dir_mixin.rdoc
+qed/applique/ae.rb
 qed/applique/fakeroot.rb
 qed/fixtures/fakeroot/etc/xdg/bar.config
 qed/fixtures/fakeroot/home/.cache/foo.cache

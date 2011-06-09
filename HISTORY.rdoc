@@ -1,5 +1,19 @@
 = RELEASE HISTORY
 
+== 2.1.0 / 2011-06-10
+
+This release changes the BaseDir#list method, where as it used
+to be an alias for #to_a, it now differs in that it does not
+expand the paths. In addtion a few tests were fixed and version
+number properly updated int hte version.rb file.
+
+Changes:
+
+* Change BaseDir#list to not expand paths.
+* Properly assign VERSION constant.
+* Fix broken qed tests.
+
+
 == 2.0.0 / 2011-06-09
 
 Major new release is full rewrite of the API, with an eye out for
