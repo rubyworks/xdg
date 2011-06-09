@@ -3,8 +3,7 @@ name: xdg
 version: 2.0.0
 title: XDG
 summary: XDG provides an interface for using XDG directory standard.
-description: 
-  XDG provides a module for supporting the XDG Base Directory Standard. See: http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html
+description: XDG provides a module for supporting the XDG Base Directory Standard. See http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html
 loadpath: 
 - lib
 manifest: Manifest.txt
