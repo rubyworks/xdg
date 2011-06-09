@@ -1,4 +1,4 @@
-= XDG Base Directory Standard for Ruby
+= XDG Standards for Ruby
 
 Author::    Thomas Sawyer
 Copyright:: (c) 2011 Thomas Sawyer
@@ -24,7 +24,7 @@ http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 * {Homepage}[http://rubyworks.github.com/xdg]
 * {Source Code}[http://github.com/rubyworks/xdg]
 * {Report an Issue}[http://github.com/rubyworks/xdg/issues]
-* {Mailing List}[mail: http://googlegroups.com/group.rubyworks-mailinglist]
+* {Mailing List}[http://googlegroups.com/group.rubyworks-mailinglist]
 
 
 == How to Use
@@ -60,7 +60,6 @@ that ties into both the `HOME` and `DIRS` paths.
 If you know XDG these are pretty much self-explanatory.
 But see the YARD-based API documentation for further specifics.
 
-
 === Extended Functionality
 
 The Ruby XDG module also provides extended functionality
@@ -69,16 +68,31 @@ simply add-on functionality deemed useful, or implementations
 of  proposals being discussed for a possible future version of
 the standard.
 
-    require 'xdg/base_dir/extended'
-
     XDG['CONFIG_WORK']
     XDG['CACHE_WORK']
 
 See the API documentation to learn more. Note that the extended modules
 are subject to greater potential for change as they are still being refined.
 
+=== Base Directory Mixin
 
-=== Old API
+XDG provides a convenient base directory mixin that can provide handy a
+interface to a classes.
+
+    class MyAppConfig
+      include XDG::BaseDir::Mixin
+
+      def subdirectory
+        'myapp'
+      end
+    end
+
+    c = MyAppConfig.new
+
+    c.config.home.to_s  #=> '~/.config/myapp'
+
+
+=== Legacy API
 
 Version 2.0+ of library marks are major departure from the earlier
 "fluid" notations of previous versions. Where as one used to do:
@@ -94,25 +108,27 @@ closely Ruby's interface to the environment variables themselves, e.g.
 
     ENV['XDG_DATA_HOME']
 
-If you prefer the older style, a compatibility layer is provided. 
+If you prefer the older style, a compatibility layer is provided. You will
+need to load:
 
     require 'xdg/base_dir/legacy'
 
-However we HIGHLY SUGGEST that you do not use the legacy API, as there is no
-guarantee it will remain intact in future versions.
+However we STRONGLY RECOMMEND that you do not use the legacy API --use it only
+if you need to keep some old code working and don't have time to update it at
+them moment. Sometime in the future the legacy API will be deprecated.
 
 
 == How to Install
 
 Using RubyGems:
 
-  $ sudo gem install xdg
+    $ sudo gem install xdg
 
 Installing the tarball requires Ruby Setup (see http://rubyworks.github.com/setup).
 
-  $ tar -xvzf xdg-0.5.2
-  $ cd xdg-0.5.2
-  $ sudo setup.rb all
+    $ tar -xvzf xdg-0.5.2
+    $ cd xdg-0.5.2
+    $ sudo setup.rb all
 
 
 == Development
