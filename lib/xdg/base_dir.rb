@@ -48,7 +48,16 @@ module XDG
       @environment_variables
     end
 
-    # Returns a complete list of directories.
+    # The equivalent environment setting.
+    #
+    # @return [String] evnironment vsetting
+    def env
+      environment_variables.map{ |v| ENV[v] }.join(':')
+    end
+
+    # Returns a complete list of expanded directories.
+    #
+    # @return [Array<String>] expanded directory list
     def to_a
       environment_variables.map do |v|
         if paths = ENV[v]
@@ -73,9 +82,22 @@ module XDG
       to_a.each(&block)
     end
 
-    # Returns a complete list of directories.
+    # Returns an *unexpanded* list of directories.
+    #
+    # @return [Array<String>] unexpanded directory list
     def list
-      to_a
+      environment_variables.map do |v|
+        if paths = ENV[v]
+          dirs = paths.split(/[:;]/)
+        else
+          dirs = DEFAULTS[v]
+        end
+        if subdirectory
+          dirs.map{ |path| File.join(path, subdirectory) }
+        else
+          dirs
+        end
+      end.flatten
     end
 
     # List of directories as Pathanme objects.
@@ -83,6 +105,32 @@ module XDG
     # @return [Array<Pathname>] list of directories as Pathname objects
     def paths
       map{ |dir| Pathname.new(dir) }
+    end
+
+    # This is same as #env, but also includes default values.
+    #
+    # @return [String] envinronment value.
+    def to_s
+      environment_variables.map{ |v| ENV[v] || DEFAULTS[v] }.join(':')
+    end
+
+    # @return [Pathname] pathname of first directory
+    def to_path
+      Pathname.new(to_a.first)
+    end
+
+    #
+    attr :subdirectory
+
+    #
+    def subdirectory=(path)
+      @subdirectory = path.to_s
+    end
+
+    #
+    def with_subdirectory(path)
+      @subdirectory = path if path
+      self
     end
 
     # Return array of matching files or directories
@@ -98,7 +146,7 @@ module XDG
     def glob(*glob_and_flags)
       glob, flags = *parse_arguments(*glob_and_flags)
       find = []
-      list.each do |dir|
+      to_a.each do |dir|
         glob.each do |pattern|
           find.concat(Dir.glob(File.join(dir, pattern), flags))
         end
@@ -123,7 +171,7 @@ module XDG
     def select(*glob_and_flags, &block)
       glob, flag = *parse_arguments(*glob_and_flags)
       find = []
-      list.each do |dir|
+      to_a.each do |dir|
         path = File.join(dir, *glob)
         hits = Dir.glob(path, flag)
         hits = hits.select(&block) if block_given?
@@ -139,7 +187,7 @@ module XDG
     def find(*glob_and_flags, &block)
       glob, flag = *parse_arguments(*glob_and_flags)
       find = nil
-      list.each do |dir|
+      to_a.each do |dir|
         path = File.join(dir, *glob)
         hits = Dir.glob(path, flag)
         hits = hits.select(&block) if block_given?
@@ -147,35 +195,6 @@ module XDG
         break if find
       end
       find
-    end
-
-    # @return [String] envinronment values.
-    def to_s
-      environment_variables.map{ |v| ENV[v] || DEFAULTS[v] }.join(':')
-    end
-
-    # @return [Pathname] pathname of first directory
-    def to_path
-      Pathname.new(to_s)
-    end
-
-    #
-    def env
-      environment_variables.map{ |v| ENV[v] }.join(':')
-    end
-
-    #
-    attr :subdirectory
-
-    #
-    def subdirectory=(path)
-      @subdirectory = path.to_s
-    end
-
-    #
-    def with_subdirectory(path)
-      @subdirectory = path if path
-      self
     end
 
   private
