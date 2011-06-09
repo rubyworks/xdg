@@ -1,3 +1,0 @@
-#!/usr/bin/env ruby
-system('testrb -Ilib test/test_xdg.rb')
-
