@@ -1,0 +1,23 @@
+module XDG
+
+  #
+  require 'xdg/base_dir'
+
+  # Base directory interface class.
+  class BaseDir
+
+    #
+    DEFAULTS['XDG_RESOURCE_HOME'] = ['~/.local']
+    DEFAULTS['XDG_RESOURCE_DIRS'] = ['/usr/local','/usr']
+
+    # Working directory
+    # TODO: Not sure about these defaults
+    DEFAULTS['XDG_CONFIG_WORK']   = ['.config','config']
+    DEFAULTS['XDG_CACHE_WORK']    = ['.tmp','tmp']
+    DEFAULTS['XDG_RESOURCE_WORK'] = ['.local']
+  end
+
+end
+
+# Copyright (c) 2008,2011 Thomas Sawyer
+# Distributed under the terms of the APACHE 2.0 license.

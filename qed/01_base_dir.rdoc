@@ -1,0 +1,60 @@
+= XDG Base Directory Standard
+
+The 2.0 API is much a great deal more concise than the original
+0.0+ and 1.0+ APIs. It consists primarily of a single
+interface method `XDG[]`. Yet all the functionality of the older
+API remain and then some.
+
+First we need to require the library.
+
+    require 'xdg'
+
+We will use these environment settings as test fixtures.
+
+
+== $XDG_DATA_HOME
+
+    XDG[:DATA, :HOME].to_a.assert == [$FAKE_ROOT + '.local/share']
+
+
+== $XDG_DATA_DIRS
+
+    XDG[:DATA, :DIRS].to_a.assert == [$FAKE_ROOT + 'usr/share']
+
+
+== $XDG_DATA
+
+    XDG[:DATA].to_a.assert == [$FAKE_ROOT + '.local/share', $FAKE_ROOT + 'usr/share']
+
+
+== $XDG_CONFIG_HOME
+
+    XDG[:CONFIG, :HOME].to_a.assert == [$FAKE_ROOT + '.config']
+
+
+== $XDG_CONFIG_DIRS
+
+    XDG[:CONFIG, :DIRS].to_a.assert == [$FAKE_ROOT + 'etc/xdg']
+
+
+== $XDG_CONFIG
+
+    XDG[:CONFIG].to_a.assert == [$FAKE_ROOT + '.config', $FAKE_ROOT + 'etc/xdg']
+
+
+
+== $XDG_CACHE_HOME
+
+    XDG[:CACHE, :HOME].to_a.assert == [$FAKE_ROOT + '.cache']
+
+
+== $XDG_CACHE_DIRS
+
+    XDG[:CACHE, :DIRS].to_a.assert == [$FAKE_ROOT + 'tmp']
+
+
+== $XDG_CACHE
+
+    XDG[:CACHE].to_a.assert == [$FAKE_ROOT + '.cache', $FAKE_ROOT + 'tmp']
+
+
