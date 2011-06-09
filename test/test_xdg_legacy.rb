@@ -1,6 +1,6 @@
 $:.unshift 'lib'
 
-require 'xdg/extended'
+require 'xdg/base_dir/legacy'
 require 'test/unit'
 
 # run test from fakeroot directory.
@@ -104,11 +104,13 @@ class TestXDG < Test::Unit::TestCase
   # Test the working directory variations.
 
   def test_config_work
-    assert_equal(File.join(Dir.pwd,'.config'), XDG.config.work)
+    result = [File.join(Dir.pwd,'.config'), File.join(Dir.pwd,'config')]
+    assert_equal(result, XDG.config.work)
   end
 
   def test_cache_work
-    assert_equal(File.join(Dir.pwd,'.cache'), XDG.cache.work)
+    result = [File.join(Dir.pwd,'.tmp'), File.join(Dir.pwd,'tmp')]
+    assert_equal(result, XDG.cache.work)
   end
 
 end

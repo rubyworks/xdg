@@ -5,8 +5,10 @@
 
 == Introduction
 
-XDG provides an easy to use module for utilizing the XDG Base
-Directory Standard.
+XDG is intended to provide an easy to use library for working
+with XDG standards.
+
+Currently it only supports the XDG Base Directory Standard.
 
 If your program utilizes user or system-wide support files
 (eg. configuration files), you owe it to yourself to checkout
@@ -18,41 +20,37 @@ http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html
 
 == HOW TO USE
 
-XDG consists of a small set of modules, one for each XDG directory. Each of
-these has a small base set of easy to use methods.
+For working with XDG base directories, XDG provides a very simple
+yet flexible interface, `XDG[]`. Let's say you want to work
+with the $XDG_CONFIG_HOME directory. Simply use:
 
-    XDG::Config.home
-    XDG::Config.dirs
-    XDG::Config.find(pattern){ |path| ... }
-    XDG::Config.select(pattern){ |path| ... }
+    XDG['CONFIG_HOME']
 
-    XDG::Data.home
-    XDG::Data.dirs
-    XDG::Data.find(pattern){ |path| ... }
-    XDG::Data.select(pattern){ |path| ... }
+This will give you access to a number of useful methods all tied
+into the user's personal configuraiton directory. Some examples:
 
-    XDG::Cache.home
-    XDG::Cache.find(pattern){ |path| ... }
-    XDG::Cache.select(pattern){ |path| ... }
+    XDG['CONFIG_HOME'].glob(pattern)
+    XDG['CONFIG_HOME'].select(pattern){ |path| ... }
+    XDG['CONFIG_HOME'].find(pattern){ |path| ... }
 
-XDG can also access these modules via methods.
+The same holds true for the other base directories.
 
-    XDG.config.home
-    XDG.config.dirs
-    XDG.config.find(pattern){ |path| ... }
-    XDG.config.select(pattern){ |path| ... }
+    XDG['DATA_HOME']
+    XDG['DATA_DIRS']
 
-    XDG.data.home
-    XDG.data.dirs
-    XDG.data.find(pattern){ |path| ... }
-    XDG.data.select(pattern){ |path| ... }
+    XDG['CACHE_HOME']
+    XDG['CACHE_DIRS']
 
-    XDG.cache.home
-    XDG.cache.find(pattern){ |path| ... }
-    XDG.cache.select(pattern){ |path| ... }
+By leaving out the last qualifier, XDG will provide an interface
+that ties into both the `HOME` and `DIRS` paths.
+
+    XDG['DATA']
+    XDG['CONFIG']
+    XDG['CACHE']
 
 If you know XDG these are pretty much self-explanitory.
-But see the RDocs for specifics.
+But see the YARD-based API documentation for further specifics.
+
 
 === Extended Functionality
 
@@ -62,14 +60,37 @@ simply add-on funcitonality deemed useful, or implementations
 of  proposals being discussed for a possible future version of
 the standard.
 
-    require 'xdg/extended'
+    require 'xdg/base_dir/extended'
 
-    XDG.config.work
-    XDG.cache.work
+    XDG['CONFIG_WORK']
+    XDG['CACHE_WORK']
 
-See the API for the extended.rb, to learn more. Note that
-the extended modules are subject to great change of change
-as they are still being designed.
+See the API doecumentation to learn more. Note that the extended modules
+are subject to greater potential for change as they are still being refined.
+
+
+=== Old API
+
+Version 2.0+ of library marks are major departure from the earlier
+"fluid" notations of previous versions. Where as one used to do:
+
+    XDG.data.home
+
+With the new API one now does:
+
+    XDG['DATA_HOME']
+
+This was done for a few reasons, but primarily becuase it reflects more
+cloesly Ruby's interface to the environment variables themselves, e.g.
+
+    ENV['XDG_DATA_HOME']
+
+If you prefer the older style, a compatibility layer is provided. 
+
+    require 'xdg/base_dir/legacy'
+
+However we HIGHLY SUGGEST that you do not use the legacy API, as there is no
+guarentee it will remain intact going forward.
 
 
 == HOW TO INSTALL
@@ -87,12 +108,17 @@ Installing the tarball requires Ruby Setup (see http://proutils.github.com/setup
 
 == DEVELOPMENT
 
-Visit http://github.com/rubyworks/xdg
+GitHub[http://github.com] hosts our {source code}[http://github.com/rubyworks/xdg]
+and {issue ticket system}[http://github.com/rubyworks/xdg/issues].
+
+To contribute to the project please fork the repository, ideally, create a new
+topic branch for your work, and submit a pull request.
 
 
 == COPYRIGHT
 
-Copyright (c) 2008, 2009 Thomas Sawyer
-Distributed under the terms of the LGPL v3 license.
-See COPYING file for details.
+Copyright (c) 2008, 2011 Thomas Sawyer
 
+Distributed under the terms of the Apache 2.0 license.
+
+See APACHE2.txt file for details.

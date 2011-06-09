@@ -1,5 +1,8 @@
 .cache
-doc/rdoc
-doc/ri
+.rdoc
+.ri
+.yardoc
+doc
+site/doc
 log
 pkg

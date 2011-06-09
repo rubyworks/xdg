@@ -9,52 +9,69 @@ First we need to require the library.
 
     require 'xdg'
 
-We will use these environment settings as test fixtures.
+In the applique we have setup a fake root directory with 
+coorepsonding environment settings to use as test fixtures.
+
+== Data Paths
+
+=== Home
+
+    XDG['DATA_HOME'].env.assert == ENV['XDG_DATA_HOME'].to_s
+    XDG['DATA_HOME'].environment_variables.assert == ['XDG_DATA_HOME']
+
+Looking at the data home location by default it should be point to
+our joe user's home directory under `.local/share`.
+
+    XDG['DATA_HOME'].to_a.assert == [$froot + 'home/joe/.local/share']
+
+=== Dirs
+
+    XDG['DATA_DIRS'].env.assert == ENV['XDG_DATA_DIRS'].to_s
+    XDG['DATA_DIRS'].environment_variables.assert == ['XDG_DATA_DIRS']
+
+Looking at the system data locations
+
+    XDG['DATA_DIRS'].to_a.assert == [$froot + 'usr/share']
+
+=== Combined
+
+    XDG['DATA'].environment_variables.assert == ['XDG_DATA_HOME', 'XDG_DATA_DIRS']
+
+Lookking at both data location combined
+
+    XDG['DATA'].to_a.assert == [$froot + 'home/joe/.local/share', $froot + 'usr/share']
 
 
-== $XDG_DATA_HOME
+== Config Paths
 
-    XDG[:DATA, :HOME].to_a.assert == [$FAKE_ROOT + '.local/share']
+=== Home
 
+    XDG['CONFIG_HOME'].env.assert == ENV['XDG_CONFIG_HOME'].to_s
+    XDG['CONFIG_HOME'].to_a.assert == [$froot + 'home/joe/.config']
 
-== $XDG_DATA_DIRS
+=== Dirs
 
-    XDG[:DATA, :DIRS].to_a.assert == [$FAKE_ROOT + 'usr/share']
+    XDG['CONFIG_DIRS'].env.assert == ENV['XDG_CONFIG_DIRS'].to_s
+    XDG['CONFIG_DIRS'].to_a.assert == [$froot + 'etc/xdg', $froot + 'etc']
 
+=== Combined
 
-== $XDG_DATA
-
-    XDG[:DATA].to_a.assert == [$FAKE_ROOT + '.local/share', $FAKE_ROOT + 'usr/share']
-
-
-== $XDG_CONFIG_HOME
-
-    XDG[:CONFIG, :HOME].to_a.assert == [$FAKE_ROOT + '.config']
+    XDG['CONFIG'].to_a.assert == [$froot + 'home/joe/.config', $froot + 'etc/xdg', $froot + 'etc']
 
 
-== $XDG_CONFIG_DIRS
+== Cache Paths
 
-    XDG[:CONFIG, :DIRS].to_a.assert == [$FAKE_ROOT + 'etc/xdg']
+=== Home
 
+    XDG['CACHE_HOME'].env.assert == ENV['XDG_CACHE_HOME'].to_s
+    XDG['CACHE_HOME'].to_a.assert == [$froot + 'home/joe/.cache']
 
-== $XDG_CONFIG
+=== Dirs
 
-    XDG[:CONFIG].to_a.assert == [$FAKE_ROOT + '.config', $FAKE_ROOT + 'etc/xdg']
+    XDG['CACHE_DIRS'].env.assert == ENV['XDG_CACHE_DIRS'].to_s
+    XDG['CACHE_DIRS'].to_a.assert == [$froot + 'tmp']
 
+=== Combined
 
-
-== $XDG_CACHE_HOME
-
-    XDG[:CACHE, :HOME].to_a.assert == [$FAKE_ROOT + '.cache']
-
-
-== $XDG_CACHE_DIRS
-
-    XDG[:CACHE, :DIRS].to_a.assert == [$FAKE_ROOT + 'tmp']
-
-
-== $XDG_CACHE
-
-    XDG[:CACHE].to_a.assert == [$FAKE_ROOT + '.cache', $FAKE_ROOT + 'tmp']
-
+    XDG['CACHE'].to_a.assert == [$froot + 'home/joe/.cache', $froot + 'tmp']
 

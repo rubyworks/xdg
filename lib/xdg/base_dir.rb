@@ -23,28 +23,27 @@ module XDG
     include Enumerable
 
     # Shortcut for `BaseDir.new`.
-    def self.[](*env_path)
-      new(*env_path)
+    def self.[](*env)
+      new(*env)
     end
 
     # Initialize new instance of BaseDir class.
-    def initialize(*env_path)
-      case env_path.size
-      when 0
-        raise ArgumentError
-      when 1
-        @environment_variables = [
-          'XDG_' + env_path.first.to_s.upcase + '_HOME',
-          'XDG_' + env_path.first.to_s.upcase + '_DIRS'
-        ]
-      else
-        @environment_variables = ['XDG_' + env_path.join('_').upcase]
+    def initialize(*env)
+      @environment_variables = []
+      env.each do |v|
+        v = v.to_s.upcase
+        if v !~ /_/
+          @environment_variables << 'XDG_' + v + '_HOME'
+          @environment_variables << 'XDG_' + v + '_DIRS'
+        else
+          @environment_variables << 'XDG_' + v
+        end
       end
     end
 
     # The environment variables being referenced.
     #
-    # @returns [Array] list of XDG environment variable names
+    # @return [Array] list of XDG environment variable names
     def environment_variables
       @environment_variables
     end
@@ -81,7 +80,7 @@ module XDG
 
     # List of directories as Pathanme objects.
     #
-    # @returns [Array<Pathname>] list of directories as Pathname objects
+    # @return [Array<Pathname>] list of directories as Pathname objects
     def paths
       map{ |dir| Pathname.new(dir) }
     end
@@ -150,14 +149,19 @@ module XDG
       find
     end
 
-    # @returns [String] first directory
+    # @return [String] envinronment values.
     def to_s
-      to_a.first
+      environment_variables.map{ |v| ENV[v] || DEFAULTS[v] }.join(':')
     end
 
-    # @returns [Pathname] pathname of first directory
+    # @return [Pathname] pathname of first directory
     def to_path
       Pathname.new(to_s)
+    end
+
+    #
+    def env
+      environment_variables.map{ |v| ENV[v] }.join(':')
     end
 
   private
