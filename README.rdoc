@@ -1,7 +1,9 @@
 = XDG Base Directory Standard for Ruby
 
-* http://rubyworks.github.com/xdg
-* http://github.com/rubyworks/xdg
+Author::    Thomas Sawyer
+Copyright:: (c) 2011 Thomas Sawyer
+Licesne::   Apache 2.0
+
 
 == Introduction
 
@@ -18,7 +20,13 @@ You can learn more about the standard at:
 http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html 
 
 
-== HOW TO USE
+== Resources
+
+* home: http://rubyworks.github.com/xdg
+* code: http://github.com/rubyworks/xdg
+
+
+== How to Use
 
 For working with XDG base directories, XDG provides a very simple
 yet flexible interface, `XDG[]`. Let's say you want to work
@@ -93,7 +101,7 @@ However we HIGHLY SUGGEST that you do not use the legacy API, as there is no
 guarantee it will remain intact in future versions.
 
 
-== HOW TO INSTALL
+== How to Install
 
 Using RubyGems:
 
@@ -106,7 +114,7 @@ Installing the tarball requires Ruby Setup (see http://rubyworks.github.com/setu
   $ sudo setup.rb all
 
 
-== DEVELOPMENT
+== Development
 
 GitHub[http://github.com] hosts our {source code}[http://github.com/rubyworks/xdg]
 and {issue ticket system}[http://github.com/rubyworks/xdg/issues].
@@ -115,7 +123,7 @@ To contribute to the project please fork the repository, ideally, create a new
 topic branch for your work, and submit a pull request.
 
 
-== COPYRIGHT
+== Copyright & License
 
 Copyright (c) 2008, 2011 Thomas Sawyer
 
