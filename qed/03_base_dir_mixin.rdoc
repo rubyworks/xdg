@@ -15,5 +15,5 @@ access to a named subdirectory of the XDG directories.
 
     c = MyAppConfig.new
 
-    c.config.home.to_s  #=> '~/.config/myapp'
+    c.config.home.to_a  #=> [$froot + 'home/joe/.config/myapp']
 

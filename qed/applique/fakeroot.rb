@@ -4,6 +4,8 @@ dir = File.expand_path(File.dirname(File.dirname(__FILE__)))
 
 $froot = File.join(dir, 'fixtures/fakeroot/')
 
+p $froot
+
 #
 ENV['HOME']            = $froot + 'home/joe'
 #ENV['XDG_DATA_HOME']   = $froot + '.local/share'
