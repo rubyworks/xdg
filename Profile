@@ -8,8 +8,8 @@ authors: Thomas Sawyer
 company: RubyWorks
 created: 2008-09-27
 
-copyright:
-  Copyright (c) 2008 Thomas Sawyer
+requires:
+  - qed (test)
 
 description:
   XDG provides a module for supporting the XDG Base Directory Standard.
@@ -18,4 +18,8 @@ description:
 resources:
   home: http://rubyworks.github.com/xdg
   code: http://github.com/rubyworks/xdg
+
+copyright:
+  Copyright (c) 2008,2011 Thomas Sawyer
+
 
