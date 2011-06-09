@@ -2,28 +2,29 @@
 
 Author::    Thomas Sawyer
 Copyright:: (c) 2011 Thomas Sawyer
-Licesne::   Apache 2.0
+License::   Apache 2.0
 
 
 == Introduction
 
-XDG is intended to provide an easy to use library for working
-with XDG standards.
+XDG provides an easy to use Ruby library for working with XDG standards.
 
-Currently it only supports the XDG Base Directory Standard.
+Presently, it only supports the XDG Base Directory Standard.
 
 If your program utilizes user or system-wide support files
 (e.g. configuration files), you owe it to yourself to checkout
-the XDG standard.
+the XDG base directory standard.
 
 You can learn more about the standard at:
-http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html 
+http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 
 
 == Resources
 
-* home: http://rubyworks.github.com/xdg
-* code: http://github.com/rubyworks/xdg
+* {Homepage}[http://rubyworks.github.com/xdg]
+* {Source Code}[http://github.com/rubyworks/xdg]
+* {Report an Issue}[http://github.com/rubyworks/xdg/issues]
+* {Mailing List}[mail: http://googlegroups.com/group.rubyworks-mailinglist]
 
 
 == How to Use
