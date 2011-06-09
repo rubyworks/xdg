@@ -56,7 +56,7 @@ module XDG
         else
           dirs = DEFAULTS[v]
         end
-        dirs.map{ |path| File.expand_path(path) }
+        dirs.map{ |path| expand(path) }
       end.flatten
     end
 
@@ -164,6 +164,20 @@ module XDG
       environment_variables.map{ |v| ENV[v] }.join(':')
     end
 
+    #
+    attr :subdirectory
+
+    #
+    def subdirectory=(path)
+      @subdirectory = path.to_s
+    end
+
+    #
+    def with_subdirectory(path)
+      @subdirectory = path if path
+      self
+    end
+
   private
 
     def parse_arguments(*glob_and_flags)
@@ -177,6 +191,15 @@ module XDG
         end
       end
       return glob, flag
+    end
+
+    #
+    def expand(path)
+      if subdirectory
+        File.expand_path(File.join(path, subdirectory))
+      else
+        File.expand_path(path)
+      end
     end
 
     # If Pathname is referenced the library is automatically loaded.

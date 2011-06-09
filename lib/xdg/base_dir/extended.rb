@@ -1,8 +1,5 @@
 module XDG
 
-  #
-  require 'xdg/base_dir'
-
   # Base directory interface class.
   class BaseDir
 

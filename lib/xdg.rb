@@ -24,8 +24,17 @@
 # The module returns all paths as String.
 #
 module XDG
-  require 'xdg/version'
-  require 'xdg/base_dir'
+  if RUBY_VERSION > '1.9'
+    require_relative 'xdg/version'
+    require_relative 'xdg/base_dir'
+    require_relative 'xdg/base_dir/extended'
+    require_relative 'xdg/base_dir/mixin'
+  else
+    require 'xdg/version'
+    require 'xdg/base_dir'
+    require 'xdg/base_dir/extended'
+    require 'xdg/base_dir/mixin'
+  end
 
   #
   def self.[](*env_path)
