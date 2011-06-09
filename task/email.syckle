@@ -1,8 +1,0 @@
----
-email:
-  service : Email
-  file    : ~
-  subject : ~
-  mailto  : ruby-talk@ruby-lang.org
-  active  : true
-

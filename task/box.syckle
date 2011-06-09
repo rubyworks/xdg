@@ -1,5 +1,0 @@
----
-box:
-  service  : Box
-  types    : [gz, gem]
-

@@ -1,0 +1,32 @@
+---
+email:
+  service : Email
+  file    : ~
+  subject : ~
+  mailto  : 
+    - ruby-talk@ruby-lang.org
+    - rubyworks-mailinglist@googlegroups.com
+
+gem:
+  autospec: true
+
+grancher: {}
+
+yard:
+  output : site/doc
+
+stats: {}
+
+vclog:
+  layout: rel
+  active: false
+
+
+# boy is this outdated ;)
+
+rubyforge:
+  service  : Rubyforge
+  unixname : xdg
+  groupid  : 7077
+  active   : false
+

@@ -1,6 +1,0 @@
----
-rubyforge:
-  service  : Rubyforge
-  unixname : xdg
-  groupid  : 7077
-  active   : false
