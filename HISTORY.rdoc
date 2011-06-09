@@ -1,5 +1,19 @@
 = RELEASE HISTORY
 
+== 2.0.0 / 2011-06-09
+
+Major new release is full rewrite of the API, with an eye out for
+support future XDG standards beyond the base directories. The
+new API uses a single point of entry `XDG[]` (a shortcut for
+`XDG::BaseDir[]`).
+
+Changes:
+
+* Complete rewrite of API.
+* Utilize single point of entry interface.
+* Structure project for future support of more of XDG.
+
+
 == 1.0.0 / 2009-12-01
 
 This is major reimplementation of the XDG API to be more flexiable

@@ -1,4 +1,5 @@
 --- 
+name   : xdg
 title  : XDG
 summary: XDG provides an interface for using XDG directory standard.
 contact: Thomas Sawyer <transfire@gmail.com>
