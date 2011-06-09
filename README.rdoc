@@ -11,7 +11,7 @@ with XDG standards.
 Currently it only supports the XDG Base Directory Standard.
 
 If your program utilizes user or system-wide support files
-(eg. configuration files), you owe it to yourself to checkout
+(e.g. configuration files), you owe it to yourself to checkout
 the XDG standard.
 
 You can learn more about the standard at:
@@ -27,7 +27,7 @@ with the $XDG_CONFIG_HOME directory. Simply use:
     XDG['CONFIG_HOME']
 
 This will give you access to a number of useful methods all tied
-into the user's personal configuraiton directory. Some examples:
+into the user's personal configuration directory. Some examples:
 
     XDG['CONFIG_HOME'].glob(pattern)
     XDG['CONFIG_HOME'].select(pattern){ |path| ... }
@@ -48,7 +48,7 @@ that ties into both the `HOME` and `DIRS` paths.
     XDG['CONFIG']
     XDG['CACHE']
 
-If you know XDG these are pretty much self-explanitory.
+If you know XDG these are pretty much self-explanatory.
 But see the YARD-based API documentation for further specifics.
 
 
@@ -56,7 +56,7 @@ But see the YARD-based API documentation for further specifics.
 
 The Ruby XDG module also provides extended functionality
 not part of the standard specification. These extensions are
-simply add-on funcitonality deemed useful, or implementations
+simply add-on functionality deemed useful, or implementations
 of  proposals being discussed for a possible future version of
 the standard.
 
@@ -65,7 +65,7 @@ the standard.
     XDG['CONFIG_WORK']
     XDG['CACHE_WORK']
 
-See the API doecumentation to learn more. Note that the extended modules
+See the API documentation to learn more. Note that the extended modules
 are subject to greater potential for change as they are still being refined.
 
 
@@ -80,8 +80,8 @@ With the new API one now does:
 
     XDG['DATA_HOME']
 
-This was done for a few reasons, but primarily becuase it reflects more
-cloesly Ruby's interface to the environment variables themselves, e.g.
+This was done for a few reasons, but primarily because it reflects more
+closely Ruby's interface to the environment variables themselves, e.g.
 
     ENV['XDG_DATA_HOME']
 
@@ -90,7 +90,7 @@ If you prefer the older style, a compatibility layer is provided.
     require 'xdg/base_dir/legacy'
 
 However we HIGHLY SUGGEST that you do not use the legacy API, as there is no
-guarentee it will remain intact going forward.
+guarantee it will remain intact going forward.
 
 
 == HOW TO INSTALL
