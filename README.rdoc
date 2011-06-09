@@ -90,7 +90,7 @@ If you prefer the older style, a compatibility layer is provided.
     require 'xdg/base_dir/legacy'
 
 However we HIGHLY SUGGEST that you do not use the legacy API, as there is no
-guarantee it will remain intact going forward.
+guarantee it will remain intact in future versions.
 
 
 == HOW TO INSTALL
@@ -99,7 +99,7 @@ Using RubyGems:
 
   $ sudo gem install xdg
 
-Installing the tarball requires Ruby Setup (see http://proutils.github.com/setup).
+Installing the tarball requires Ruby Setup (see http://rubyworks.github.com/setup).
 
   $ tar -xvzf xdg-0.5.2
   $ cd xdg-0.5.2
