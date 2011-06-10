@@ -1,5 +1,18 @@
 = RELEASE HISTORY
 
+== 2.2.0 / 2011-06-11
+
+This release changes BaseDir#to_s to return the first directory
+entry, and moves the old #to_s to #environment_with_defaults
+with an alias of #env. The old #env now being called #environment.
+
+Changes:
+
+* Rename #env to #environment.
+* Rename #to_s to #environment_with_defaults.
+* Modify #to_s to return first directory.
+
+
 == 2.1.0 / 2011-06-10
 
 This release changes the BaseDir#list method, where as it used

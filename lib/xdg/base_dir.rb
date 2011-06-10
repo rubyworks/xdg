@@ -48,12 +48,23 @@ module XDG
       @environment_variables
     end
 
-    # The equivalent environment setting.
+    # The environment setting, or it's equivalent when the BaseDir
+    # is a combination of environment variables.
     #
     # @return [String] evnironment vsetting
-    def env
+    def environment
       environment_variables.map{ |v| ENV[v] }.join(':')
     end
+
+    # This is same as #environment, but also includes default values.
+    #
+    # @return [String] envinronment value.
+    def environment_with_defaults
+      environment_variables.map{ |v| ENV[v] || DEFAULTS[v] }.join(':')
+    end
+
+    # Shortcut for #environment_with_defaults.
+    alias :env, :environment_with_defaults
 
     # Returns a complete list of expanded directories.
     #
@@ -107,27 +118,33 @@ module XDG
       map{ |dir| Pathname.new(dir) }
     end
 
-    # This is same as #env, but also includes default values.
+    # Returns the first directory expanded. Since a environment settings
+    # like `*_HOME` will only have one directory entry, this definition
+    # of #to_s makes utilizing those more convenient.
     #
-    # @return [String] envinronment value.
+    # @return [String] directory
     def to_s
-      environment_variables.map{ |v| ENV[v] || DEFAULTS[v] }.join(':')
+      to_a.first
     end
 
+    # The first directory converted to a Pathname object.
+    #
     # @return [Pathname] pathname of first directory
     def to_path
       Pathname.new(to_a.first)
     end
 
-    #
+    # The common subdirectory.
     attr :subdirectory
 
-    #
+    # Set subdirectory to be applied to all paths.
     def subdirectory=(path)
       @subdirectory = path.to_s
     end
 
+    # Set subdirectory to be applied to all paths and return `self`.
     #
+    # @return [BaseDir] self
     def with_subdirectory(path)
       @subdirectory = path if path
       self

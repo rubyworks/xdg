@@ -1,8 +1,13 @@
 --- !ruby/object:Gem::Specification 
 name: xdg
 version: !ruby/object:Gem::Version 
+  hash: 7
   prerelease: 
-  version: 2.1.0
+  segments: 
+  - 2
+  - 2
+  - 0
+  version: 2.2.0
 platform: ruby
 authors: 
 - Thomas Sawyer
@@ -10,7 +15,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2011-06-09 00:00:00 Z
+date: 2011-06-10 00:00:00 Z
 dependencies: 
 - !ruby/object:Gem::Dependency 
   name: qed
@@ -20,6 +25,9 @@ dependencies:
     requirements: 
     - - ">="
       - !ruby/object:Gem::Version 
+        hash: 3
+        segments: 
+        - 0
         version: "0"
   type: :development
   version_requirements: *id001
@@ -76,12 +84,18 @@ required_ruby_version: !ruby/object:Gem::Requirement
   requirements: 
   - - ">="
     - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
       version: "0"
 required_rubygems_version: !ruby/object:Gem::Requirement 
   none: false
   requirements: 
   - - ">="
     - !ruby/object:Gem::Version 
+      hash: 3
+      segments: 
+      - 0
       version: "0"
 requirements: []
 

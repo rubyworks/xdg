@@ -14,7 +14,7 @@ module XDG
     #
     #     c = MyAppConfig.new
     #
-    #     c.config.home.to_s  #=> '~/.config/myapp'
+    #     c.config.home.list  #=> ['~/.config/myapp']
     #
     module Mixin
 

@@ -1,36 +1,36 @@
 --- 
-name: xdg
-version: 2.1.0
-title: XDG
-summary: XDG provides an interface for using XDG directory standard.
-description: XDG provides a module for supporting the XDG Base Directory Standard. See http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html
+spec_version: 1.0.0
+replaces: []
+
 loadpath: 
 - lib
-manifest: Manifest.txt
-requires: 
-- name: qed
-  version: 0+
-  group: 
-  - test
-conflicts: []
+name: xdg
+repositories: {}
 
-replaces: []
+conflicts: []
 
 engine_check: []
 
-organization: RubyWorks
+title: XDG
 contact: Thomas Sawyer <transfire@gmail.com>
-created: 2008-09-27
-copyright: Copyright (c) 2008,2011 Thomas Sawyer
-licenses: 
-- Apache 2.0
-authors: 
-- Thomas Sawyer
+resources: 
+  code: http://github.com/rubyworks/xdg
+  home: http://rubyworks.github.com/xdg
 maintainers: []
 
-resources: 
-  home: http://rubyworks.github.com/xdg
-  code: http://github.com/rubyworks/xdg
-repositories: {}
-
-spec_version: 1.0.0
+requires: 
+- group: 
+  - test
+  name: qed
+  version: 0+
+manifest: Manifest.txt
+version: 2.2.0
+licenses: 
+- Apache 2.0
+copyright: Copyright (c) 2008,2011 Thomas Sawyer
+authors: 
+- Thomas Sawyer
+organization: RubyWorks
+description: XDG provides a module for supporting the XDG Base Directory Standard. See http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html
+summary: XDG provides an interface for using XDG directory standard.
+created: 2008-09-27
