@@ -160,7 +160,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>The common subdirectory.</p>
+</div></span>
   
 </li>
 
@@ -234,7 +236,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#env-instance_method" title="#env (instance method)">- (String) <strong>env</strong> </a>
+      <a href="#environment-instance_method" title="#environment (instance method)">- (String) <strong>environment</strong> </a>
     
 
     
@@ -248,7 +250,8 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>The equivalent environment setting.</p>
+<p>The environment setting, or it’s equivalent when the BaseDir is a
+combination of environment variables.</p>
 </div></span>
   
 </li>
@@ -272,6 +275,31 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>The environment variables being referenced.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#environment_with_defaults-instance_method" title="#environment_with_defaults (instance method)">- (String) <strong>environment_with_defaults</strong> </a>
+    
+
+    
+      (also: #env,)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>This is same as #environment, but also includes default values.</p>
 </div></span>
   
 </li>
@@ -486,7 +514,7 @@ system directories.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Pathname of first directory.</p>
+<p>The first directory converted to a Pathname object.</p>
 </div></span>
   
 </li>
@@ -509,7 +537,7 @@ system directories.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>This is same as #env, but also includes default values.</p>
+<p>Returns the first directory expanded.</p>
 </div></span>
   
 </li>
@@ -518,7 +546,7 @@ system directories.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#with_subdirectory-instance_method" title="#with_subdirectory (instance method)">- (Object) <strong>with_subdirectory</strong>(path) </a>
+      <a href="#with_subdirectory-instance_method" title="#with_subdirectory (instance method)">- (BaseDir) <strong>with_subdirectory</strong>(path) </a>
     
 
     
@@ -531,7 +559,9 @@ system directories.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Set subdirectory to be applied to all paths and return `self`.</p>
+</div></span>
   
 </li>
 
@@ -615,18 +645,28 @@ system directories.</p>
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>The common subdirectory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-123
-124
-125</pre>
+138
+139
+140</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 138</span>
 
 <span class='def def kw'>def</span> <span class='subdirectory identifier id'>subdirectory</span>
   <span class='@subdirectory ivar id'>@subdirectory</span>
@@ -712,12 +752,12 @@ system directories.</p>
       <pre class="lines">
 
 
-81
-82
-83</pre>
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 92</span>
 
 <span class='def def kw'>def</span> <span class='each identifier id'>each</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
   <span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='each identifier id'>each</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
@@ -729,16 +769,17 @@ system directories.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="env-instance_method">
+  <p class="signature " id="environment-instance_method">
   
-    - (<tt>String</tt>) <strong>env</strong> 
+    - (<tt>String</tt>) <strong>environment</strong> 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     
-<p>The equivalent environment setting.</p>
+<p>The environment setting, or it’s equivalent when the BaseDir is a
+combination of environment variables.</p>
 
 
   </div>
@@ -769,14 +810,14 @@ system directories.</p>
       <pre class="lines">
 
 
-54
 55
-56</pre>
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 55</span>
 
-<span class='def def kw'>def</span> <span class='env identifier id'>env</span>
+<span class='def def kw'>def</span> <span class='environment identifier id'>environment</span>
   <span class='environment_variables identifier id'>environment_variables</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> <span class='ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>':'</span><span class='rparen token'>)</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -843,6 +884,67 @@ system directories.</p>
 </div>
     
       <div class="method_details ">
+  <p class="signature " id="environment_with_defaults-instance_method">
+  
+    - (<tt>String</tt>) <strong>environment_with_defaults</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='env,-instance_method'>env,</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>This is same as #environment, but also includes default values.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>envinronment value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 62</span>
+
+<span class='def def kw'>def</span> <span class='environment_with_defaults identifier id'>environment_with_defaults</span>
+  <span class='environment_variables identifier id'>environment_variables</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> <span class='ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='DEFAULTS constant id'>DEFAULTS</span><span class='lbrack token'>[</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>':'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <p class="signature " id="find-instance_method">
   
     - (<tt>Object</tt>) <strong>find</strong>(*glob_and_flags, &amp;block) 
@@ -868,21 +970,21 @@ returns the first match found.</p>
       <pre class="lines">
 
 
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198</pre>
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 187</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 204</span>
 
 <span class='def def kw'>def</span> <span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='glob_and_flags identifier id'>glob_and_flags</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
   <span class='glob identifier id'>glob</span><span class='comma token'>,</span> <span class='flag identifier id'>flag</span> <span class='assign token'>=</span> <span class='mult op'>*</span><span class='parse_arguments identifier id'>parse_arguments</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='glob_and_flags identifier id'>glob_and_flags</span><span class='rparen token'>)</span>
@@ -933,19 +1035,19 @@ argument is treated as a logical-or.</p>
       <pre class="lines">
 
 
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155</pre>
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 163</span>
 
 <span class='def def kw'>def</span> <span class='glob identifier id'>glob</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='glob_and_flags identifier id'>glob_and_flags</span><span class='rparen token'>)</span>
   <span class='glob identifier id'>glob</span><span class='comma token'>,</span> <span class='flags identifier id'>flags</span> <span class='assign token'>=</span> <span class='mult op'>*</span><span class='parse_arguments identifier id'>parse_arguments</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='glob_and_flags identifier id'>glob_and_flags</span><span class='rparen token'>)</span>
@@ -1004,23 +1106,23 @@ argument is treated as a logical-or.</p>
       <pre class="lines">
 
 
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
 99
 100
-101</pre>
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 99</span>
 
 <span class='def def kw'>def</span> <span class='list identifier id'>list</span>
   <span class='environment_variables identifier id'>environment_variables</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span>
@@ -1083,12 +1185,12 @@ argument is treated as a logical-or.</p>
       <pre class="lines">
 
 
-106
-107
-108</pre>
+117
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 106</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 117</span>
 
 <span class='def def kw'>def</span> <span class='paths identifier id'>paths</span>
   <span class='map identifier id'>map</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='dir identifier id'>dir</span><span class='bitor op'>|</span> <span class='Pathname constant id'>Pathname</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='dir identifier id'>dir</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
@@ -1134,20 +1236,20 @@ treated as flags.</p>
       <pre class="lines">
 
 
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181</pre>
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 171</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 188</span>
 
 <span class='def def kw'>def</span> <span class='select identifier id'>select</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='glob_and_flags identifier id'>glob_and_flags</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
   <span class='glob identifier id'>glob</span><span class='comma token'>,</span> <span class='flag identifier id'>flag</span> <span class='assign token'>=</span> <span class='mult op'>*</span><span class='parse_arguments identifier id'>parse_arguments</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='glob_and_flags identifier id'>glob_and_flags</span><span class='rparen token'>)</span>
@@ -1189,12 +1291,12 @@ treated as flags.</p>
       <pre class="lines">
 
 
-76
-77
-78</pre>
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 87</span>
 
 <span class='def def kw'>def</span> <span class='size identifier id'>size</span>
   <span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='size identifier id'>size</span>
@@ -1250,19 +1352,19 @@ treated as flags.</p>
       <pre class="lines">
 
 
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70</pre>
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 72</span>
 
 <span class='def def kw'>def</span> <span class='to_a identifier id'>to_a</span>
   <span class='environment_variables identifier id'>environment_variables</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span>
@@ -1290,7 +1392,7 @@ treated as flags.</p>
 </p><div class="docstring">
   <div class="discussion">
     
-<p>Pathname of first directory</p>
+<p>The first directory converted to a Pathname object.</p>
 
 
   </div>
@@ -1321,12 +1423,12 @@ treated as flags.</p>
       <pre class="lines">
 
 
-118
-119
-120</pre>
+133
+134
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 133</span>
 
 <span class='def def kw'>def</span> <span class='to_path identifier id'>to_path</span>
   <span class='Pathname constant id'>Pathname</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='rparen token'>)</span>
@@ -1347,7 +1449,9 @@ treated as flags.</p>
 </p><div class="docstring">
   <div class="discussion">
     
-<p>This is same as #env, but also includes default values.</p>
+<p>Returns the first directory expanded. Since a environment settings like
+`*_HOME` will only have one directory entry, this definition of #to_s makes
+utilizing those more convenient.</p>
 
 
   </div>
@@ -1365,7 +1469,7 @@ treated as flags.</p>
       
         &mdash;
         <div class='inline'>
-<p>envinronment value.</p>
+<p>directory</p>
 </div>
       
     </li>
@@ -1378,15 +1482,15 @@ treated as flags.</p>
       <pre class="lines">
 
 
-113
-114
-115</pre>
+126
+127
+128</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 113</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 126</span>
 
 <span class='def def kw'>def</span> <span class='to_s identifier id'>to_s</span>
-  <span class='environment_variables identifier id'>environment_variables</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> <span class='ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='DEFAULTS constant id'>DEFAULTS</span><span class='lbrack token'>[</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>':'</span><span class='rparen token'>)</span>
+  <span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -1397,23 +1501,51 @@ treated as flags.</p>
       <div class="method_details ">
   <p class="signature " id="with_subdirectory-instance_method">
   
-    - (<tt>Object</tt>) <strong>with_subdirectory</strong>(path) 
+    - (<tt><span class='object_link'><a href="" title="XDG::BaseDir (class)">BaseDir</a></span></tt>) <strong>with_subdirectory</strong>(path) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Set subdirectory to be applied to all paths and return `self`.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="XDG::BaseDir (class)">BaseDir</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>self</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-131
-132
-133
-134</pre>
+148
+149
+150
+151</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 148</span>
 
 <span class='def def kw'>def</span> <span class='with_subdirectory identifier id'>with_subdirectory</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
   <span class='@subdirectory ivar id'>@subdirectory</span> <span class='assign token'>=</span> <span class='path identifier id'>path</span> <span class='if if_mod kw'>if</span> <span class='path identifier id'>path</span>
@@ -1430,7 +1562,7 @@ treated as flags.</p>
 </div>
     
     <div id="footer">
-  Generated on Fri Jun 10 06:58:12 2011 by 
+  Generated on Fri Jun 10 07:34:23 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.7 (ruby-1.8.7).
 </div>
