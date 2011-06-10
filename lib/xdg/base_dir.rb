@@ -64,7 +64,7 @@ module XDG
     end
 
     # Shortcut for #environment_with_defaults.
-    alias :env, :environment_with_defaults
+    alias_method :env, :environment_with_defaults
 
     # Returns a complete list of expanded directories.
     #
