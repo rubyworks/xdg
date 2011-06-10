@@ -16,7 +16,7 @@ coorepsonding environment settings to use as test fixtures.
 
 === Home
 
-    XDG['DATA_HOME'].env.assert == ENV['XDG_DATA_HOME'].to_s
+    XDG['DATA_HOME'].environment.assert == ENV['XDG_DATA_HOME'].to_s
     XDG['DATA_HOME'].environment_variables.assert == ['XDG_DATA_HOME']
 
 Looking at the data home location by default it should be point to
@@ -26,7 +26,7 @@ our joe user's home directory under `.local/share`.
 
 === Dirs
 
-    XDG['DATA_DIRS'].env.assert == ENV['XDG_DATA_DIRS'].to_s
+    XDG['DATA_DIRS'].environment.assert == ENV['XDG_DATA_DIRS'].to_s
     XDG['DATA_DIRS'].environment_variables.assert == ['XDG_DATA_DIRS']
 
 Looking at the system data locations
@@ -46,12 +46,12 @@ Lookking at both data location combined
 
 === Home
 
-    XDG['CONFIG_HOME'].env.assert == ENV['XDG_CONFIG_HOME'].to_s
+    XDG['CONFIG_HOME'].environment.assert == ENV['XDG_CONFIG_HOME'].to_s
     XDG['CONFIG_HOME'].to_a.assert == [$froot + 'home/joe/.config']
 
 === Dirs
 
-    XDG['CONFIG_DIRS'].env.assert == ENV['XDG_CONFIG_DIRS'].to_s
+    XDG['CONFIG_DIRS'].environment.assert == ENV['XDG_CONFIG_DIRS'].to_s
     XDG['CONFIG_DIRS'].to_a.assert == [$froot + 'etc/xdg', $froot + 'etc']
 
 === Combined
@@ -63,12 +63,12 @@ Lookking at both data location combined
 
 === Home
 
-    XDG['CACHE_HOME'].env.assert == ENV['XDG_CACHE_HOME'].to_s
+    XDG['CACHE_HOME'].environment.assert == ENV['XDG_CACHE_HOME'].to_s
     XDG['CACHE_HOME'].to_a.assert == [$froot + 'home/joe/.cache']
 
 === Dirs
 
-    XDG['CACHE_DIRS'].env.assert == ENV['XDG_CACHE_DIRS'].to_s
+    XDG['CACHE_DIRS'].environment.assert == ENV['XDG_CACHE_DIRS'].to_s
     XDG['CACHE_DIRS'].to_a.assert == [$froot + 'tmp']
 
 === Combined
