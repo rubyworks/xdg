@@ -158,7 +158,7 @@ environment settings to use as test fixtures.</p>
 
 <h3>Home</h3>
 
-<pre>XDG['DATA_HOME'].env.assert == ENV['XDG_DATA_HOME'].to_s
+<pre>XDG['DATA_HOME'].environment.assert == ENV['XDG_DATA_HOME'].to_s
 XDG['DATA_HOME'].environment_variables.assert == ['XDG_DATA_HOME']</pre>
 
 <p>Looking at the data home location by default it should be point to our joe
@@ -168,7 +168,7 @@ user’s home directory under `.local/share`.</p>
 
 <h3>Dirs</h3>
 
-<pre>XDG['DATA_DIRS'].env.assert == ENV['XDG_DATA_DIRS'].to_s
+<pre>XDG['DATA_DIRS'].environment.assert == ENV['XDG_DATA_DIRS'].to_s
 XDG['DATA_DIRS'].environment_variables.assert == ['XDG_DATA_DIRS']</pre>
 
 <p>Looking at the system data locations</p>
@@ -187,12 +187,12 @@ XDG['DATA_DIRS'].environment_variables.assert == ['XDG_DATA_DIRS']</pre>
 
 <h3>Home</h3>
 
-<pre>XDG['CONFIG_HOME'].env.assert == ENV['XDG_CONFIG_HOME'].to_s
+<pre>XDG['CONFIG_HOME'].environment.assert == ENV['XDG_CONFIG_HOME'].to_s
 XDG['CONFIG_HOME'].to_a.assert == [$froot + 'home/joe/.config']</pre>
 
 <h3>Dirs</h3>
 
-<pre>XDG['CONFIG_DIRS'].env.assert == ENV['XDG_CONFIG_DIRS'].to_s
+<pre>XDG['CONFIG_DIRS'].environment.assert == ENV['XDG_CONFIG_DIRS'].to_s
 XDG['CONFIG_DIRS'].to_a.assert == [$froot + 'etc/xdg', $froot + 'etc']</pre>
 
 <h3>Combined</h3>
@@ -203,12 +203,12 @@ XDG['CONFIG_DIRS'].to_a.assert == [$froot + 'etc/xdg', $froot + 'etc']</pre>
 
 <h3>Home</h3>
 
-<pre>XDG['CACHE_HOME'].env.assert == ENV['XDG_CACHE_HOME'].to_s
+<pre>XDG['CACHE_HOME'].environment.assert == ENV['XDG_CACHE_HOME'].to_s
 XDG['CACHE_HOME'].to_a.assert == [$froot + 'home/joe/.cache']</pre>
 
 <h3>Dirs</h3>
 
-<pre>XDG['CACHE_DIRS'].env.assert == ENV['XDG_CACHE_DIRS'].to_s
+<pre>XDG['CACHE_DIRS'].environment.assert == ENV['XDG_CACHE_DIRS'].to_s
 XDG['CACHE_DIRS'].to_a.assert == [$froot + 'tmp']</pre>
 
 <h3>Combined</h3>
@@ -224,7 +224,7 @@ XDG['CACHE_DIRS'].to_a.assert == [$froot + 'tmp']</pre>
 
 <h2>Resource</h2>
 
-<pre>XDG['RESOURCE_HOME'].env.assert == ENV['XDG_RESOURCE_HOME'].to_s
+<pre>XDG['RESOURCE_HOME'].environment.assert == ENV['XDG_RESOURCE_HOME'].to_s
 
 XDG['RESOURCE_HOME'].environment_variables.assert == ['XDG_RESOURCE_HOME']</pre>
 
@@ -239,7 +239,7 @@ XDG['RESOURCE_HOME'].to_a.assert == [$froot + 'home/joe/.local']</pre>
 
 <p>The working configuration directory</p>
 
-<pre>XDG['CONFIG_WORK'].env.assert == ENV['XDG_CONFIG_WORK'].to_s
+<pre>XDG['CONFIG_WORK'].environment.assert == ENV['XDG_CONFIG_WORK'].to_s
 
 XDG['CONFIG_WORK'].environment_variables.assert == ['XDG_CONFIG_WORK']</pre>
 
@@ -252,7 +252,7 @@ XDG['CONFIG_WORK'].to_a.assert == [Dir.pwd + '/.config', Dir.pwd + '/config']</p
 
 <p>The working cache directory</p>
 
-<pre>XDG['CACHE_WORK'].env.assert == ENV['XDG_CACHE_WORK'].to_s
+<pre>XDG['CACHE_WORK'].environment.assert == ENV['XDG_CACHE_WORK'].to_s
 
 XDG['CACHE_WORK'].environment_variables.assert == ['XDG_CACHE_WORK']</pre>
 
