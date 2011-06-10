@@ -218,9 +218,8 @@ XDG['CACHE_DIRS'].to_a.assert == [$froot + 'tmp']</pre>
 
 <h1>Extended Base Directory Standard</h1>
 
-<p>The extended base directory standard provides</p>
-
-<pre>require 'xdg/base_dir/extended'</pre>
+<p>The extended base directory standard provides additional locations not
+apart the offical standard. These are somewhat experimental.</p>
 
 <h2>Resource</h2>
 
@@ -229,7 +228,7 @@ XDG['CACHE_DIRS'].to_a.assert == [$froot + 'tmp']</pre>
 XDG['RESOURCE_HOME'].environment_variables.assert == ['XDG_RESOURCE_HOME']</pre>
 
 <p>Looking at the data home location by default it should be pointing to our
-joe user’s home directory under `.local`.</p>
+joe users home directory under `.local`.</p>
 
 <pre>XDG['RESOURCE_HOME'].list.assert == ['~/.local']
 
@@ -244,7 +243,7 @@ XDG['RESOURCE_HOME'].to_a.assert == [$froot + 'home/joe/.local']</pre>
 XDG['CONFIG_WORK'].environment_variables.assert == ['XDG_CONFIG_WORK']</pre>
 
 <p>Looking at the config work location, by default it should be pointing to
-the current working directory’s `.config` or `config` directory.</p>
+the current working directorys `.config` or `config` directory.</p>
 
 <pre>XDG['CONFIG_WORK'].list.assert == ['.config', 'config']
 
@@ -257,7 +256,7 @@ XDG['CONFIG_WORK'].to_a.assert == [Dir.pwd + '/.config', Dir.pwd + '/config']</p
 XDG['CACHE_WORK'].environment_variables.assert == ['XDG_CACHE_WORK']</pre>
 
 <p>Looking at the cache work location, by default it should be pointing to the
-current working directory’s `.tmp` or `tmp` directory.</p>
+current working directorys `.tmp` or `tmp` directory.</p>
 
 <pre>XDG['CACHE_WORK'].list.assert == ['.tmp', 'tmp']
 
@@ -265,8 +264,6 @@ XDG['CACHE_WORK'].to_a.assert == [Dir.pwd + '/.tmp', Dir.pwd + '/tmp']</pre>
 
 
 <h1>Base Directory Mixin</h1>
-
-<pre>require 'xdg/base_dir/mixin'</pre>
 
 <p>The base directory mixin is used to easy augment a class for  access to a
 named subdirectory of the XDG directories.</p>
