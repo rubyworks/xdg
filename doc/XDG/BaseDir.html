@@ -1,0 +1,1439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>Class: XDG::BaseDir</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (B)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../XDG.html" title="XDG (module)">XDG</a></span></span>
+     &raquo; 
+    <span class="title">BaseDir</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: XDG::BaseDir
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">XDG::BaseDir</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">Enumerable</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/xdg/base_dir.rb<span class="defines">,<br />
+  lib/xdg/base_dir/mixin.rb,<br /> lib/xdg/base_dir/legacy.rb,<br /> lib/xdg/base_dir/extended.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Base directory interface class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="BaseDir/Legacy.html" title="XDG::BaseDir::Legacy (module)">Legacy</a></span>, <span class='object_link'><a href="BaseDir/Mixin.html" title="XDG::BaseDir::Mixin (module)">Mixin</a></span>
+    
+   
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="DEFAULTS-constant" class="">DEFAULTS =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Standard defaults for locations.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span>
+  <span class='string val'>'XDG_DATA_HOME'</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'~/.local/share'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'XDG_DATA_DIRS'</span>   <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'/usr/local/share'</span><span class='comma token'>,</span> <span class='datadir identifier id'>datadir</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'XDG_CONFIG_HOME'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'~/.config'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'XDG_CONFIG_DIRS'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='sysconfdir identifier id'>sysconfdir</span><span class='comma token'>,</span><span class='string val'>'xdg'</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='sysconfdir identifier id'>sysconfdir</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'XDG_CACHE_HOME'</span>  <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'~/.cache'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+  <span class='string val'>'XDG_CACHE_DIRS'</span>  <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'/tmp'</span><span class='rbrack token'>]</span>
+<span class='rbrace token'>}</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+  
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subdirectory-instance_method" title="#subdirectory (instance method)">- (Object) <strong>subdirectory</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%5B%5D-class_method" title="[] (class method)">+ (Object) <strong>[]</strong>(*env) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Shortcut for `BaseDir.new`.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each-instance_method" title="#each (instance method)">- (Object) <strong>each</strong>(&amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Iterate of each directory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#env-instance_method" title="#env (instance method)">- (String) <strong>env</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The equivalent environment setting.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#environment_variables-instance_method" title="#environment_variables (instance method)">- (Array) <strong>environment_variables</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The environment variables being referenced.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find-instance_method" title="#find (instance method)">- (Object) <strong>find</strong>(*glob_and_flags, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Find a file or directory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#glob-instance_method" title="#glob (instance method)">- (Object) <strong>glob</strong>(*glob_and_flags) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return array of matching files or directories in any of the resource
+locations, starting with the home directory and searching outward into
+system directories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (BaseDir) <strong>initialize</strong>(*env) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Initialize new instance of BaseDir class.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#list-instance_method" title="#list (instance method)">- (Array&lt;String&gt;) <strong>list</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns an <b>unexpanded</b> list of directories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#paths-instance_method" title="#paths (instance method)">- (Array&lt;Pathname&gt;) <strong>paths</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>List of directories as Pathanme objects.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#select-instance_method" title="#select (instance method)">- (Object) <strong>select</strong>(*glob_and_flags, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return array of matching files or directories in any of the resource
+locations, starting with the home directory and searching outward into
+system directories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#size-instance_method" title="#size (instance method)">- (Object) <strong>size</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Number of directory paths.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_a-instance_method" title="#to_a (instance method)">- (Array&lt;String&gt;) <strong>to_a</strong> </a>
+    
+
+    
+      (also: #to_ary)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns a complete list of expanded directories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_path-instance_method" title="#to_path (instance method)">- (Pathname) <strong>to_path</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Pathname of first directory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">- (String) <strong>to_s</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>This is same as #env, but also includes default values.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#with_subdirectory-instance_method" title="#with_subdirectory (instance method)">- (Object) <strong>with_subdirectory</strong>(path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="XDG::BaseDir (class)">BaseDir</a></span></tt>) <strong>initialize</strong>(*env) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Initialize new instance of BaseDir class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 31</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='env identifier id'>env</span><span class='rparen token'>)</span>
+  <span class='@environment_variables ivar id'>@environment_variables</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='env identifier id'>env</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span>
+    <span class='v identifier id'>v</span> <span class='assign token'>=</span> <span class='v identifier id'>v</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='upcase identifier id'>upcase</span>
+    <span class='if if kw'>if</span> <span class='v identifier id'>v</span> <span class='nmatch op'>!~</span> <span class='regexp val'>/_/</span>
+      <span class='@environment_variables ivar id'>@environment_variables</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>'XDG_'</span> <span class='plus op'>+</span> <span class='v identifier id'>v</span> <span class='plus op'>+</span> <span class='string val'>'_HOME'</span>
+      <span class='@environment_variables ivar id'>@environment_variables</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>'XDG_'</span> <span class='plus op'>+</span> <span class='v identifier id'>v</span> <span class='plus op'>+</span> <span class='string val'>'_DIRS'</span>
+    <span class='else else kw'>else</span>
+      <span class='@environment_variables ivar id'>@environment_variables</span> <span class='lshft op'>&lt;&lt;</span> <span class='string val'>'XDG_'</span> <span class='plus op'>+</span> <span class='v identifier id'>v</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="subdirectory=-instance_method"></span>
+      <span id="subdirectory-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="subdirectory-instance_method">
+  
+    - (<tt>Object</tt>) <strong>subdirectory</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+123
+124
+125</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 123</span>
+
+<span class='def def kw'>def</span> <span class='subdirectory identifier id'>subdirectory</span>
+  <span class='@subdirectory ivar id'>@subdirectory</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="[]-class_method">
+  
+    + (<tt>Object</tt>) <strong>[]</strong>(*env) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Shortcut for `BaseDir.new`.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 26</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='env identifier id'>env</span><span class='rparen token'>)</span>
+  <span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='env identifier id'>env</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="each-instance_method">
+  
+    - (<tt>Object</tt>) <strong>each</strong>(&amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Iterate of each directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 81</span>
+
+<span class='def def kw'>def</span> <span class='each identifier id'>each</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='each identifier id'>each</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="env-instance_method">
+  
+    - (<tt>String</tt>) <strong>env</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>The equivalent environment setting.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>evnironment vsetting</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 54</span>
+
+<span class='def def kw'>def</span> <span class='env identifier id'>env</span>
+  <span class='environment_variables identifier id'>environment_variables</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> <span class='ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>':'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="environment_variables-instance_method">
+  
+    - (<tt>Array</tt>) <strong>environment_variables</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>The environment variables being referenced.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>list of XDG environment variable names</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 47</span>
+
+<span class='def def kw'>def</span> <span class='environment_variables identifier id'>environment_variables</span>
+  <span class='@environment_variables ivar id'>@environment_variables</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="find-instance_method">
+  
+    - (<tt>Object</tt>) <strong>find</strong>(*glob_and_flags, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Find a file or directory. This works just like #select except that it
+returns the first match found.</p>
+
+<p>TODO: It would be more efficient to traverse the dirs and use #fnmatch.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 187</span>
+
+<span class='def def kw'>def</span> <span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='glob_and_flags identifier id'>glob_and_flags</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='glob identifier id'>glob</span><span class='comma token'>,</span> <span class='flag identifier id'>flag</span> <span class='assign token'>=</span> <span class='mult op'>*</span><span class='parse_arguments identifier id'>parse_arguments</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='glob_and_flags identifier id'>glob_and_flags</span><span class='rparen token'>)</span>
+  <span class='find identifier id'>find</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+  <span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='dir identifier id'>dir</span><span class='bitor op'>|</span>
+    <span class='path identifier id'>path</span> <span class='assign token'>=</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='dir identifier id'>dir</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='glob identifier id'>glob</span><span class='rparen token'>)</span>
+    <span class='hits identifier id'>hits</span> <span class='assign token'>=</span> <span class='Dir constant id'>Dir</span><span class='dot token'>.</span><span class='glob identifier id'>glob</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='comma token'>,</span> <span class='flag identifier id'>flag</span><span class='rparen token'>)</span>
+    <span class='hits identifier id'>hits</span> <span class='assign token'>=</span> <span class='hits identifier id'>hits</span><span class='dot token'>.</span><span class='select identifier id'>select</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+    <span class='find identifier id'>find</span> <span class='assign token'>=</span> <span class='hits identifier id'>hits</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+    <span class='break break kw'>break</span> <span class='if if_mod kw'>if</span> <span class='find identifier id'>find</span>
+  <span class='end end kw'>end</span>
+  <span class='find identifier id'>find</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="glob-instance_method">
+  
+    - (<tt>Object</tt>) <strong>glob</strong>(*glob_and_flags) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Return array of matching files or directories in any of the resource
+locations, starting with the home directory and searching outward into
+system directories.</p>
+
+<p>Unlike #select, this doesn’t take a block and each additional glob
+argument is treated as a logical-or.</p>
+
+<pre class="code"><span class='XDG constant id'>XDG</span><span class='lbrack token'>[</span><span class='symbol val'>:DATA</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='glob identifier id'>glob</span><span class='lparen token'>(</span><span class='string val'>&quot;stick/*.rb&quot;</span><span class='comma token'>,</span> <span class='string val'>&quot;stick/*.yaml&quot;</span><span class='rparen token'>)</span>
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 146</span>
+
+<span class='def def kw'>def</span> <span class='glob identifier id'>glob</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='glob_and_flags identifier id'>glob_and_flags</span><span class='rparen token'>)</span>
+  <span class='glob identifier id'>glob</span><span class='comma token'>,</span> <span class='flags identifier id'>flags</span> <span class='assign token'>=</span> <span class='mult op'>*</span><span class='parse_arguments identifier id'>parse_arguments</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='glob_and_flags identifier id'>glob_and_flags</span><span class='rparen token'>)</span>
+  <span class='find identifier id'>find</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='dir identifier id'>dir</span><span class='bitor op'>|</span>
+    <span class='glob identifier id'>glob</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='pattern identifier id'>pattern</span><span class='bitor op'>|</span>
+      <span class='find identifier id'>find</span><span class='dot token'>.</span><span class='concat identifier id'>concat</span><span class='lparen token'>(</span><span class='Dir constant id'>Dir</span><span class='dot token'>.</span><span class='glob identifier id'>glob</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='dir identifier id'>dir</span><span class='comma token'>,</span> <span class='pattern identifier id'>pattern</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='flags identifier id'>flags</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+  <span class='find identifier id'>find</span><span class='dot token'>.</span><span class='uniq identifier id'>uniq</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="list-instance_method">
+  
+    - (<tt>Array&lt;String&gt;</tt>) <strong>list</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns an <b>unexpanded</b> list of directories.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>unexpanded directory list</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 88</span>
+
+<span class='def def kw'>def</span> <span class='list identifier id'>list</span>
+  <span class='environment_variables identifier id'>environment_variables</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='paths identifier id'>paths</span> <span class='assign token'>=</span> <span class='ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span>
+      <span class='dirs identifier id'>dirs</span> <span class='assign token'>=</span> <span class='paths identifier id'>paths</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='regexp val'>/[:;]/</span><span class='rparen token'>)</span>
+    <span class='else else kw'>else</span>
+      <span class='dirs identifier id'>dirs</span> <span class='assign token'>=</span> <span class='DEFAULTS constant id'>DEFAULTS</span><span class='lbrack token'>[</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span>
+    <span class='end end kw'>end</span>
+    <span class='if if kw'>if</span> <span class='subdirectory identifier id'>subdirectory</span>
+      <span class='dirs identifier id'>dirs</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='path identifier id'>path</span><span class='bitor op'>|</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='comma token'>,</span> <span class='subdirectory identifier id'>subdirectory</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+    <span class='else else kw'>else</span>
+      <span class='dirs identifier id'>dirs</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="paths-instance_method">
+  
+    - (<tt>Array&lt;Pathname&gt;</tt>) <strong>paths</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>List of directories as Pathanme objects.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;Pathname&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>list of directories as Pathname objects</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 106</span>
+
+<span class='def def kw'>def</span> <span class='paths identifier id'>paths</span>
+  <span class='map identifier id'>map</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='dir identifier id'>dir</span><span class='bitor op'>|</span> <span class='Pathname constant id'>Pathname</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='dir identifier id'>dir</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="select-instance_method">
+  
+    - (<tt>Object</tt>) <strong>select</strong>(*glob_and_flags, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Return array of matching files or directories in any of the resource
+locations, starting with the home directory and searching outward into
+system directories.</p>
+
+<p>String parameters are joined into a pathname while Integers and Symbols
+treated as flags.</p>
+
+<p>For example, the following are equivalent:</p>
+
+<pre class="code"><span class='XDG constant id'>XDG</span><span class='colon2 op'>::</span><span class='BaseDir constant id'>BaseDir</span><span class='lbrack token'>[</span><span class='symbol val'>:DATA</span><span class='comma token'>,</span><span class='symbol val'>:HOME</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='select identifier id'>select</span><span class='lparen token'>(</span><span class='string val'>'stick/units'</span><span class='comma token'>,</span> <span class='File constant id'>File</span><span class='colon2 op'>::</span><span class='FNM_CASEFOLD constant id'>FNM_CASEFOLD</span><span class='rparen token'>)</span>
+
+<span class='XDG constant id'>XDG</span><span class='colon2 op'>::</span><span class='BaseDir constant id'>BaseDir</span><span class='lbrack token'>[</span><span class='symbol val'>:DATA</span><span class='comma token'>,</span><span class='symbol val'>:HOME</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='select identifier id'>select</span><span class='lparen token'>(</span><span class='string val'>'stick'</span><span class='comma token'>,</span> <span class='string val'>'units'</span><span class='comma token'>,</span> <span class='symbol val'>:casefold</span><span class='rparen token'>)</span>
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 171</span>
+
+<span class='def def kw'>def</span> <span class='select identifier id'>select</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='glob_and_flags identifier id'>glob_and_flags</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='glob identifier id'>glob</span><span class='comma token'>,</span> <span class='flag identifier id'>flag</span> <span class='assign token'>=</span> <span class='mult op'>*</span><span class='parse_arguments identifier id'>parse_arguments</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='glob_and_flags identifier id'>glob_and_flags</span><span class='rparen token'>)</span>
+  <span class='find identifier id'>find</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='dir identifier id'>dir</span><span class='bitor op'>|</span>
+    <span class='path identifier id'>path</span> <span class='assign token'>=</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='dir identifier id'>dir</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='glob identifier id'>glob</span><span class='rparen token'>)</span>
+    <span class='hits identifier id'>hits</span> <span class='assign token'>=</span> <span class='Dir constant id'>Dir</span><span class='dot token'>.</span><span class='glob identifier id'>glob</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='comma token'>,</span> <span class='flag identifier id'>flag</span><span class='rparen token'>)</span>
+    <span class='hits identifier id'>hits</span> <span class='assign token'>=</span> <span class='hits identifier id'>hits</span><span class='dot token'>.</span><span class='select identifier id'>select</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+    <span class='find identifier id'>find</span><span class='dot token'>.</span><span class='concat identifier id'>concat</span><span class='lparen token'>(</span><span class='hits identifier id'>hits</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  <span class='find identifier id'>find</span><span class='dot token'>.</span><span class='uniq identifier id'>uniq</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="size-instance_method">
+  
+    - (<tt>Object</tt>) <strong>size</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Number of directory paths.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 76</span>
+
+<span class='def def kw'>def</span> <span class='size identifier id'>size</span>
+  <span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='size identifier id'>size</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_a-instance_method">
+  
+    - (<tt>Array&lt;String&gt;</tt>) <strong>to_a</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='to_ary-instance_method'>to_ary</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a complete list of expanded directories.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>expanded directory list</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 61</span>
+
+<span class='def def kw'>def</span> <span class='to_a identifier id'>to_a</span>
+  <span class='environment_variables identifier id'>environment_variables</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='paths identifier id'>paths</span> <span class='assign token'>=</span> <span class='ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span>
+      <span class='dirs identifier id'>dirs</span> <span class='assign token'>=</span> <span class='paths identifier id'>paths</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='regexp val'>/[:;]/</span><span class='rparen token'>)</span>
+    <span class='else else kw'>else</span>
+      <span class='dirs identifier id'>dirs</span> <span class='assign token'>=</span> <span class='DEFAULTS constant id'>DEFAULTS</span><span class='lbrack token'>[</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span>
+    <span class='end end kw'>end</span>
+    <span class='dirs identifier id'>dirs</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='path identifier id'>path</span><span class='bitor op'>|</span> <span class='expand identifier id'>expand</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_path-instance_method">
+  
+    - (<tt>Pathname</tt>) <strong>to_path</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Pathname of first directory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Pathname</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>pathname of first directory</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 118</span>
+
+<span class='def def kw'>def</span> <span class='to_path identifier id'>to_path</span>
+  <span class='Pathname constant id'>Pathname</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_s-instance_method">
+  
+    - (<tt>String</tt>) <strong>to_s</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>This is same as #env, but also includes default values.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>envinronment value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 113</span>
+
+<span class='def def kw'>def</span> <span class='to_s identifier id'>to_s</span>
+  <span class='environment_variables identifier id'>environment_variables</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='v identifier id'>v</span><span class='bitor op'>|</span> <span class='ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='DEFAULTS constant id'>DEFAULTS</span><span class='lbrack token'>[</span><span class='v identifier id'>v</span><span class='rbrack token'>]</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>':'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="with_subdirectory-instance_method">
+  
+    - (<tt>Object</tt>) <strong>with_subdirectory</strong>(path) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+131
+132
+133
+134</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg/base_dir.rb', line 131</span>
+
+<span class='def def kw'>def</span> <span class='with_subdirectory identifier id'>with_subdirectory</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
+  <span class='@subdirectory ivar id'>@subdirectory</span> <span class='assign token'>=</span> <span class='path identifier id'>path</span> <span class='if if_mod kw'>if</span> <span class='path identifier id'>path</span>
+  <span class='self self kw'>self</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Jun 10 06:58:12 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.7 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

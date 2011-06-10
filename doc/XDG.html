@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>Module: XDG</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (X)</a> &raquo; 
+    
+    
+    <span class="title">XDG</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: XDG
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+      <dt class="r1">Extended by:</dt>
+      <dd class="r1"><span class='object_link'><a href="XDG/BaseDir/Legacy.html" title="XDG::BaseDir::Legacy (module)">BaseDir::Legacy</a></span></dd>
+      
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/xdg.rb<span class="defines">,<br />
+  lib/xdg/version.rb,<br /> lib/xdg/base_dir.rb,<br /> lib/xdg/base_dir/mixin.rb,<br /> lib/xdg/base_dir/legacy.rb,<br /> lib/xdg/base_dir/extended.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>XDG Base Directory Standard</p>
+
+<p>This provides a conveient library for conforming to the XDG Base Directory
+Standard.</p>
+
+<pre class="code"><span class='http identifier id'>http</span><span class='symbol val'>:/</span><span class='regexp val'>/standards.freedesktop.org/</span><span class='basedir identifier id'>basedir</span><span class='minus op'>-</span><span class='spec identifier id'>spec</span><span class='div op'>/</span><span class='basedir identifier id'>basedir</span><span class='minus op'>-</span><span class='spec identifier id'>spec</span><span class='minus op'>-</span><span class='latest identifier id'>latest</span><span class='dot token'>.</span><span class='html identifier id'>html</span>
+</pre>
+
+<p>Some important clarifications, not made clear by the above specification.</p>
+
+<p>The data directories are for “read-only” files. In other words once
+something is put there, it should only be read, and never written to by a
+program. (Generally speaking only users or package managers should be
+adding, changing or removing files from the data locations.)</p>
+
+<p>The config locations are where you store files that may change, and effect
+your applications depending on their content. This is like etc/ in the FHS,
+but alterable by end users and end user programs, not just root and sudo
+admin scripts.</p>
+
+<p>The cache locations stores files that could just as well be deleted and
+everything would still work fine. This is for variable and temporary files.
+Much like var/ and tmp/ in FHS.</p>
+
+<p>The module returns all paths as String.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="XDG/BaseDir.html" title="XDG::BaseDir (class)">BaseDir</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          
+        </dt>
+        <dd><pre class="code"><span class='string val'>'2.1.0'</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+  
+  
+  
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%5B%5D-class_method" title="[] (class method)">+ (Object) <strong>[]</strong>(*env_path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="XDG/BaseDir/Legacy.html" title="XDG::BaseDir::Legacy (module)">BaseDir::Legacy</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="XDG/BaseDir/Legacy.html#cache-instance_method" title="XDG::BaseDir::Legacy#cache (method)">cache</a></span>, <span class='object_link'><a href="XDG/BaseDir/Legacy.html#config-instance_method" title="XDG::BaseDir::Legacy#config (method)">config</a></span>, <span class='object_link'><a href="XDG/BaseDir/Legacy.html#data-instance_method" title="XDG::BaseDir::Legacy#data (method)">data</a></span>, <span class='object_link'><a href="XDG/BaseDir/Legacy.html#home-instance_method" title="XDG::BaseDir::Legacy#home (method)">home</a></span></p>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="[]-class_method">
+  
+    + (<tt>Object</tt>) <strong>[]</strong>(*env_path) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/xdg.rb', line 40</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='env_path identifier id'>env_path</span><span class='rparen token'>)</span>
+  <span class='BaseDir constant id'>BaseDir</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='env_path identifier id'>env_path</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Jun 10 06:58:12 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.7 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
