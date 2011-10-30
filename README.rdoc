@@ -4,7 +4,7 @@
 {Source Code}[http://github.com/rubyworks/xdg] |
 {Report Issue}[http://github.com/rubyworks/xdg/issues] |
 {Mailing List}[http://googlegroups.com/group.rubyworks-mailinglist] |
-<a href="irc://irc.freenode.net/rubyworks">Chat Room</a>
+{Chat Room}[irc://irc.freenode.net/rubyworks]
 
 {<img src="http://travis-ci.org/rubyworks/xdg.png" />}[http://travis-ci.org/rubyworks/xdg]
 
