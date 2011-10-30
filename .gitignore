@@ -1,9 +1,7 @@
-.cache
-.rdoc
-.ri
+.reap/digest
 .yardoc
 doc
-site/doc
 log
 pkg
-site/qed
+pages
+tmp
