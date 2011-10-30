@@ -1,6 +1,17 @@
 = RELEASE HISTORY
 
-== 2.2.0 / 2011-06-11
+== 2.2.2 / 2011-10-30
+
+Just a maintenance release to bring the build configuration
+up to date. Also, change license to BSD-2-Clause.
+
+Changes:
+
+* Modernize build configuration
+* Switch to BSD-2-Clause license.
+
+
+== 2.2.1 / 2011-06-11
 
 This release changes BaseDir#to_s to return the first directory
 entry, and moves the old #to_s to #environment_with_defaults
@@ -13,7 +24,7 @@ Changes:
 * Modify #to_s to return first directory.
 
 
-== 2.1.0 / 2011-06-10
+== 2.1.0 / 2011-06-09
 
 This release changes the BaseDir#list method, where as it used
 to be an alias for #to_a, it now differs in that it does not
