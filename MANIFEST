@@ -1,4 +1,4 @@
-#!mast .ruby bin lib meta qed spec test [A-Z][A-Z]*
+#!mast .ruby .yardopts bin lib man qed spec test [A-Z]*.*
 .ruby
 lib/xdg/base_dir/extended.rb
 lib/xdg/base_dir/global_variables.rb

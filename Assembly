@@ -1,0 +1,39 @@
+---
+email:
+  mailto  : 
+    - ruby-talk@ruby-lang.org
+    - rubyworks-mailinglist@googlegroups.com
+
+qed:
+  files: qed/
+
+qedoc:
+  files: qed/
+  title: "XDG Demonstrandum"
+  output: QED.rdoc
+
+gem:
+  active: true
+
+github:
+  active: true
+
+yard:
+  active: true
+
+dnote:
+  output: lob/NOTES.rdoc  
+  
+vclog:
+  output:
+    - log/History.rdoc
+    - log/Changes.rdoc
+
+
+# boy is this outdated ;)
+#rubyforge:
+#  service  : Rubyforge
+#  unixname : xdg
+#  groupid  : 7077
+#  active   : false
+
