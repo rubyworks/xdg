@@ -1,8 +1,10 @@
 = XDG Standards for Ruby
 
-Author::    Thomas Sawyer
-Copyright:: (c) 2011 Thomas Sawyer
-License::   Apache 2.0
+{Homepage}[http://rubyworks.github.com/xdg] |
+{Source Code}[http://github.com/rubyworks/xdg] |
+{Report an Issue}[http://github.com/rubyworks/xdg/issues] |
+{Mailing List}[http://googlegroups.com/group.rubyworks-mailinglist] |
+{IRC}[irc://irc.freenode.net/rubyworks]
 
 
 == Introduction
@@ -17,14 +19,6 @@ the XDG base directory standard.
 
 You can learn more about the standard at:
 http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-
-
-== Resources
-
-* {Homepage}[http://rubyworks.github.com/xdg]
-* {Source Code}[http://github.com/rubyworks/xdg]
-* {Report an Issue}[http://github.com/rubyworks/xdg/issues]
-* {Mailing List}[http://googlegroups.com/group.rubyworks-mailinglist]
 
 
 == How to Use
@@ -142,8 +136,9 @@ topic branch for your work, and submit a pull request.
 
 == Copyright & License
 
-Copyright (c) 2008, 2011 Thomas Sawyer
+Copyright (c) 2008 Rubyworks
 
-Distributed under the terms of the Apache 2.0 license.
+Distributed under the terms of the *FreeBSD* license.
 
-See APACHE2.txt file for details.
+See COPYING.rdoc file for details.
+
