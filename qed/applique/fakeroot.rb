@@ -4,7 +4,7 @@ dir = File.expand_path(File.dirname(File.dirname(__FILE__)))
 
 $froot = File.join(dir, 'fixtures/fakeroot/')
 
-"Fake root at: `#{$froot}'."
+puts "Fake root at: `#{$froot}'."
 
 #
 ENV['HOME']            = $froot + 'home/joe'
