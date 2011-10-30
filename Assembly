@@ -22,7 +22,7 @@ yard:
   active: true
 
 dnote:
-  output: lob/NOTES.rdoc  
+  output: log/NOTES.rdoc  
   
 vclog:
   output:
