@@ -2,9 +2,11 @@
 
 {Homepage}[http://rubyworks.github.com/xdg] |
 {Source Code}[http://github.com/rubyworks/xdg] |
-{Report an Issue}[http://github.com/rubyworks/xdg/issues] |
+{Report Issue}[http://github.com/rubyworks/xdg/issues] |
 {Mailing List}[http://googlegroups.com/group.rubyworks-mailinglist] |
-{IRC}[irc://irc.freenode.net/rubyworks]
+<a href="irc://irc.freenode.net/rubyworks">Chat Room</a>
+
+{<img src="http://travis-ci.org/rubyworks/xdg.png" />}[http://travis-ci.org/rubyworks/xdg]
 
 
 == Introduction
@@ -88,8 +90,8 @@ interface to a classes.
 
 === Legacy API
 
-Version 2.0+ of library marks are major departure from the earlier
-"fluid" notations of previous versions. Where as one used to do:
+Version 2.0+ of library marks a major departure from the earlier
+"fluid" notation of previous releases. Where as one used to do:
 
     XDG.data.home
 
@@ -109,7 +111,7 @@ need to load:
 
 However we STRONGLY RECOMMEND that you do not use the legacy API --use it only
 if you need to keep some old code working and don't have time to update it at
-them moment. Sometime in the future the legacy API will be deprecated.
+the moment. Sometime in the future the legacy API will be deprecated.
 
 
 == How to Install
