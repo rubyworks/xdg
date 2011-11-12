@@ -1,33 +1,33 @@
 ---
 email:
-  mailto  : 
+  mailto: 
     - ruby-talk@ruby-lang.org
     - rubyworks-mailinglist@googlegroups.com
 
 qed:
-  files: qed/
+  files: qed
 
 qedoc:
-  files: qed/
-  title: "XDG Demonstrandum"
+  files: qed
+  title: XDG Demonstrandum
   output: QED.rdoc
 
 gem:
   active: true
 
 github:
-  active: true
+  gh_pages: web
 
 yard:
   active: true
 
 dnote:
-  output: log/NOTES.rdoc  
+  output: log/notes.html  
   
 vclog:
   output:
-    - log/History.rdoc
-    - log/Changes.rdoc
+    - log/history.html
+    - log/changes.html
 
 
 # boy is this outdated ;)

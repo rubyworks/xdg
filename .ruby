@@ -1,6 +1,6 @@
 ---
 source:
-- meta
+- var
 authors:
 - name: Trans
   email: transfire@gmail.com
@@ -42,4 +42,4 @@ description: ! 'XDG provides a module for supporting the XDG Base Directory Stan
 
   See http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html'
 organization: Rubyworks
-date: '2011-10-30'
+date: '2011-11-11'
