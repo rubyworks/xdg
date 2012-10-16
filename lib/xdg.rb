@@ -42,5 +42,4 @@ module XDG
   end
 end
 
-# Copyright (c) 2008,2011 Thomas Sawyer
-# Distributed under the terms of the APACHE 2.0 license.
+# Copyright (c) 2008 Rubyworks

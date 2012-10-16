@@ -16,3 +16,4 @@ $XDG_CACHE       = XDG::BaseDir.new('CACHE')
 $XDG_CACHE_HOME  = XDG::BaseDir.new('CACHE', 'HOME')
 $XDG_CACHE_DIRS  = XDG::BaseDir.new('CACHE', 'DIRS')
 
+# Copyright (c) 2008 Rubyworks

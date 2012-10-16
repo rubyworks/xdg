@@ -6,8 +6,8 @@ module XDG
     # Try to get information from Ruby's install configuration.
     require 'rbconfig'
 
-    sysconfdir = ::Config::CONFIG['sysconfdir'] || '/etc'
-    datadir    = ::Config::CONFIG['datadir']    || '/usr/share'
+    sysconfdir = ::RbConfig::CONFIG['sysconfdir'] || '/etc'
+    datadir    = ::RbConfig::CONFIG['datadir']    || '/usr/share'
 
     # Standard defaults for locations.
     DEFAULTS = {
@@ -252,5 +252,4 @@ module XDG
 
 end
 
-# Copyright (c) 2008,2011 Thomas Sawyer
-# Distributed under the terms of the APACHE 2.0 license.
+# Copyright (c) 2008 Rubyworks

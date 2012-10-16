@@ -1,6 +1,6 @@
 ---
 source:
-- var
+- METADATA
 authors:
 - name: Trans
   email: transfire@gmail.com
@@ -36,7 +36,7 @@ revision: 0
 created: '2008-09-27'
 summary: XDG provides an interface for using XDG directory standard.
 title: XDG
-version: 2.2.2
+version: 2.2.3
 name: xdg
 description: ! 'XDG provides a module for supporting the XDG Base Directory Standard.
 

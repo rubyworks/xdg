@@ -70,3 +70,5 @@ module XDG
 
   extend BaseDir::Legacy
 end
+
+# Copyright (c) 2008 Rubyworks

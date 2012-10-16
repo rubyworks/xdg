@@ -82,3 +82,5 @@ module XDG
     end
   end
 end
+
+# Copyright (c) 2008 Rubyworks
