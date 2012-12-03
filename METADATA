@@ -22,6 +22,7 @@ copyrights:
 requirements:
   - detroit (build)
   - qed     (test)
+  - ae      (test)
 
 repositories:
   upstream: git://github.com/proutils/xdg.git
