@@ -1,5 +1,7 @@
-#!mast .ruby .yardopts bin lib man qed spec test [A-Z]*.*
+#!mast .index .ruby .yardopts bin lib man demo spec test [A-Z]*.*
+.index
 .ruby
+.yardopts
 lib/xdg/base_dir/extended.rb
 lib/xdg/base_dir/global_variables.rb
 lib/xdg/base_dir/legacy.rb
@@ -7,17 +9,20 @@ lib/xdg/base_dir/mixin.rb
 lib/xdg/base_dir.rb
 lib/xdg/version.rb
 lib/xdg.rb
-qed/01_base_dir.rdoc
-qed/02_base_dir_extended.rdoc
-qed/03_base_dir_mixin.rdoc
-qed/applique/ae.rb
-qed/applique/fakeroot.rb
-qed/fixtures/fakeroot/etc/xdg/bar.config
-qed/fixtures/fakeroot/home/.cache/foo.cache
-qed/fixtures/fakeroot/home/.config/foo.config
-qed/fixtures/fakeroot/home/.local/share/foo.dat
-qed/fixtures/fakeroot/home/joe/foo.txt
-qed/fixtures/fakeroot/usr/share/bar.dat
+demo/01_base_dir.rdoc
+demo/02_base_dir_extended.rdoc
+demo/03_base_dir_mixin.rdoc
+demo/applique/ae.rb
+demo/applique/fakeroot.rb
+demo/applique/xdg.rb
+demo/fixtures/fakeroot/.cache/DUMMY.txt
+demo/fixtures/fakeroot/etc/xdg/bar.config
+demo/fixtures/fakeroot/home/.cache/foo.cache
+demo/fixtures/fakeroot/home/.config/foo.config
+demo/fixtures/fakeroot/home/.local/share/foo.dat
+demo/fixtures/fakeroot/home/joe/foo.txt
+demo/fixtures/fakeroot/usr/share/bar.dat
+test/fakeroot/.cache/DUMMY.txt
 test/fakeroot/etc/xdg/bar.config
 test/fakeroot/home/.cache/foo.cache
 test/fakeroot/home/.config/foo.config
@@ -25,5 +30,6 @@ test/fakeroot/home/.local/share/foo.dat
 test/fakeroot/usr/share/bar.dat
 test/test_xdg_legacy.rb
 HISTORY.rdoc
-APACHE2.txt
+DEMO.rdoc
 README.rdoc
+COPYING.rdoc

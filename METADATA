@@ -23,7 +23,7 @@ requirements:
   - detroit (build)
   - qed     (test)
 
-respositories:
+repositories:
   upstream: git://github.com/proutils/xdg.git
 
 resources:

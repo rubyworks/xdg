@@ -1,37 +1,45 @@
 # encoding: utf-8
 
 require 'yaml'
+require 'pathname'
 
-module DotRuby
+module Indexer
 
   #
-  class GemSpec
+  class Gemspec
 
-    # For which revision of .ruby is this gemspec intended?
-    REVISION = 0
+    # File to look for to find the project's root directory.
+    ROOT = "{.index,.ruby}" unless defined?(ROOT)
 
-    #
+    # File globs to include in package (unless manifest file exists).
+    FILES = ".index .ruby .yardopts alt bin ext lib man spec test [A-Z]*.*" unless defined?(FILES)
+
+    # File globs to omit.
+    OMIT = "Config.rb" unless defined?(OMIT)
+
+    # Standard file patterns.
     PATTERNS = {
       :bin_files  => 'bin/*',
       :lib_files  => 'lib/{**/}*.rb',
       :ext_files  => 'ext/{**/}extconf.rb',
       :doc_files  => '*.{txt,rdoc,md,markdown,tt,textile}',
-      :test_files => '{test/{**/}*_test.rb,spec/{**/}*_spec.rb}'
-    }
+      :test_files => '{test,spec}/{**/}*.rb'
+    } unless defined?(PATTERNS)
+
+    # For which revision of metaspec is this gemspec intended?
+    REVISION = 2013 unless defined?(REVISION)
 
     #
-    def self.instance
+    def self.generate
       new.to_gemspec
     end
 
+    #
     attr :metadata
-
-    attr :manifest
 
     #
     def initialize
-      @metadata = YAML.load_file('.ruby')
-      @manifest = Dir.glob('manifest{,.txt}', File::FNM_CASEFOLD).first
+      @metadata = YAML.load_file(root + '.index')
 
       if @metadata['revision'].to_i != REVISION
         warn "You have the wrong revision. Trying anyway..."
@@ -39,35 +47,71 @@ module DotRuby
     end
 
     #
+    def root
+      @root ||= (
+        if Dir.glob(ROOT).first
+          Pathname.new(Dir.pwd)
+        elsif Dir.glob("../#{ROOT}").first
+          Pathname.new(Dir.pwd).parent
+        else
+          raise "Can't find root of project containing `#{ROOT}'."
+        end
+      )
+    end
+
+    #
+    def manifest
+      @manifest ||= Dir.glob(root + 'manifest{,.txt}', File::FNM_CASEFOLD).first
+    end
+
+    #
     def scm
       @scm ||= \
         case
-        when File.directory?('.git')
+        when (root + '.git').directory?
           :git
+        when (root + '.hg').directory?
+          :hg
         end
     end
 
     #
     def files
       @files ||= \
-        #glob_files[patterns[:files]]
-        case
-        when manifest
+        if manifest
           File.readlines(manifest).
             map{ |line| line.strip }.
             reject{ |line| line.empty? || line[0,1] == '#' }
-        when scm == :git
-         `git ls-files -z`.split("\0")
         else
-          Dir.glob('{**/}{.*,*}')  # TODO: be more specific using standard locations ?
-        end.select{ |path| File.file?(path) }
+          list = []
+          Dir.chdir(root) do
+            FILES.split(/\s+/).each do |pattern|
+              list.concat(glob(pattern))
+            end
+            OMIT.split(/\s+/).each do |pattern|
+              list = list - glob(pattern)
+            end
+          end
+          list
+        end.select{ |path| File.file?(path) }.uniq
+    end
+
+    #
+    def glob(pattern)
+      if File.directory?(pattern)
+        Dir.glob(File.join(pattern, '**', '*'))
+      else
+        Dir.glob(pattern)
+      end
     end
 
     #
     def glob_files(pattern)
-      Dir.glob(pattern).select { |path|
-        File.file?(path) && files.include?(path)
-      }
+      Dir.chdir(root) do
+        Dir.glob(pattern).select do |path|
+          File.file?(path) && files.include?(path)
+        end
+      end
     end
 
     #
@@ -157,8 +201,9 @@ module DotRuby
         end
 
         # determine homepage from resources
-        homepage = metadata['resources'].find{ |key, url| key =~ /^home/ }
-        gemspec.homepage = homepage.last if homepage
+        homepage = metadata['resources'].find{ |r| r['type'] =~ /^home/i } ||
+                   metadata['resources'].find{ |r| r['name'] =~ /^(home|web)/i }
+        gemspec.homepage = homepage['uri'] if homepage
 
         gemspec.require_paths        = metadata['load_path'] || ['lib']
         gemspec.post_install_message = metadata['install_message']
@@ -180,8 +225,8 @@ module DotRuby
       end
     end
 
-  end #class GemSpec
+  end #class Gemspec
 
 end
 
-DotRuby::GemSpec.instance
+Indexer::Gemspec.generate

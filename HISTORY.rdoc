@@ -1,5 +1,15 @@
 = RELEASE HISTORY
 
+== 2.2.3 / 2012-01-02
+
+This release switches to RbConfig instead of Config, which Ruby
+was warning about.
+
+Changes:
+
+* Switch Config to RbConfig.
+
+
 == 2.2.2 / 2011-10-30
 
 Just a maintenance release to bring the build configuration

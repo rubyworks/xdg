@@ -1,15 +1,10 @@
 ---
-source:
+type: ruby
+imports:
 - METADATA
 authors:
 - name: Trans
   email: transfire@gmail.com
-copyrights:
-- holder: Rubyworks
-  year: '2008'
-  license: BSD-2-Clause
-replacements: []
-alternatives: []
 requirements:
 - name: detroit
   groups:
@@ -20,26 +15,37 @@ requirements:
   - test
   development: true
 dependencies: []
+alternatives: []
 conflicts: []
+resources:
+- uri: http://rubyworks.github.com/xdg
+  label: Homepage
+  type: home
+- uri: http://github.com/rubyworks/xdg
+  label: Source Code
+  type: code
+- uri: http://groups.goole.com/rubyworks-mailinglist
+  label: Mailing List
+  type: mail
 repositories:
 - uri: git://github.com/proutils/xdg.git
   scm: git
   name: upstream
-resources:
-  home: http://rubyworks.github.com/xdg
-  code: http://github.com/rubyworks/xdg
-  mail: http://groups.goole.com/rubyworks-mailinglist
-extra: {}
+categories: []
 load_path:
 - lib
-revision: 0
-created: '2008-09-27'
-summary: XDG provides an interface for using XDG directory standard.
+copyrights:
+- holder: Rubyworks
+  year: '2008'
+  license: BSD-2-Clause
+extra: {}
+revision: 2013
+name: xdg
 title: XDG
 version: 2.2.3
-name: xdg
-description: ! 'XDG provides a module for supporting the XDG Base Directory Standard.
-
-  See http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html'
+summary: XDG provides an interface for using XDG directory standard.
+description: XDG provides a module for supporting the XDG Base Directory Standard.
+  See http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html
 organization: Rubyworks
-date: '2011-11-11'
+created: '2008-09-27'
+date: '2012-12-03'
