@@ -36,7 +36,7 @@ resources:
 repositories:
 - name: upstream
   scm: git
-  uri: git://github.com/proutils/xdg.git
+  uri: git://github.com/rubyworks/xdg.git
 categories: []
 load_path:
 - lib

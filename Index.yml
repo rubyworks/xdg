@@ -26,7 +26,7 @@ requirements:
   - ae      (test)
 
 repositories:
-  upstream: git://github.com/proutils/xdg.git
+  upstream: git://github.com/rubyworks/xdg.git
 
 resources:
   home: http://rubyworks.github.com/xdg
