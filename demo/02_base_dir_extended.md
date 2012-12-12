@@ -1,9 +1,9 @@
-= Extended Base Directory Standard
+# Extended Base Directory Standard
 
 The extended base directory standard provides additional locations
 not apart the offical standard. These are somewhat experimental.
 
-== Resource
+## Resource
 
     XDG['RESOURCE_HOME'].environment.assert == ENV['XDG_RESOURCE_HOME'].to_s
 
@@ -17,7 +17,7 @@ our joe users home directory under `.local`.
     XDG['RESOURCE_HOME'].to_a.assert == [$froot + 'home/joe/.local']
 
 
-== Work
+## Work
 
 The working configuration directory
 

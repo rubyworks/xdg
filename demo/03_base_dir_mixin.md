@@ -1,4 +1,4 @@
-= Base Directory Mixin
+# Base Directory Mixin
 
 The base directory mixin is used to easy augment a class for 
 access to a named subdirectory of the XDG directories.

@@ -1,15 +1,15 @@
-= XDG Standards for Ruby
+# XDG Standards for Ruby
 
-{Homepage}[http://rubyworks.github.com/xdg] |
-{Source Code}[http://github.com/rubyworks/xdg] |
-{Report Issue}[http://github.com/rubyworks/xdg/issues] |
-{Mailing List}[http://googlegroups.com/group.rubyworks-mailinglist] |
-{Chat Room}[irc://irc.freenode.net/rubyworks]
+[Homepage](http://rubyworks.github.com/xdg) |
+[Source Code](http://github.com/rubyworks/xdg) |
+[Report Issue](http://github.com/rubyworks/xdg/issues) |
+[Mailing List](http://googlegroups.com/group.rubyworks-mailinglist) |
+[Chat Room](irc://irc.freenode.net/rubyworks)
 
-{<img src="http://travis-ci.org/rubyworks/xdg.png" />}[http://travis-ci.org/rubyworks/xdg]
+[![Build Status](https://secure.travis-ci.org/rubyworks/xdg.png)](http://travis-ci.org/rubyworks/xdg)
 
 
-== Introduction
+## Introduction
 
 XDG provides an easy to use Ruby library for working with XDG standards.
 
@@ -23,7 +23,7 @@ You can learn more about the standard at:
 http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 
 
-== How to Use
+## How to Use
 
 For working with XDG base directories, XDG provides a very simple
 yet flexible interface, `XDG[]`. Let's say you want to work
@@ -56,7 +56,7 @@ that ties into both the `HOME` and `DIRS` paths.
 If you know XDG these are pretty much self-explanatory.
 But see the YARD-based API documentation for further specifics.
 
-=== Extended Functionality
+### Extended Functionality
 
 The Ruby XDG module also provides extended functionality
 not part of the standard specification. These extensions are
@@ -70,7 +70,7 @@ the standard.
 See the API documentation to learn more. Note that the extended modules
 are subject to greater potential for change as they are still being refined.
 
-=== Base Directory Mixin
+### Base Directory Mixin
 
 XDG provides a convenient base directory mixin that can provide handy a
 interface to a classes.
@@ -88,7 +88,7 @@ interface to a classes.
     c.config.home.to_s  #=> '~/.config/myapp'
 
 
-=== Legacy API
+### Legacy API
 
 Version 2.0+ of library marks a major departure from the earlier
 "fluid" notation of previous releases. Where as one used to do:
@@ -114,7 +114,7 @@ if you need to keep some old code working and don't have time to update it at
 the moment. Sometime in the future the legacy API will be deprecated.
 
 
-== How to Install
+## How to Install
 
 Using RubyGems:
 
@@ -127,20 +127,20 @@ Installing the tarball requires Ruby Setup (see http://rubyworks.github.com/setu
     $ sudo setup.rb all
 
 
-== Development
+## Development
 
-GitHub[http://github.com] hosts our {source code}[http://github.com/rubyworks/xdg]
-and {issue ticket system}[http://github.com/rubyworks/xdg/issues].
+[GitHub](http://github.com) hosts our [source code](http://github.com/rubyworks/xdg)
+and [issue ticket system](http://github.com/rubyworks/xdg/issues).
 
 To contribute to the project please fork the repository, ideally, create a new
 topic branch for your work, and submit a pull request.
 
 
-== Copyright & License
+## Copyright & License
 
 Copyright (c) 2008 Rubyworks
 
 Distributed under the terms of the *FreeBSD* license.
 
-See COPYING.rdoc file for details.
+See LICENSE.txt file for details.
 

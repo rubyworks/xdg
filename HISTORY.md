@@ -1,6 +1,6 @@
-= RELEASE HISTORY
+# RELEASE HISTORY
 
-== 2.2.3 / 2012-12-13
+## 2.2.3 / 2012-12-13
 
 This release switches to RbConfig instead of Config, which Ruby
 is deprecating.
@@ -10,7 +10,7 @@ Changes:
 * Switch Config to RbConfig.
 
 
-== 2.2.2 / 2011-10-30
+## 2.2.2 / 2011-10-30
 
 Just a maintenance release to bring the build configuration
 up to date. Also, change license to BSD-2-Clause.
@@ -21,7 +21,7 @@ Changes:
 * Switch to BSD-2-Clause license.
 
 
-== 2.2.1 / 2011-06-11
+## 2.2.1 / 2011-06-11
 
 This release changes BaseDir#to_s to return the first directory
 entry, and moves the old #to_s to #environment_with_defaults
@@ -34,7 +34,7 @@ Changes:
 * Modify #to_s to return first directory.
 
 
-== 2.1.0 / 2011-06-09
+## 2.1.0 / 2011-06-09
 
 This release changes the BaseDir#list method, where as it used
 to be an alias for #to_a, it now differs in that it does not
@@ -48,7 +48,7 @@ Changes:
 * Fix broken qed tests.
 
 
-== 2.0.0 / 2011-06-09
+## 2.0.0 / 2011-06-09
 
 Major new release is full rewrite of the API, with an eye out for
 support future XDG standards beyond the base directories. The
@@ -62,7 +62,7 @@ Changes:
 * Structure project for future support of more of XDG.
 
 
-== 1.0.0 / 2009-12-01
+## 1.0.0 / 2009-12-01
 
 This is major reimplementation of the XDG API to be more flexiable
 and object-oriented. Instead of a single module with every 
@@ -77,7 +77,7 @@ Changes:
 * Provides xdg/compat.rb, for backward compatabilty (temporary).
 
 
-== 0.5.2 / 2009-05-30
+## 0.5.2 / 2009-05-30
 
 This release requires rbconfig.rb and uses system entries in place of
 some hardcoded FHS locations.
@@ -87,7 +87,7 @@ Changes:
 * Replaced hardcoded system directories with rbconfig entries.
 
 
-== 0.5.1 / 2008-11-17
+## 0.5.1 / 2008-11-17
 
 Changes:
 
@@ -95,14 +95,14 @@ Changes:
 * Deprecated #data_work
 
 
-== 0.5.0 / 2008-10-28
+## 0.5.0 / 2008-10-28
 
 Changes:
 
 * Changed _glob to _select
 
 
-== 0.4.0 / 2008-10-26
+## 0.4.0 / 2008-10-26
 
 This release removes the xdg_ prefix from the instance-level
 method names. Now module and instance levels are the same.
@@ -129,7 +129,7 @@ Changes:
 * Fixed plural in RELEASE file
 
 
-== 0.3.0 / 2008-10-11
+## 0.3.0 / 2008-10-11
 
 Changes:
 
@@ -140,7 +140,7 @@ Changes:
 * Fixed issue of xdg_ prefix still being used internally
 
 
-== 0.1.0 / 2008-09-27
+## 0.1.0 / 2008-09-27
 
 Changes:
 
