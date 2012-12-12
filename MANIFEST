@@ -1,9 +1,9 @@
 #!mast .index .yardopts bin data demo lib man share spec test [A-Z][A-Z]*.*
 .index
 .yardopts
-demo/01_base_dir.rdoc
-demo/02_base_dir_extended.rdoc
-demo/03_base_dir_mixin.rdoc
+demo/01_base_dir.md
+demo/02_base_dir_extended.md
+demo/03_base_dir_mixin.md
 demo/applique/ae.rb
 demo/applique/fakeroot.rb
 demo/applique/xdg.rb
@@ -28,7 +28,7 @@ test/fakeroot/home/.config/foo.config
 test/fakeroot/home/.local/share/foo.dat
 test/fakeroot/usr/share/bar.dat
 test/test_xdg_legacy.rb
-HISTORY.rdoc
-DEMO.rdoc
-README.rdoc
-COPYING.rdoc
+LICENSE.txt
+HISTORY.md
+README.md
+DEMO.md
