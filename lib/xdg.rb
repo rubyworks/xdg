@@ -25,12 +25,12 @@
 #
 module XDG
   if RUBY_VERSION > '1.9'
-    require_relative 'xdg/version'
+    require_relative 'xdg/index'
     require_relative 'xdg/base_dir'
     require_relative 'xdg/base_dir/extended'
     require_relative 'xdg/base_dir/mixin'
   else
-    require 'xdg/version'
+    require 'xdg/index'
     require 'xdg/base_dir'
     require 'xdg/base_dir/extended'
     require 'xdg/base_dir/mixin'
