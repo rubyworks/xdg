@@ -10,7 +10,7 @@ qed:
 qedoc:
   files: demo
   title: XDG Demonstrations
-  output: DEMO.rdoc
+  output: DEMO.md
 
 gem:
   active: true
