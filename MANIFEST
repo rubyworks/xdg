@@ -1,14 +1,6 @@
-#!mast .index .ruby .yardopts bin lib man demo spec test [A-Z]*.*
+#!mast .index .yardopts bin data demo lib man share spec test [A-Z][A-Z]*.*
 .index
-.ruby
 .yardopts
-lib/xdg/base_dir/extended.rb
-lib/xdg/base_dir/global_variables.rb
-lib/xdg/base_dir/legacy.rb
-lib/xdg/base_dir/mixin.rb
-lib/xdg/base_dir.rb
-lib/xdg/version.rb
-lib/xdg.rb
 demo/01_base_dir.rdoc
 demo/02_base_dir_extended.rdoc
 demo/03_base_dir_mixin.rdoc
@@ -22,6 +14,13 @@ demo/fixtures/fakeroot/home/.config/foo.config
 demo/fixtures/fakeroot/home/.local/share/foo.dat
 demo/fixtures/fakeroot/home/joe/foo.txt
 demo/fixtures/fakeroot/usr/share/bar.dat
+lib/xdg/base_dir/extended.rb
+lib/xdg/base_dir/global_variables.rb
+lib/xdg/base_dir/legacy.rb
+lib/xdg/base_dir/mixin.rb
+lib/xdg/base_dir.rb
+lib/xdg/version.rb
+lib/xdg.rb
 test/fakeroot/.cache/DUMMY.txt
 test/fakeroot/etc/xdg/bar.config
 test/fakeroot/home/.cache/foo.cache

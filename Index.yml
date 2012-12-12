@@ -1,8 +1,12 @@
 ---
-name: xdg
-version: 2.2.3
+name:
+  xdg
 
-title: XDG
+version:
+  2.2.3
+
+title:
+  XDG
 
 summary:
   XDG provides an interface for using XDG directory standard.
@@ -15,9 +19,6 @@ organization: Rubyworks
 
 authors:
   - Trans <transfire@gmail.com>
-
-copyrights:
-  - (c) 2008 Rubyworks (BSD-2-Clause)
 
 requirements:
   - detroit (build)
@@ -32,5 +33,9 @@ resources:
   code: http://github.com/rubyworks/xdg
   mail: http://groups.goole.com/rubyworks-mailinglist
 
-created: 2008-09-27
+created:
+   2008-09-27
+
+copyrights:
+  - (c) 2008 Rubyworks (BSD-2-Clause)
 
