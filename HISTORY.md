@@ -1,5 +1,13 @@
 # RELEASE HISTORY
 
+## 2.2.4 / ?
+
+
+Changes:
+
+* Add dynamic index metadata lookup via constants.
+
+
 ## 2.2.3 / 2012-12-13
 
 This release switches to RbConfig instead of Config, which Ruby
