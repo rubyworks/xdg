@@ -1,11 +1,9 @@
 # XDG Standards for Ruby
 
-[Homepage](https://rubyworks.github.io/xdg) |
-[Source Code](https://github.com/rubyworks/xdg) |
-[Report Issue](https://github.com/rubyworks/xdg/issues)
-
-[![Gem Version](https://img.shields.io/gem/v/xdg.svg?style=flat)](https://rubygems.org/gems/xdg)
-[![Build Status](https://github.com/rubyworks/xdg/actions/workflows/test.yml/badge.svg)](https://github.com/rubyworks/xdg/actions/workflows/test.yml)
+> **Note:** This is the original XDG gem, created by Thomas Sawyer (Rubyworks) in 2008.
+> Ownership of the `xdg` gem on RubyGems.org was transferred in 2019 to Brooke Kuhlmann,
+> who now maintains it at [bkuhlmann/xdg](https://github.com/bkuhlmann/xdg).
+> This repository is archived for historical reference.
 
 
 ## Introduction
