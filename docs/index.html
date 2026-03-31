@@ -1,0 +1,109 @@
+<html>
+<head>
+  <title>Ruby XDG</title>
+  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-png">
+  <style>
+    body { background: #fff; font-size: 10pt; font-family: sans-serif; }
+    h1 { font-size: 56pt; margin: 0px; padding: 10px 0px; }
+    h2 { font-size: 24pt; margin: 0; padding: 40px 0 0 0; color: #666; }
+    img { border: none; }
+    p { text-align: justify; }
+
+    #doc { width: 732px; margin: 0 auto; padding: 10px; background: #ffffff; }
+    #header { background: url(assets/images/ephemeral_header01.jpg) -20px; padding: 5px 20px; border: 1px solid black; color: #555; }
+    #header h1 { margin: 0; padding: 0; color: black; }
+    #header h2 { margin: 0; padding: 0; margin-bottom: 10px; color: black; font-size: 16pt; }
+    #menu { font: bold 10pt Verdana, Sans-Serif; margin: 5px; float: right; }
+    #menu a { background: white; padding: 5px 7px; text-decoration: none; }
+    #menu a:hover { background: #D0FFD0; }
+    #text { padding: 10px 0; }
+    #text img { height: 110px; border: none; margin-left: 30; }
+    #footer { background: url(assets/images/ephemeral_header01.jpg); font-family: Verdana, Sans-Serif;
+              padding: 10px 10px; border: 1px solid black; font-weight: bold; }
+
+    .blurb { font-family: Verdana, Sans-Serif; font-weight: bold; font-size: 18pt; text-align: justify; padding: 20px 1px 1px 1px; }
+  </style>
+</head>
+<body>
+
+<div style="position: absolute; top: 0; right: 0;">
+  <a href="https://github.com/rubyworks/xdg"><img src="assets/images/fork-me.png" /></a>
+</div>
+
+<div id="doc">
+
+  <div id="menu">
+    <a href="https://rubydoc.info/gems/xdg">API</a>
+    <a href="https://github.com/rubyworks/xdg">GitHub</a>
+  </div>
+
+  <div id="header" style="clear: both;">
+    <h1>XDG</h1>
+    <h2>Base Directory Standard</h2>
+  </div>
+
+  <div id="text">
+    <div class="blurb">XDG is your ticket to a clean and robust solution for
+    locating user specific and system wide configuration and support files.</div>
+
+    <h2>What is this all about?</h2>
+
+    <p>The XDG Base Directory Standard provides a common means for specifying one or more
+       base directories relative to which support files can be located. Using the XDG
+       standard, applications can find and store application specific support files
+       (eg. config files, data caches, etc.) in a universal, clean and robust fashion.
+       The advantages of this standard is that all such files will be found in central
+       locations easily discernible by man and machine. And, if widely adopted, XDG can
+       clear up our HOME directories of all those pesky hidden files.</p>
+
+    <p>See <a href="http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html">
+       XDG Base Directory Standard Specification</a>.</p>
+
+    <h2>Who's using the XDG Standard?</h2>
+      <br/>
+      <a href="https://www.xfce.org/"><img src="assets/images/xfce.jpg" title="XFCE"/></a>
+      <a href="https://www.gnome.org/"><img src="assets/images/gnome.png" title="Gnome"/></a>
+      <a href="https://www.gtk.org/"><img src="assets/images/gtk.png" title="GTK+"/></a>
+      <a href="https://www.ubuntu.com/"><img src="assets/images/ubuntu.jpg" title="Ubuntu"/></a>
+
+    <h2>How to Install</h2>
+
+      <pre>
+      $ gem install xdg
+      </pre>
+
+    <h2>How to Use</h2>
+
+      <pre>
+      require 'xdg'
+
+      XDG['CONFIG']
+      XDG['CONFIG_HOME']
+      XDG['CONFIG_DIRS']
+
+      XDG['DATA']
+      XDG['DATA_HOME']
+      XDG['DATA_DIRS']
+
+      XDG['CACHE']
+      XDG['CACHE_HOME']
+      XDG['CACHE_DIRS']
+      </pre>
+
+      <p>See the <a href="https://rubydoc.info/gems/xdg">API documentation</a> for more details.</p>
+  </div>
+
+  <div id="footer">
+    Copyright &copy; 2008 Rubyworks &middot; BSD-2-Clause License
+  </div>
+
+</div>
+
+<div id="rubyworks" style="position: fixed; bottom: 5px; right: 10px; padding: 0; opacity: 0.3;">
+  <a href="https://rubyworks.github.io">
+    <img src="https://rubyworks.github.io/assets/images/seal.png" height="150px" />
+  </a>
+</div>
+
+</body>
+</html>

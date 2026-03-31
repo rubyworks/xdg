@@ -1,11 +1,11 @@
 # XDG Base Directory Standard
 #
-# This provides a conveient library for conforming to the
+# This provides a convenient library for conforming to the
 # XDG Base Directory Standard.
 #
 #   http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
 #
-# Some important clarifications, not made clear by the above specification. 
+# Some important clarifications, not made clear by the above specification.
 #
 # The data directories are for "read-only" files. In other words once
 # something is put there, it should only be read, and never written to
@@ -13,7 +13,7 @@
 # be adding, changing or removing files from the data locations.)
 #
 # The config locations are where you store files that may change,
-# and effect your applications depending on their content. This is like
+# and affect your applications depending on their content. This is like
 # etc/ in the FHS, but alterable by end users and end user programs,
 # not just root and sudo admin scripts.
 #
@@ -24,17 +24,11 @@
 # The module returns all paths as String.
 #
 module XDG
-  if RUBY_VERSION > '1.9'
-    require_relative 'xdg/index'
-    require_relative 'xdg/base_dir'
-    require_relative 'xdg/base_dir/extended'
-    require_relative 'xdg/base_dir/mixin'
-  else
-    require 'xdg/index'
-    require 'xdg/base_dir'
-    require 'xdg/base_dir/extended'
-    require 'xdg/base_dir/mixin'
-  end
+  VERSION = '2.2.5'
+
+  require_relative 'xdg/base_dir'
+  require_relative 'xdg/base_dir/extended'
+  require_relative 'xdg/base_dir/mixin'
 
   #
   def self.[](*env_path)

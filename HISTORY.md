@@ -1,11 +1,20 @@
 # RELEASE HISTORY
 
-## 2.2.4 / ?
+## 2.2.5 / 2026-03-31
 
+Maintenance release. Modernized project tooling and cleaned up documentation.
 
 Changes:
 
-* Add dynamic index metadata lookup via constants.
+* Replace custom Indexer system with standard gemspec.
+* Replace Travis CI with GitHub Actions.
+* Replace Assembly with Rakefile.
+* Add VERSION constant to XDG module.
+* Remove Ruby 1.8/1.9 compatibility code.
+* Fix typos and update URLs to HTTPS.
+* Move site from gh-pages to docs/.
+* Remove obsolete files.
+* Clean up .gitignore.
 
 
 ## 2.2.3 / 2012-12-13

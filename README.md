@@ -1,12 +1,11 @@
 # XDG Standards for Ruby
 
-[Homepage](http://rubyworks.github.com/xdg) |
-[Source Code](http://github.com/rubyworks/xdg) |
-[Report Issue](http://github.com/rubyworks/xdg/issues) |
-[Mailing List](http://googlegroups.com/group.rubyworks-mailinglist) |
-[Chat Room](irc://irc.freenode.net/rubyworks)
+[Homepage](https://rubyworks.github.io/xdg) |
+[Source Code](https://github.com/rubyworks/xdg) |
+[Report Issue](https://github.com/rubyworks/xdg/issues)
 
-[![Build Status](https://secure.travis-ci.org/rubyworks/xdg.png)](http://travis-ci.org/rubyworks/xdg)
+[![Gem Version](https://img.shields.io/gem/v/xdg.svg?style=flat)](https://rubygems.org/gems/xdg)
+[![Build Status](https://github.com/rubyworks/xdg/actions/workflows/test.yml/badge.svg)](https://github.com/rubyworks/xdg/actions/workflows/test.yml)
 
 
 ## Introduction
@@ -120,27 +119,17 @@ Using RubyGems:
 
     $ sudo gem install xdg
 
-Installing the tarball requires Ruby Setup (see http://rubyworks.github.com/setup).
-
-    $ tar -xvzf xdg-0.5.2
-    $ cd xdg-0.5.2
-    $ sudo setup.rb all
-
-
 ## Development
 
-[GitHub](http://github.com) hosts our [source code](http://github.com/rubyworks/xdg)
-and [issue ticket system](http://github.com/rubyworks/xdg/issues).
-
-To contribute to the project please fork the repository, ideally, create a new
-topic branch for your work, and submit a pull request.
+Source code is on [GitHub](https://github.com/rubyworks/xdg).
+Please report issues on the [issue tracker](https://github.com/rubyworks/xdg/issues).
 
 
 ## Copyright & License
 
 Copyright (c) 2008 Rubyworks
 
-Distributed under the terms of the *FreeBSD* license.
+Distributed under the terms of the **BSD-2-Clause** license.
 
 See LICENSE.txt file for details.
 
