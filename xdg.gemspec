@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'xdg'
-  s.version     = '2.2.5'
+  s.version     = '2.2.6'
   s.summary     = 'XDG provides an interface for using XDG directory standard.'
   s.description = 'XDG provides a module for supporting the XDG Base Directory Standard.'
 

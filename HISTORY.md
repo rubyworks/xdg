@@ -1,6 +1,6 @@
 # RELEASE HISTORY
 
-## 2.2.5 / 2026-03-31
+## 2.2.6 / 2026-03-31
 
 Maintenance release. Modernized project tooling and cleaned up documentation.
 

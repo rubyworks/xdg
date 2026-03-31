@@ -24,7 +24,7 @@
 # The module returns all paths as String.
 #
 module XDG
-  VERSION = '2.2.5'
+  VERSION = '2.2.6'
 
   require_relative 'xdg/base_dir'
   require_relative 'xdg/base_dir/extended'
