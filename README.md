@@ -45,6 +45,9 @@ The same holds true for the other base directories.
     XDG['CACHE_HOME']
     XDG['CACHE_DIRS']
 
+    XDG['STATE_HOME']
+    XDG['RUNTIME_DIR']
+
 By leaving out the last qualifier, XDG will provide an interface
 that ties into both the `HOME` and `DIRS` paths.
 

@@ -75,3 +75,21 @@ Lookking at both data location combined
 
     XDG['CACHE'].to_a.assert == [$froot + 'home/joe/.cache', $froot + 'tmp']
 
+
+## State Paths
+
+### Home
+
+The state home directory defaults to `~/.local/state`.
+
+    XDG['STATE_HOME'].environment_variables.assert == ['XDG_STATE_HOME']
+    XDG['STATE_HOME'].to_a.assert == [$froot + 'home/joe/.local/state']
+
+
+## Runtime Paths
+
+The runtime directory is set by the system and accessed via `XDG_RUNTIME_DIR`.
+
+    XDG['RUNTIME_DIR'].environment.assert == ENV['XDG_RUNTIME_DIR'].to_s
+    XDG['RUNTIME_DIR'].to_a.assert == [$froot + 'run/user/1000']
+

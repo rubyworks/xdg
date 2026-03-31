@@ -16,7 +16,9 @@ module XDG
       'XDG_CONFIG_HOME' => ['~/.config'],
       'XDG_CONFIG_DIRS' => [File.join(sysconfdir,'xdg'), sysconfdir],
       'XDG_CACHE_HOME'  => ['~/.cache'],
-      'XDG_CACHE_DIRS'  => ['/tmp']
+      'XDG_CACHE_DIRS'  => ['/tmp'],
+      'XDG_STATE_HOME'  => ['~/.local/state'],
+      'XDG_RUNTIME_DIR' => []
     }
 
     # BaseDir iterates over directory paths.

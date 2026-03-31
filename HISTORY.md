@@ -6,6 +6,7 @@ Maintenance release. Modernized project tooling and cleaned up documentation.
 
 Changes:
 
+* Add support for XDG_STATE_HOME (spec 0.8) and XDG_RUNTIME_DIR (spec 0.7).
 * Replace custom Indexer system with standard gemspec.
 * Replace Travis CI with GitHub Actions.
 * Replace Assembly with Rakefile.

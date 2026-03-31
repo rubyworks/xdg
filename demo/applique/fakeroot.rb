@@ -14,4 +14,6 @@ ENV['XDG_DATA_DIRS']   = $froot + 'usr/share'
 ENV['XDG_CONFIG_DIRS'] = $froot + 'etc/xdg' + ':' + $froot + 'etc'
 #ENV['XDG_CACHE_HOME']  = $froot + '.cache'
 ENV['XDG_CACHE_DIRS']  = $froot + 'tmp'
+#ENV['XDG_STATE_HOME'] = $froot + '.local/state'
+ENV['XDG_RUNTIME_DIR'] = $froot + 'run/user/1000'
 
