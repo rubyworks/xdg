@@ -7,12 +7,11 @@ module XDG
     require 'rbconfig'
 
     sysconfdir = ::RbConfig::CONFIG['sysconfdir'] || '/etc'
-    datadir    = ::RbConfig::CONFIG['datadir']    || '/usr/share'
 
     # Standard defaults for locations.
     DEFAULTS = {
       'XDG_DATA_HOME'   => ['~/.local/share'],
-      'XDG_DATA_DIRS'   => ['/usr/local/share', datadir],
+      'XDG_DATA_DIRS'   => ['/usr/local/share', '/usr/share'],
       'XDG_CONFIG_HOME' => ['~/.config'],
       'XDG_CONFIG_DIRS' => [File.join(sysconfdir,'xdg'), sysconfdir],
       'XDG_CACHE_HOME'  => ['~/.cache'],
